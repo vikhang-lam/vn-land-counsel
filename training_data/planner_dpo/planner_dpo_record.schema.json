@@ -1,0 +1,431 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vn-land-counsel.local/schemas/planner-dpo-record-v1.json",
+  "title": "VN Land Counsel Planner DPO Review Record",
+  "description": "Canonical human-review record. The compiler assigns final DPO pair IDs, issue IDs, and requirement IDs.",
+  "type": "object",
+  "required": [
+    "version",
+    "batch_id",
+    "source_case_id",
+    "split",
+    "difficulty",
+    "primary_topic",
+    "secondary_domains",
+    "input",
+    "chosen",
+    "rejected",
+    "preference",
+    "review"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "version": {
+      "const": 1
+    },
+    "batch_id": {
+      "type": "string",
+      "pattern": "^batch_[0-9]{3}$"
+    },
+    "source_case_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 120
+    },
+    "split": {
+      "enum": [
+        "train",
+        "val",
+        "test"
+      ]
+    },
+    "difficulty": {
+      "enum": [
+        "EASY",
+        "MEDIUM",
+        "HARD"
+      ]
+    },
+    "primary_topic": {
+      "enum": [
+        "TRANSACTION",
+        "REGISTRATION",
+        "SANCTION",
+        "DISPUTE",
+        "LAND_USE",
+        "RECOVERY_COMPENSATION",
+        "AUTHORITY_PROCEDURE",
+        "ELIGIBILITY"
+      ]
+    },
+    "secondary_domains": {
+      "type": "array",
+      "maxItems": 6,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 80
+      }
+    },
+    "input": {
+      "$ref": "#/$defs/plannerInput"
+    },
+    "chosen": {
+      "$ref": "#/$defs/reviewPlan"
+    },
+    "rejected": {
+      "$ref": "#/$defs/reviewPlan"
+    },
+    "preference": {
+      "$ref": "#/$defs/preference"
+    },
+    "review": {
+      "$ref": "#/$defs/review"
+    }
+  },
+  "$defs": {
+    "fact": {
+      "type": "object",
+      "required": [
+        "fact_id",
+        "category",
+        "value",
+        "source_quote"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "fact_id": {
+          "type": "string",
+          "pattern": "^F[0-9]{3}$"
+        },
+        "category": {
+          "enum": [
+            "ACTOR",
+            "CONDUCT",
+            "LAND_TYPE",
+            "AFFECTED_AREA",
+            "TOTAL_AREA",
+            "LOCATION",
+            "LEGAL_STATUS",
+            "ELIGIBILITY_STATUS",
+            "TIME",
+            "REQUEST",
+            "OTHER"
+          ]
+        },
+        "value": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1000
+        },
+        "source_quote": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1000
+        }
+      }
+    },
+    "temporalContext": {
+      "type": "object",
+      "required": [
+        "giao_dich",
+        "vi_pham",
+        "van_ban_dich_danh"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "giao_dich": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "string",
+              "pattern": "^[0-9]{4}(?:-[0-9]{2}(?:-[0-9]{2})?)?$"
+            }
+          ]
+        },
+        "vi_pham": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "string",
+              "pattern": "^[0-9]{4}(?:-[0-9]{2}(?:-[0-9]{2})?)?$"
+            }
+          ]
+        },
+        "van_ban_dich_danh": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 240
+            }
+          ]
+        }
+      }
+    },
+    "plannerInput": {
+      "type": "object",
+      "required": [
+        "question",
+        "fact_ledger",
+        "temporal_context"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "question": {
+          "type": "string",
+          "minLength": 5,
+          "maxLength": 6000
+        },
+        "fact_ledger": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 20,
+          "items": {
+            "$ref": "#/$defs/fact"
+          }
+        },
+        "temporal_context": {
+          "$ref": "#/$defs/temporalContext"
+        }
+      }
+    },
+    "requirement": {
+      "type": "object",
+      "required": [
+        "requirement_key",
+        "target_kind",
+        "objective",
+        "fact_ids",
+        "query"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "requirement_key": {
+          "type": "string",
+          "pattern": "^REQ_[A-Z0-9_]+$",
+          "maxLength": 48,
+          "description": "Review-local alignment key. The compiler assigns Rxxx_xx by issue and requirement position."
+        },
+        "target_kind": {
+          "enum": [
+            "LEGAL_BASIS",
+            "SUBJECT_OBJECT_CONDITIONS",
+            "FORM_DOCUMENT",
+            "REGISTRATION_COMPLETION",
+            "AUTHORITY_PROCEDURE",
+            "DEADLINE_OBLIGATION",
+            "CONDUCT_CLASSIFICATION",
+            "SANCTION_REMEDY",
+            "LEGAL_CONSEQUENCE",
+            "DISPUTE_REMEDY",
+            "ELIGIBILITY",
+            "OTHER_CONCRETE"
+          ]
+        },
+        "objective": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 240
+        },
+        "fact_ids": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 6,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^F[0-9]{3}$"
+          }
+        },
+        "query": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 220
+        }
+      }
+    },
+    "issue": {
+      "type": "object",
+      "required": [
+        "issue_key",
+        "issue",
+        "issue_type",
+        "required_evidence",
+        "depends_on_keys",
+        "time_basis"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "issue_key": {
+          "type": "string",
+          "pattern": "^ISSUE_[A-Z0-9_]+$",
+          "maxLength": 48,
+          "description": "Review-local alignment key. The compiler assigns Ixxx by issue position."
+        },
+        "issue": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 240
+        },
+        "issue_type": {
+          "enum": [
+            "LEGAL_BASIS",
+            "AUTHORITY_PROCEDURE",
+            "RIGHTS_REMEDY",
+            "TRANSACTION",
+            "REGISTRATION",
+            "SANCTION",
+            "REMEDY",
+            "ELIGIBILITY",
+            "DISPUTE",
+            "OTHER"
+          ]
+        },
+        "required_evidence": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 2,
+          "items": {
+            "$ref": "#/$defs/requirement"
+          }
+        },
+        "depends_on_keys": {
+          "type": "array",
+          "maxItems": 2,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^ISSUE_[A-Z0-9_]+$",
+            "maxLength": 48
+          }
+        },
+        "time_basis": {
+          "enum": [
+            "giao_dich",
+            "vi_pham",
+            "hien_hanh",
+            "van_ban_dich_danh"
+          ]
+        }
+      }
+    },
+    "reviewPlan": {
+      "type": "object",
+      "required": [
+        "issues"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "issues": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 3,
+          "items": {
+            "$ref": "#/$defs/issue"
+          }
+        }
+      }
+    },
+    "preference": {
+      "type": "object",
+      "required": [
+        "family",
+        "subtype",
+        "changed_paths",
+        "rejected_origin",
+        "minimal_contrast",
+        "gold_preference",
+        "rationale"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "family": {
+          "enum": [
+            "TERM_TARGET_BOUNDARY",
+            "LEGAL_RELATION_FRAMING",
+            "QUERY_SEMANTIC_ALIGNMENT",
+            "COVERAGE_DECOMPOSITION",
+            "FACT_STATUS_GROUNDING",
+            "TEMPORAL_VERSION_INTENT",
+            "DEPENDENCY_SEQUENCE",
+            "CROSS_DOMAIN_BOUNDARY"
+          ]
+        },
+        "subtype": {
+          "type": "string",
+          "pattern": "^[A-Z][A-Z0-9_]*$",
+          "minLength": 3,
+          "maxLength": 80
+        },
+        "changed_paths": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 12,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^/issues(?:/.*)?$",
+            "maxLength": 240
+          }
+        },
+        "rejected_origin": {
+          "enum": [
+            "RUNTIME_PLANNER_8B",
+            "BASE_QWEN3_8B",
+            "SYNTHETIC_MINIMAL",
+            "HISTORICAL_TRACE",
+            "HUMAN_AUTHORED_HARD_NEGATIVE"
+          ]
+        },
+        "minimal_contrast": {
+          "const": true
+        },
+        "gold_preference": {
+          "const": "CHOSEN"
+        },
+        "rationale": {
+          "type": "string",
+          "minLength": 12,
+          "maxLength": 1000
+        }
+      }
+    },
+    "review": {
+      "type": "object",
+      "required": [
+        "status",
+        "reviewer",
+        "reviewed_at",
+        "notes"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "status": {
+          "const": "GOLD_REVIEWED"
+        },
+        "reviewer": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120
+        },
+        "reviewed_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "notes": {
+          "type": "string",
+          "maxLength": 1000
+        }
+      }
+    }
+  }
+}

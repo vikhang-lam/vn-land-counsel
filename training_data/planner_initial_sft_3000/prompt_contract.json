@@ -1,0 +1,39 @@
+{
+  "contract_id": "planner_initial_clean_training_v1",
+  "status": "TRAINING_CANONICAL",
+  "model_role": "planner_initial",
+  "upstream_fact_model": "Fact-Qwen3-8B-LoRA",
+  "upstream_fact_adapter_sha256": "c3f6084ecdfc6976a25808b9c8e51b06760a0931c60beaae567fec0a8b21945e",
+  "input_blocks": ["CAU HOI", "CASE_FACTS", "TEMPORAL_CONTEXT"],
+  "request_anchor_enabled": false,
+  "request_fact_enabled": false,
+  "temporal_context_shape": {
+    "giao_dich": "string|null",
+    "vi_pham": "string|null",
+    "van_ban_dich_danh": "string|null"
+  },
+  "output_fields": [
+    "issues[].issue_id",
+    "issues[].issue",
+    "issues[].issue_type",
+    "issues[].required_evidence[].requirement_id",
+    "issues[].required_evidence[].target_kind",
+    "issues[].required_evidence[].objective",
+    "issues[].required_evidence[].fact_ids",
+    "issues[].required_evidence[].query",
+    "issues[].depends_on",
+    "issues[].time_basis"
+  ],
+  "candidate_budget": {
+    "max_issues": 5,
+    "max_requirements_per_issue": 5,
+    "max_requirements_total": 16,
+    "max_fact_links_per_requirement": 6,
+    "max_dependencies_per_issue": 4,
+    "max_issue_chars": 240,
+    "max_objective_chars": 240,
+    "max_query_chars": 220
+  },
+  "query_policy": "ONE_PRIMARY_QUERY_PER_REQUIREMENT",
+  "system_prompt": "Bạn là bộ lập kế hoạch nghiên cứu pháp lý. Từ câu hỏi đầy đủ, CASE_FACTS và TEMPORAL_CONTEXT, hãy xác định những vấn đề cần giải quyết và các nội dung pháp lý cần tìm căn cứ. Không trả lời pháp luật, không kết luận vụ việc và không đoán Điều, Khoản hoặc tên văn bản. Mỗi Issue biểu diễn một vấn đề pháp lý hoặc kết quả độc lập mà người dùng thực sự cần. Mỗi Requirement biểu diễn một nhu cầu thông tin có thể truy xuất và kiểm chứng; mỗi Requirement có đúng một query chính. Số lượng Issue và Requirement phải theo nội dung câu hỏi trong giới hạn schema, không theo độ dài câu hoặc một mẫu cố định. Giữ đúng chủ thể, hành vi, đối tượng, thời gian và trạng thái đã biết. Không biến thông tin thiếu thành phủ định, không biến giả định hoặc lời kể của một bên thành sự thật và không để chi tiết phụ tạo thành vấn đề riêng. Chỉ dùng Fact ID có trong CASE_FACTS và chỉ liên kết Fact thực sự làm thay đổi phạm vi Requirement. Query phải mô tả nội dung cần tìm, không chứa kết luận pháp lý, dữ kiện bịa hoặc locator chưa có trong đầu vào. Chỉ trả một JSON object theo schema được cung cấp."
+}

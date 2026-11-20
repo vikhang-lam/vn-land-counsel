@@ -1,0 +1,3470 @@
+version: 1
+batch_id: batch_003
+records:
+- pair_id: PDPO_000101
+  source_case_id: scale2_hard_470
+  chosen:
+    issues:
+    - issue_key: ISSUE_01
+      issue: Con đường giải quyết tranh chấp giữa hộ dân và tổ chức
+      issue_type: AUTHORITY_PROCEDURE
+      required_evidence:
+      - requirement_key: REQ_01_01
+        target_kind: AUTHORITY_PROCEDURE
+        objective: Xác định thẩm quyền theo chủ thể và giấy tờ quyền đất
+        fact_ids:
+        - F001
+        - F002
+        - F004
+        - F005
+        - F006
+        - F009
+        query: tranh chấp đất giữa hộ và tổ chức khi một bên có giấy chứng nhận thuộc tòa án hay cơ quan hành chính giải quyết
+      depends_on_keys: []
+      time_basis: hien_hanh
+    - issue_key: ISSUE_02
+      issue: Trách nhiệm chuyển hồ sơ đến đúng cơ quan
+      issue_type: AUTHORITY_PROCEDURE
+      required_evidence:
+      - requirement_key: REQ_02_01
+        target_kind: AUTHORITY_PROCEDURE
+        objective: Xác định người dân có phải nộp lại hồ sơ
+        fact_ids:
+        - F001
+        - F002
+        - F004
+        - F005
+        - F006
+        - F007
+        query: cơ quan nhận sai thẩm quyền phải tự chuyển hồ sơ đến nơi có thẩm quyền hay yêu cầu người dân nộp lại từ đầu
+      depends_on_keys:
+      - ISSUE_01
+      time_basis: hien_hanh
+    - issue_key: ISSUE_03
+      issue: Giá trị hòa giải tại xã sau khi chuyển cơ quan
+      issue_type: LEGAL_BASIS
+      required_evidence:
+      - requirement_key: REQ_03_01
+        target_kind: LEGAL_CONSEQUENCE
+        objective: Xác định có phải hòa giải lại trước khi giải quyết
+        fact_ids:
+        - F001
+        - F002
+        - F003
+        - F004
+        - F007
+        - F008
+        query: biên bản hòa giải đất tại xã còn giá trị điều kiện khởi kiện khi hồ sơ bị chuyển qua nhiều cơ quan không
+      depends_on_keys:
+      - ISSUE_01
+      - ISSUE_02
+      time_basis: hien_hanh
+  rejected:
+    issues:
+    - issue_key: ISSUE_01
+      issue: Con đường giải quyết tranh chấp giữa hộ dân và tổ chức
+      issue_type: AUTHORITY_PROCEDURE
+      required_evidence:
+      - requirement_key: REQ_01_01
+        target_kind: AUTHORITY_PROCEDURE
+        objective: Xác định thẩm quyền theo chủ thể và giấy tờ quyền đất
+        fact_ids:
+        - F001
+        - F002
+        - F004
+        - F005
+        - F006
+        - F009
+        query: tranh chấp đất giữa hộ và tổ chức khi một bên có giấy chứng nhận thuộc tòa án hay cơ quan hành chính giải quyết
+      depends_on_keys: []
+      time_basis: hien_hanh
+    - issue_key: ISSUE_02
+      issue: Trách nhiệm chuyển đúng cơ quan, giá trị hòa giải tại xã và điều kiện tiếp tục giải quyết sau nhiều lần chuyển
+        hồ sơ
+      issue_type: AUTHORITY_PROCEDURE
+      required_evidence:
+      - requirement_key: REQ_02_01
+        target_kind: AUTHORITY_PROCEDURE
+        objective: Xác định người dân có phải nộp lại hồ sơ
+        fact_ids:
+        - F001
+        - F002
+        - F004
+        - F005
+        - F006
+        - F007
+        query: cơ quan nhận sai thẩm quyền phải tự chuyển hồ sơ đến nơi có thẩm quyền hay yêu cầu người dân nộp lại từ đầu
+      - requirement_key: REQ_03_01
+        target_kind: LEGAL_CONSEQUENCE
+        objective: Xác định có phải hòa giải lại trước khi giải quyết
+        fact_ids:
+        - F001
+        - F002
+        - F003
+        - F004
+        - F007
+        - F008
+        query: biên bản hòa giải đất tại xã còn giá trị điều kiện khởi kiện khi hồ sơ bị chuyển qua nhiều cơ quan không
+      depends_on_keys:
+      - ISSUE_01
+      time_basis: hien_hanh
+  preference:
+    family: COVERAGE_DECOMPOSITION
+    subtype: ISSUE_REQUIREMENT_TOPOLOGY
+    changed_paths:
+    - /issues/1/issue
+    - /issues/1/required_evidence/1
+    - /issues/2
+    rejected_origin: SYNTHETIC_MINIMAL
+    minimal_contrast: true
+    gold_preference: CHOSEN
+    rationale: Rejected tách hoặc gộp sai các kết quả pháp lý, làm topology không phản ánh đúng phạm vi câu hỏi.
+  review:
+    status: GOLD_REVIEWED
+    reviewer: GPT-5.6 Sol
+    reviewed_at: '2026-08-13T12:00:00Z'
+    notes: Đã đối chiếu context, production Planner contract và family mutation; seed được hiệu chỉnh đồng nhất khi cần.
+- pair_id: PDPO_000102
+  source_case_id: scale_medium_093
+  chosen:
+    issues:
+    - issue_key: ISSUE_01
+      issue: Chỉnh giảm diện tích hiến làm đường khi sang tên phần đất còn lại
+      issue_type: REGISTRATION
+      required_evidence:
+      - requirement_key: REQ_01_01
+        target_kind: REGISTRATION_COMPLETION
+        objective: Đo phần còn lại và cập nhật hiến đất có thể xử lý cùng sang tên
+        fact_ids: &id001
+        - F001
+        - F002
+        - F003
+        - F004
+        - F006
+        query: chủ đất phải chỉnh giảm diện tích đã hiến làm đường trước hay được thực hiện đồng thời khi sang tên phần đất
+          còn lại
+      depends_on_keys: &id002 []
+      time_basis: hien_hanh
+  rejected:
+    issues:
+    - issue_key: ISSUE_01
+      issue: Chỉnh giảm diện tích hiến làm đường khi sang tên phần đất còn lại
+      issue_type: REGISTRATION
+      required_evidence:
+      - requirement_key: REQ_01_01
+        target_kind: SUBJECT_OBJECT_CONDITIONS
+        objective: Đo phần còn lại và cập nhật hiến đất có thể xử lý cùng sang tên
+        fact_ids: *id001
+        query: chủ đất phải chỉnh giảm diện tích đã hiến làm đường trước hay được thực hiện đồng thời khi sang tên phần đất
+          còn lại
+      depends_on_keys: *id002
+      time_basis: hien_hanh
+  preference:
+    family: TERM_TARGET_BOUNDARY
+    subtype: TARGET_KIND
+    changed_paths:
+    - /issues/0/required_evidence/0/target_kind
+    rejected_origin: SYNTHETIC_MINIMAL
+    minimal_contrast: true
+    gold_preference: CHOSEN
+    rationale: Rejected gán sai loại mục tiêu truy xuất dù objective và query thể hiện rõ loại quy phạm cần tìm.
+  review:
+    status: GOLD_REVIEWED
+    reviewer: GPT-5.6 Sol
+    reviewed_at: '2026-08-13T12:00:00Z'
+    notes: Đã đối chiếu context, production Planner contract và family mutation; seed được hiệu chỉnh đồng nhất khi cần.
+- pair_id: PDPO_000103
+  source_case_id: scale_easy_082
+  chosen:
+    issues:
+    - issue_key: ISSUE_01
+      issue: Đính chính hướng sơ đồ thửa đất vẽ sai trên giấy chứng nhận
+      issue_type: REGISTRATION
+      required_evidence:
+      - requirement_key: REQ_01_01
+        target_kind: REGISTRATION_COMPLETION
+        objective: Sửa lỗi sơ đồ khi số cạnh và diện tích không thay đổi
+        fact_ids: &id003
+        - F001
+        - F002
+        - F003
+        query: người sử dụng yêu cầu đính chính sơ đồ thửa đất vẽ nhầm hướng thế nào khi số đo cạnh và diện tích trên giấy
+          vẫn đúng
+      depends_on_keys: &id004 []
+      time_basis: hien_hanh
+  rejected:
+    issues:
+    - issue_key: ISSUE_01
+      issue: Đính chính hướng sơ đồ thửa đất vẽ sai trên giấy chứng nhận
+      issue_type: REGISTRATION
+      required_evidence:
+      - requirement_key: REQ_01_01
+        target_kind: REGISTRATION_COMPLETION
+        objective: Sửa lỗi sơ đồ khi số cạnh và diện tích không thay đổi
+        fact_ids: *id003
+        query: thủ tục sang tên đất sau chuyển nhượng cần hồ sơ gì, nộp tại cơ quan nào và giải quyết trong thời hạn bao lâu
+      depends_on_keys: *id004
+      time_basis: hien_hanh
+  preference:
+    family: QUERY_SEMANTIC_ALIGNMENT
+    subtype: RELATION_DRIFT
+    changed_paths:
+    - /issues/0/required_evidence/0/query
+    rejected_origin: SYNTHETIC_MINIMAL
+    minimal_contrast: true
+    gold_preference: CHOSEN
+    rationale: Rejected giữ schema hợp lệ nhưng query đi sang quan hệ pháp lý khác với issue và objective đã chọn.
+  review:
+    status: GOLD_REVIEWED
+    reviewer: GPT-5.6 Sol
+    reviewed_at: '2026-08-13T12:00:00Z'
+    notes: Đã đối chiếu context, production Planner contract và family mutation; seed được hiệu chỉnh đồng nhất khi cần.
+- pair_id: PDPO_000104
+  source_case_id: scale2_easy_339
+  chosen:
+    issues:
+    - issue_key: ISSUE_01
+      issue: Xem xét chi phí mái hiên đã tự tháo trước kiểm đếm
+      issue_type: ELIGIBILITY
+      required_evidence: &id005
+      - requirement_key: REQ_01_01
+        target_kind: ELIGIBILITY
+        objective: Ảnh và giấy phép có thể chứng minh tài sản tồn tại hợp pháp trước tháo
+        fact_ids:
+        - F001
+        - F002
+        - F003
+        - F004
+        query: mái hiên tự tháo trước ngày kiểm đếm có được xem xét chi phí khi hộ còn ảnh và giấy phép chứng minh tài sản
+          không
+      depends_on_keys: &id006 []
+      time_basis: hien_hanh
+  rejected:
+    issues:
+    - issue_key: ISSUE_01
+      issue: Xem xét chi phí mái hiên đã tự tháo trước kiểm đếm
+      issue_type: ELIGIBILITY
+      required_evidence: *id005
+      depends_on_keys: *id006
+      time_basis: van_ban_dich_danh
+  preference:
+    family: TEMPORAL_VERSION_INTENT
+    subtype: WRONG_OR_UNSUPPORTED_TIME_BASIS
+    changed_paths:
+    - /issues/0/time_basis
+    rejected_origin: SYNTHETIC_MINIMAL
+    minimal_contrast: true
+    gold_preference: CHOSEN
+    rationale: Rejected chọn mốc thời gian không được Temporal Context xác nhận hoặc bỏ qua mốc giao dịch đã xác nhận.
+  review:
+    status: GOLD_REVIEWED
+    reviewer: GPT-5.6 Sol
+    reviewed_at: '2026-08-13T12:00:00Z'
+    notes: Đã đối chiếu context, production Planner contract và family mutation; seed được hiệu chỉnh đồng nhất khi cần.
+- pair_id: PDPO_000105
+  source_case_id: scale2_easy_170
+  chosen:
+    issues:
+    - issue_key: ISSUE_01
+      issue: Đào rãnh thoát nước làm cạn ao liền kề
+      issue_type: DISPUTE
+      required_evidence: &id007
+      - requirement_key: REQ_01_01
+        target_kind: DISPUTE_REMEDY
+        objective: Xác định giới hạn thoát nước và nghĩa vụ khắc phục thiệt hại
+        fact_ids:
+        - F001
+        - F002
+        - F003
+        query: hộ đào rãnh thoát nước trong đất mình phải điều chỉnh và bồi thường thế nào khi làm cạn ao của hộ liền kề
+      depends_on_keys: &id008 []
+      time_basis: hien_hanh
+  rejected:
+    issues:
+    - issue_key: ISSUE_01
+      issue: Hộ bên cạnh đào rãnh làm cạn ao của chủ đất
+      issue_type: DISPUTE
+      required_evidence: *id007
+      depends_on_keys: *id008
+      time_basis: hien_hanh
+  preference:
+    family: LEGAL_RELATION_FRAMING
+    subtype: ACTOR_RELATION_OR_POLARITY
+    changed_paths:
+    - /issues/0/issue
+    rejected_origin: SYNTHETIC_MINIMAL
+    minimal_contrast: true
+    gold_preference: CHOSEN
+    rationale: Rejected đảo chủ thể hoặc tiền giả định kết luận nên không còn phản ánh trung lập quan hệ pháp lý trong facts.
+  review:
+    status: GOLD_REVIEWED
+    reviewer: GPT-5.6 Sol
+    reviewed_at: '2026-08-13T12:00:00Z'
+    notes: Đã đối chiếu context, production Planner contract và family mutation; seed được hiệu chỉnh đồng nhất khi cần.
+- pair_id: PDPO_000106
+  source_case_id: pilot_easy_032
+  chosen:
+    issues:
+    - issue_key: ISSUE_01
+      issue: Chậm đăng ký biến động sau khi nhận chuyển nhượng
+      issue_type: SANCTION
+      required_evidence:
+      - requirement_key: REQ_01_01
+        target_kind: SANCTION_REMEDY
+        objective: Xác định xử phạt và buộc hoàn tất đăng ký muộn
+        fact_ids: &id009
+        - F001
+        - F002
+        - F003
+        - F004
+        - F005
+        query: nhận chuyển nhượng đất tháng một nhưng đến tháng năm mới đăng ký biến động bị xử phạt và buộc khắc phục thế
+          nào
+      depends_on_keys: &id010 []
+      time_basis: hien_hanh
+  rejected:
+    issues:
+    - issue_key: ISSUE_01
+      issue: Chậm đăng ký biến động sau khi nhận chuyển nhượng
+      issue_type: SANCTION
+      required_evidence:
+      - requirement_key: REQ_01_01
+        target_kind: SANCTION_REMEDY
+        objective: Xác định xử phạt và buộc hoàn tất đăng ký muộn
+        fact_ids: *id009
+        query: người nhận chuyển nhượng nộp hồ sơ đăng ký biến động cần giấy tờ gì, nộp ở đâu và nhận kết quả trong thời hạn
+          bao lâu
+      depends_on_keys: *id010
+      time_basis: hien_hanh
+  preference:
+    family: QUERY_SEMANTIC_ALIGNMENT
+    subtype: RELATION_DRIFT
+    changed_paths:
+    - /issues/0/required_evidence/0/query
+    rejected_origin: SYNTHETIC_MINIMAL
+    minimal_contrast: true
+    gold_preference: CHOSEN
+    rationale: Rejected giữ schema hợp lệ nhưng query đi sang quan hệ pháp lý khác với issue và objective đã chọn.
+  review:
+    status: GOLD_REVIEWED
+    reviewer: GPT-5.6 Sol
+    reviewed_at: '2026-08-13T12:00:00Z'
+    notes: Đã đối chiếu context, production Planner contract và family mutation; seed được hiệu chỉnh đồng nhất khi cần.
+- pair_id: PDPO_000107
+  source_case_id: scale2_medium_014
+  chosen:
+    issues:
+    - issue_key: ISSUE_01
+      issue: Bản chất giao dịch cho sử dụng đất đổi lấy dịch vụ bảo trì
+      issue_type: TRANSACTION
+      required_evidence:
+      - requirement_key: REQ_01_01
+        target_kind: CONDUCT_CLASSIFICATION
+        objective: Nội dung diện tích thời hạn và quyền riêng quyết định hợp tác hay thuê đất
+        fact_ids:
+        - F001
+        - F002
+        - F003
+        - F004
+        - F005
+        query: hợp đồng gọi là hợp tác nhưng giao riêng diện tích đất có thời hạn đổi lấy dịch vụ bảo trì được xác định là
+          giao dịch nào
+      depends_on_keys: &id011 []
+      time_basis: hien_hanh
+    - &id012
+      issue_key: ISSUE_02
+      issue: Điều kiện chấm dứt và đòi lại đất khi đối tác chậm cung cấp dịch vụ
+      issue_type: RIGHTS_REMEDY
+      required_evidence:
+      - requirement_key: REQ_02_01
+        target_kind: LEGAL_CONSEQUENCE
+        objective: Vi phạm nghĩa vụ dịch vụ có đủ nghiêm trọng để đơn phương chấm dứt
+        fact_ids:
+        - F002
+        - F003
+        - F005
+        - F006
+        - F007
+        query: công ty được chấm dứt hợp đồng và đòi lại đất khi đối tác chậm dịch vụ bảo trì trong trường hợp nào
+      depends_on_keys:
+      - ISSUE_01
+      time_basis: hien_hanh
+  rejected:
+    issues:
+    - issue_key: ISSUE_01
+      issue: Bản chất giao dịch cho sử dụng đất đổi lấy dịch vụ bảo trì
+      issue_type: TRANSACTION
+      required_evidence:
+      - requirement_key: REQ_01_01
+        target_kind: CONDUCT_CLASSIFICATION
+        objective: Nội dung diện tích thời hạn và quyền riêng quyết định hợp tác hay thuê đất
+        fact_ids:
+        - F001
+        - F002
+        - F003
+        - F006
+        - F007
+        query: hợp đồng gọi là hợp tác nhưng giao riêng diện tích đất có thời hạn đổi lấy dịch vụ bảo trì được xác định là
+          giao dịch nào
+      depends_on_keys: *id011
+      time_basis: hien_hanh
+    - *id012
+  preference:
+    family: FACT_STATUS_GROUNDING
+    subtype: MATERIAL_FACT_MISLINK
+    changed_paths:
+    - /issues/0/required_evidence/0/fact_ids/3
+    - /issues/0/required_evidence/0/fact_ids/4
+    rejected_origin: SYNTHETIC_MINIMAL
+    minimal_contrast: true
+    gold_preference: CHOSEN
+    rationale: Rejected liên kết fact_ids không chứa dữ kiện vật chất quyết định đúng requirement dù các fact đều tồn tại.
+  review:
+    status: GOLD_REVIEWED
+    reviewer: GPT-5.6 Sol
+    reviewed_at: '2026-08-13T12:00:00Z'
+    notes: Đã đối chiếu context, production Planner contract và family mutation; seed được hiệu chỉnh đồng nhất khi cần.
+- pair_id: PDPO_000108
+  source_case_id: scale2_medium_217
+  chosen:
+    issues:
+    - issue_key: ISSUE_01
+      issue: Xây mái che bán hàng trong hành lang công trình điện
+      issue_type: ELIGIBILITY
+      required_evidence:
+      - &id013
+        requirement_key: REQ_01_01
+        target_kind: SUBJECT_OBJECT_CONDITIONS
+        objective: Khoảng cách an toàn và khả năng tiếp cận cột điện giới hạn công trình
+        fact_ids:
+        - F001
+        - F002
+        - F003
+        - F005
+        query: hộ được xây mái che bán hàng dưới cột điện trên đất ở trong giới hạn an toàn và điều kiện nào
+      - requirement_key: REQ_01_02
+        target_kind: CONDUCT_CLASSIFICATION
+        objective: Bán hàng thường xuyên có làm phát sinh sử dụng thương mại kết hợp
+        fact_ids: &id014
+        - F002
+        - F003
+        - F005
+        query: dùng phần đất ở trong hành lang điện làm chỗ bán hàng có phải đăng ký sử dụng kết hợp hoặc chuyển mục đích
+          không
+      depends_on_keys: &id015 []
+      time_basis: hien_hanh
+  rejected:
+    issues:
+    - issue_key: ISSUE_01
+      issue: Xây mái che bán hàng trong hành lang công trình điện
+      issue_type: ELIGIBILITY
+      required_evidence:
+      - *id013
+      - requirement_key: REQ_01_02
+        target_kind: REGISTRATION_COMPLETION
+        objective: Bán hàng thường xuyên có làm phát sinh sử dụng thương mại kết hợp
+        fact_ids: *id014
+        query: dùng phần đất ở trong hành lang điện làm chỗ bán hàng có phải đăng ký sử dụng kết hợp hoặc chuyển mục đích
+          không
+      depends_on_keys: *id015
+      time_basis: hien_hanh
+  preference:
+    family: TERM_TARGET_BOUNDARY
+    subtype: TARGET_KIND
+    changed_paths:
+    - /issues/0/required_evidence/1/target_kind
+    rejected_origin: SYNTHETIC_MINIMAL
+    minimal_contrast: true
+    gold_preference: CHOSEN
+    rationale: Rejected gán sai loại mục tiêu truy xuất dù objective và query thể hiện rõ loại quy phạm cần tìm.
+  review:
+    status: GOLD_REVIEWED
+    reviewer: GPT-5.6 Sol
+    reviewed_at: '2026-08-13T12:00:00Z'
+    notes: Đã đối chiếu context, production Planner contract và family mutation; seed được hiệu chỉnh đồng nhất khi cần.
+- pair_id: PDPO_000109
+  source_case_id: scale2_hard_015
+  chosen:
+    issues:
+    - issue_key: ISSUE_01
+      issue: Phạm vi cha được tặng cho đất khi mẹ đã mất
+      issue_type: TRANSACTION
+      required_evidence:
+      - requirement_key: REQ_01_01
+        target_kind: SUBJECT_OBJECT_CONDITIONS
+        objective: Cha chỉ định đoạt phần quyền của mình trong đất chung cha mẹ
+        fact_ids: &id016
+        - F001
+        - F002
+        - F003
+        - F008
+        - F009
+        - F010
+        query: người cha có thể tặng cho riêng con toàn bộ đất đã hứa cùng mẹ sau khi mẹ mất hay chỉ được định đoạt phần quyền
+          của mình
+      depends_on_keys: &id017 []
+      time_basis: giao_dich
+    - &id018
+      issue_key: ISSUE_02
+      issue: Quyền với căn nhà và nghĩa vụ vay của vợ chồng người con
+      issue_type: DISPUTE
+      required_evidence:
+      - requirement_key: REQ_02_01
+        target_kind: LEGAL_CONSEQUENCE
+        objective: Nhà và khoản vay chung được xác định riêng khỏi quyền đất
+        fact_ids:
+        - F002
+        - F003
+        - F004
+        - F005
+        - F006
+        - F009
+        query: căn nhà và khoản vay vợ chồng người con tạo lập trước hợp đồng tặng đất được xác định quyền nghĩa vụ thế nào
+      depends_on_keys:
+      - ISSUE_01
+      time_basis: hien_hanh
+    - &id019
+      issue_key: ISSUE_03
+      issue: Xác định phần đất thuộc di sản của người mẹ
+      issue_type: DISPUTE
+      required_evidence:
+      - requirement_key: REQ_03_01
+        target_kind: LEGAL_CONSEQUENCE
+        objective: Phần quyền mẹ chưa tặng hợp lệ được chia cho các thừa kế
+        fact_ids:
+        - F002
+        - F003
+        - F008
+        - F009
+        - F010
+        - F012
+        query: phần đất của người mẹ được đưa vào di sản thế nào khi cha mẹ mới hứa tặng nhưng chỉ người cha ký hợp đồng sau
+          đó
+      depends_on_keys:
+      - ISSUE_01
+      - ISSUE_02
+      time_basis: hien_hanh
+  rejected:
+    issues:
+    - issue_key: ISSUE_01
+      issue: Phạm vi cha được tặng cho đất khi mẹ đã mất
+      issue_type: TRANSACTION
+      required_evidence:
+      - requirement_key: REQ_01_01
+        target_kind: FORM_DOCUMENT
+        objective: Cha chỉ định đoạt phần quyền của mình trong đất chung cha mẹ
+        fact_ids: *id016
+        query: người cha có thể tặng cho riêng con toàn bộ đất đã hứa cùng mẹ sau khi mẹ mất hay chỉ được định đoạt phần quyền
+          của mình
+      depends_on_keys: *id017
+      time_basis: giao_dich
+    - *id018
+    - *id019
+  preference:
+    family: TERM_TARGET_BOUNDARY
+    subtype: TARGET_KIND
+    changed_paths:
+    - /issues/0/required_evidence/0/target_kind
+    rejected_origin: SYNTHETIC_MINIMAL
+    minimal_contrast: true
+    gold_preference: CHOSEN
+    rationale: Rejected gán sai loại mục tiêu truy xuất dù objective và query thể hiện rõ loại quy phạm cần tìm.
+  review:
+    status: GOLD_REVIEWED
+    reviewer: GPT-5.6 Sol
+    reviewed_at: '2026-08-13T12:00:00Z'
+    notes: Đã đối chiếu context, production Planner contract và family mutation; seed được hiệu chỉnh đồng nhất khi cần.
+- pair_id: PDPO_000110
+  source_case_id: scale2_hard_168
+  chosen:
+    issues:
+    - &id020
+      issue_key: ISSUE_01
+      issue: Giá trị xác nhận của xã đối với mô hình cây ăn quả trên đất rừng
+      issue_type: LEGAL_BASIS
+      required_evidence:
+      - requirement_key: REQ_01_01
+        target_kind: LEGAL_CONSEQUENCE
+        objective: Xác nhận mô hình không thay thế quyết định chuyển mục đích rừng
+        fact_ids:
+        - F001
+        - F002
+        - F003
+        - F006
+        - F008
+        - F009
+        query: xác nhận của xã có hợp thức việc chuyển rừng sản xuất sang cây ăn quả khi không có quyết định chuyển mục đích
+          không
+      depends_on_keys: []
+      time_basis: vi_pham
+    - issue_key: ISSUE_02
+      issue: Nghĩa vụ trồng lại rừng sau cháy và chuyển sang cây ăn quả
+      issue_type: REMEDY
+      required_evidence:
+      - requirement_key: REQ_02_01
+        target_kind: SANCTION_REMEDY
+        objective: Người nhận rừng phải phục hồi diện tích rừng theo phương án được giao
+        fact_ids: &id021
+        - F002
+        - F003
+        - F004
+        - F005
+        - F006
+        - F010
+        query: hộ nhận rừng phải trồng lại diện tích rừng sản xuất thế nào sau cháy khi đã chuyển toàn bộ sang cây ăn quả
+      depends_on_keys: &id022
+      - ISSUE_01
+      time_basis: hien_hanh
+    - &id023
+      issue_key: ISSUE_03
+      issue: Hợp thức hóa mô hình kết hợp rừng với cây dược liệu cây ăn quả
+      issue_type: AUTHORITY_PROCEDURE
+      required_evidence:
+      - requirement_key: REQ_03_01
+        target_kind: AUTHORITY_PROCEDURE
+        objective: Mô hình kết hợp phải giữ chức năng rừng và được phê duyệt
+        fact_ids:
+        - F003
+        - F004
+        - F005
+        - F006
+        - F007
+        - F010
+        query: mô hình trồng kết hợp dược liệu cây ăn quả trên rừng sản xuất được phê duyệt theo thủ tục nào sau khi phục
+          hồi rừng
+      depends_on_keys:
+      - ISSUE_01
+      - ISSUE_02
+      time_basis: hien_hanh
+  rejected:
+    issues:
+    - *id020
+    - issue_key: ISSUE_02
+      issue: Nghĩa vụ trồng lại rừng sau cháy và chuyển sang cây ăn quả
+      issue_type: REMEDY
+      required_evidence:
+      - requirement_key: REQ_02_01
+        target_kind: SANCTION_REMEDY
+        objective: Người nhận rừng phải phục hồi diện tích rừng theo phương án được giao
+        fact_ids: *id021
+        query: hồ sơ chuyển mục đích sử dụng rừng sang trồng cây ăn quả cần giấy tờ gì, cơ quan nào thẩm định và phê duyệt
+      depends_on_keys: *id022
+      time_basis: hien_hanh
+    - *id023
+  preference:
+    family: QUERY_SEMANTIC_ALIGNMENT
+    subtype: RELATION_DRIFT
+    changed_paths:
+    - /issues/1/required_evidence/0/query
+    rejected_origin: SYNTHETIC_MINIMAL
+    minimal_contrast: true
+    gold_preference: CHOSEN
+    rationale: Rejected giữ schema hợp lệ nhưng query đi sang quan hệ pháp lý khác với issue và objective đã chọn.
+  review:
+    status: GOLD_REVIEWED
+    reviewer: GPT-5.6 Sol
+    reviewed_at: '2026-08-13T12:00:00Z'
+    notes: Đã đối chiếu context, production Planner contract và family mutation; seed được hiệu chỉnh đồng nhất khi cần.
+- pair_id: PDPO_000111
+  source_case_id: scale_hard_139
+  chosen:
+    issues:
+    - &id024
+      issue_key: ISSUE_01
+      issue: Thẩm quyền thay thế quyết định xử phạt đã ban hành
+      issue_type: AUTHORITY_PROCEDURE
+      required_evidence:
+      - requirement_key: REQ_01_01
+        target_kind: AUTHORITY_PROCEDURE
+        objective: Xác định căn cứ ban hành quyết định sau cho cùng hành vi
+        fact_ids:
+        - F001
+        - F002
+        - F003
+        - F004
+        - F005
+        query: cơ quan được thay thế quyết định xử phạt cùng hành vi bằng quyết định tăng mức phạt và thêm tháo dỡ trong trường
+          hợp nào
+      depends_on_keys: []
+      time_basis: vi_pham
+    - &id025
+      issue_key: ISSUE_02
+      issue: Quyền giải trình trước quyết định xử phạt thay thế
+      issue_type: RIGHTS_REMEDY
+      required_evidence:
+      - requirement_key: REQ_02_01
+        target_kind: AUTHORITY_PROCEDURE
+        objective: Xác định có phải cho giải trình lại khi tăng bất lợi
+        fact_ids:
+        - F002
+        - F003
+        - F004
+        - F005
+        - F006
+        - F007
+        query: người bị phạt có quyền giải trình lại trước khi quyết định thay thế tăng tiền phạt và bổ sung biện pháp tháo
+          dỡ không
+      depends_on_keys:
+      - ISSUE_01
+      time_basis: vi_pham
+    - issue_key: ISSUE_03
+      issue: Xử lý tiền đã nộp theo quyết định đầu
+      issue_type: RIGHTS_REMEDY
+      required_evidence:
+      - requirement_key: REQ_03_01
+        target_kind: LEGAL_CONSEQUENCE
+        objective: Xác định hoàn trả hoặc khấu trừ tiền phạt đã nộp
+        fact_ids: &id026
+        - F002
+        - F003
+        - F004
+        - F007
+        - F008
+        query: tiền phạt đã nộp theo quyết định đầu được hoàn lại hay khấu trừ vào quyết định thay thế và tính chậm nộp thế
+          nào
+      depends_on_keys: &id027
+      - ISSUE_01
+      - ISSUE_02
+      time_basis: vi_pham
+  rejected:
+    issues:
+    - *id024
+    - *id025
+    - issue_key: ISSUE_03
+      issue: Xử lý tiền đã nộp theo quyết định đầu
+      issue_type: RIGHTS_REMEDY
+      required_evidence:
+      - requirement_key: REQ_03_01
+        target_kind: LEGAL_CONSEQUENCE
+        objective: Xác định hoàn trả hoặc khấu trừ tiền phạt đã nộp
+        fact_ids: *id026
+        query: cơ quan nào có thẩm quyền ban hành quyết định thay thế khi mức phạt và biện pháp khắc phục tăng lên
+      depends_on_keys: *id027
+      time_basis: vi_pham
+  preference:
+    family: QUERY_SEMANTIC_ALIGNMENT
+    subtype: RELATION_DRIFT
+    changed_paths:
+    - /issues/2/required_evidence/0/query
+    rejected_origin: SYNTHETIC_MINIMAL
+    minimal_contrast: true
+    gold_preference: CHOSEN
+    rationale: Rejected giữ schema hợp lệ nhưng query đi sang quan hệ pháp lý khác với issue và objective đã chọn.
+  review:
+    status: GOLD_REVIEWED
+    reviewer: GPT-5.6 Sol
+    reviewed_at: '2026-08-13T12:00:00Z'
+    notes: Đã đối chiếu context, production Planner contract và family mutation; seed được hiệu chỉnh đồng nhất khi cần.
+- pair_id: PDPO_000112
+  source_case_id: scale_medium_072
+  chosen:
+    issues:
+    - issue_key: ISSUE_01
+      issue: Sang tên theo bản án khi bên bán không ký hồ sơ
+      issue_type: REGISTRATION
+      required_evidence:
+      - requirement_key: REQ_01_01
+        target_kind: REGISTRATION_COMPLETION
+        objective: Xác định bản án thay thế sự hợp tác của bên bán
+        fact_ids:
+        - F001
+        - F002
+        - F003
+        - F004
+        - F005
+        - F007
+        query: bên mua có bản án buộc tiếp tục hợp đồng và hợp đồng công chứng được sang tên không cần chữ ký bên bán theo
+          thủ tục nào
+      - requirement_key: REQ_01_02
+        target_kind: AUTHORITY_PROCEDURE
+        objective: Xác định xử lý giấy cũ không được giao nộp
+        fact_ids:
+        - F001
+        - F002
+        - F003
+        - F004
+        - F005
+        - F007
+        query: cơ quan đăng ký xử lý giấy chứng nhận cũ khi bên bán không giao nộp sau bản án có hiệu lực thế nào
+      depends_on_keys: []
+      time_basis: hien_hanh
+  rejected:
+    issues:
+    - issue_key: ISSUE_01
+      issue: Sang tên theo bản án khi bên bán không ký hồ sơ
+      issue_type: REGISTRATION
+      required_evidence:
+      - requirement_key: REQ_01_01
+        target_kind: REGISTRATION_COMPLETION
+        objective: Xác định bản án thay thế sự hợp tác của bên bán
+        fact_ids:
+        - F001
+        - F002
+        - F003
+        - F004
+        - F005
+        - F007
+        query: bên mua có bản án buộc tiếp tục hợp đồng và hợp đồng công chứng được sang tên không cần chữ ký bên bán theo
+          thủ tục nào
+      depends_on_keys: []
+      time_basis: hien_hanh
+    - issue_key: ISSUE_02
+      issue: Xử lý giấy cũ không được giao
+      issue_type: REGISTRATION
+      required_evidence:
+      - requirement_key: REQ_01_02
+        target_kind: AUTHORITY_PROCEDURE
+        objective: Thủ tục xử lý giấy cũ không giao nộp
+        fact_ids:
+        - F001
+        - F002
+        - F003
+        - F004
+        - F005
+        - F007
+        query: xử lý giấy cũ khi bên bán không giao
+      depends_on_keys: []
+      time_basis: hien_hanh
+  preference:
+    family: COVERAGE_DECOMPOSITION
+    subtype: ISSUE_REQUIREMENT_TOPOLOGY
+    changed_paths:
+    - /issues/0/required_evidence/1
+    - /issues/1
+    rejected_origin: SYNTHETIC_MINIMAL
+    minimal_contrast: true
+    gold_preference: CHOSEN
+    rationale: Rejected tách hoặc gộp sai các kết quả pháp lý, làm topology không phản ánh đúng phạm vi câu hỏi.
+  review:
+    status: GOLD_REVIEWED
+    reviewer: GPT-5.6 Sol
+    reviewed_at: '2026-08-13T12:00:00Z'
+    notes: Đã đối chiếu context, production Planner contract và family mutation; seed được hiệu chỉnh đồng nhất khi cần.
+- pair_id: PDPO_000113
+  source_case_id: scale2_easy_244
+  chosen:
+    issues:
+    - issue_key: ISSUE_01
+      issue: Trách nhiệm dựng hàng rào lấn ranh trước khi sang tên
+      issue_type: SANCTION
+      required_evidence:
+      - requirement_key: REQ_01_01
+        target_kind: SANCTION_REMEDY
+        objective: Xác định người trực tiếp lấn đất chịu xử lý và khắc phục
+        fact_ids:
+        - F001
+        - F002
+        - F003
+        - F004
+        query: người mua nhận đất nhưng chưa sang tên dựng hàng rào lấn ranh có phải chịu xử phạt và tháo dỡ khôi phục ranh
+          giới không
+      depends_on_keys: &id028 []
+      time_basis: hien_hanh
+  rejected:
+    issues:
+    - issue_key: ISSUE_01
+      issue: Trách nhiệm dựng hàng rào lấn ranh trước khi sang tên
+      issue_type: SANCTION
+      required_evidence:
+      - requirement_key: REQ_01_01
+        target_kind: SANCTION_REMEDY
+        objective: Xác định người trực tiếp lấn đất chịu xử lý và khắc phục
+        fact_ids:
+        - F001
+        - F002
+        query: người mua nhận đất nhưng chưa sang tên dựng hàng rào lấn ranh có phải chịu xử phạt và tháo dỡ khôi phục ranh
+          giới không
+      depends_on_keys: *id028
+      time_basis: hien_hanh
+  preference:
+    family: FACT_STATUS_GROUNDING
+    subtype: MATERIAL_FACT_MISLINK
+    changed_paths:
+    - /issues/0/required_evidence/0/fact_ids/2
+    - /issues/0/required_evidence/0/fact_ids/3
+    rejected_origin: SYNTHETIC_MINIMAL
+    minimal_contrast: true
+    gold_preference: CHOSEN
+    rationale: Rejected liên kết fact_ids không chứa dữ kiện vật chất quyết định đúng requirement dù các fact đều tồn tại.
+  review:
+    status: GOLD_REVIEWED
+    reviewer: GPT-5.6 Sol
+    reviewed_at: '2026-08-13T12:00:00Z'
+    notes: Đã đối chiếu context, production Planner contract và family mutation; seed được hiệu chỉnh đồng nhất khi cần.
+- pair_id: PDPO_000114
+  source_case_id: scale2_hard_433
+  chosen:
+    issues:
+    - issue_key: ISSUE_01
+      issue: Tách thửa khi nhà nằm vắt qua ranh dự kiến
+      issue_type: ELIGIBILITY
+      required_evidence:
+      - requirement_key: REQ_01_01
+        target_kind: SUBJECT_OBJECT_CONDITIONS
+        objective: Xác định yêu cầu xử lý công trình trước khi tách
+        fact_ids:
+        - F001
+        - F002
+        - F003
+        query: thửa dự kiến tách đủ diện tích nhưng nhà nằm vắt qua ranh có được tách trước khi điều chỉnh công trình không
+      depends_on_keys: []
+      time_basis: hien_hanh
+    - issue_key: ISSUE_02
+      issue: Điều kiện lối đi cho thửa mới qua tầng trệt nhà khác
+      issue_type: ELIGIBILITY
+      required_evidence:
+      - requirement_key: REQ_02_01
+        target_kind: SUBJECT_OBJECT_CONDITIONS
+        objective: Xác định lối tiếp cận và quyền qua bất động sản
+        fact_ids:
+        - F001
+        - F002
+        - F004
+        query: thửa mới chỉ có lối đi xuyên tầng trệt nhà khác đáp ứng điều kiện tiếp cận và đăng ký quyền lối đi thế nào
+      depends_on_keys:
+      - ISSUE_01
+      time_basis: hien_hanh
+    - issue_key: ISSUE_03
+      issue: Tách phần đất đang thế chấp thành thửa mới
+      issue_type: REGISTRATION
+      required_evidence:
+      - requirement_key: REQ_03_01
+        target_kind: REGISTRATION_COMPLETION
+        objective: Xác định sự đồng ý và phân bổ bảo đảm của ngân hàng
+        fact_ids:
+        - F001
+        - F002
+        - F005
+        query: tách phần đất đang thế chấp cần ngân hàng đồng ý và phân định tài sản bảo đảm cho các thửa mới theo thủ tục
+          nào
+      depends_on_keys:
+      - ISSUE_01
+      - ISSUE_02
+      time_basis: hien_hanh
+  rejected:
+    issues:
+    - issue_key: ISSUE_01
+      issue: Tách thửa khi nhà nằm vắt qua ranh dự kiến
+      issue_type: ELIGIBILITY
+      required_evidence:
+      - requirement_key: REQ_01_01
+        target_kind: SUBJECT_OBJECT_CONDITIONS
+        objective: Xác định yêu cầu xử lý công trình trước khi tách
+        fact_ids:
+        - F001
+        - F002
+        - F003
+        query: thửa dự kiến tách đủ diện tích nhưng nhà nằm vắt qua ranh có được tách trước khi điều chỉnh công trình không
+      depends_on_keys: []
+      time_basis: hien_hanh
+    - issue_key: ISSUE_02
+      issue: Điều kiện lối đi qua công trình liền kề, xử lý tài sản bảo đảm và sự đồng ý của ngân hàng khi tách các phần đất
+      issue_type: ELIGIBILITY
+      required_evidence:
+      - requirement_key: REQ_02_01
+        target_kind: SUBJECT_OBJECT_CONDITIONS
+        objective: Xác định lối tiếp cận và quyền qua bất động sản
+        fact_ids:
+        - F001
+        - F002
+        - F004
+        query: thửa mới chỉ có lối đi xuyên tầng trệt nhà khác đáp ứng điều kiện tiếp cận và đăng ký quyền lối đi thế nào
+      - requirement_key: REQ_03_01
+        target_kind: REGISTRATION_COMPLETION
+        objective: Xác định sự đồng ý và phân bổ bảo đảm của ngân hàng
+        fact_ids:
+        - F001
+        - F002
+        - F005
+        query: tách phần đất đang thế chấp cần ngân hàng đồng ý và phân định tài sản bảo đảm cho các thửa mới theo thủ tục
+          nào
+      depends_on_keys:
+      - ISSUE_01
+      time_basis: hien_hanh
+  preference:
+    family: COVERAGE_DECOMPOSITION
+    subtype: ISSUE_REQUIREMENT_TOPOLOGY
+    changed_paths:
+    - /issues/1/issue
+    - /issues/1/required_evidence/1
+    - /issues/2
+    rejected_origin: SYNTHETIC_MINIMAL
+    minimal_contrast: true
+    gold_preference: CHOSEN
+    rationale: Rejected tách hoặc gộp sai các kết quả pháp lý, làm topology không phản ánh đúng phạm vi câu hỏi.
+  review:
+    status: GOLD_REVIEWED
+    reviewer: GPT-5.6 Sol
+    reviewed_at: '2026-08-13T12:00:00Z'
+    notes: Đã đối chiếu context, production Planner contract và family mutation; seed được hiệu chỉnh đồng nhất khi cần.
+- pair_id: PDPO_000115
+  source_case_id: scale2_medium_219
+  chosen:
+    issues:
+    - issue_key: ISSUE_01
+      issue: Căn cứ quy hoạch để xét chuyển đất sang đất ở
+      issue_type: AUTHORITY_PROCEDURE
+      required_evidence: &id029
+      - requirement_key: REQ_01_01
+        target_kind: SUBJECT_OBJECT_CONDITIONS
+        objective: Xác định quy hoạch phân khu có đủ hay phải chờ quy hoạch chi tiết
+        fact_ids:
+        - F001
+        - F002
+        - F003
+        - F004
+        - F005
+        query: hồ sơ chuyển sang đất ở được xem xét theo quy hoạch phân khu hay phải chờ quy hoạch chi tiết dự án chỉnh trang
+      depends_on_keys: &id030 []
+      time_basis: hien_hanh
+  rejected:
+    issues:
+    - issue_key: ISSUE_01
+      issue: Quyền của cơ quan huyện trì hoãn hồ sơ chuyển đất sang đất ở
+      issue_type: AUTHORITY_PROCEDURE
+      required_evidence: *id029
+      depends_on_keys: *id030
+      time_basis: hien_hanh
+  preference:
+    family: LEGAL_RELATION_FRAMING
+    subtype: ACTOR_RELATION_OR_POLARITY
+    changed_paths:
+    - /issues/0/issue
+    rejected_origin: SYNTHETIC_MINIMAL
+    minimal_contrast: true
+    gold_preference: CHOSEN
+    rationale: Rejected đảo chủ thể hoặc tiền giả định kết luận nên không còn phản ánh trung lập quan hệ pháp lý trong facts.
+  review:
+    status: GOLD_REVIEWED
+    reviewer: GPT-5.6 Sol
+    reviewed_at: '2026-08-13T12:00:00Z'
+    notes: Đã đối chiếu context, production Planner contract và family mutation; seed được hiệu chỉnh đồng nhất khi cần.
+- pair_id: PDPO_000116
+  source_case_id: scale2_easy_299
+  chosen:
+    issues:
+    - issue_key: ISSUE_01
+      issue: Yêu cầu giao đúng thửa khi bên bán chỉ sai vị trí
+      issue_type: DISPUTE
+      required_evidence:
+      - requirement_key: REQ_01_01
+        target_kind: DISPUTE_REMEDY
+        objective: Hợp đồng giấy chứng nhận bản đồ và mốc giới xác định đúng đối tượng
+        fact_ids: &id031
+        - F001
+        - F002
+        - F003
+        - F004
+        query: người mua nhận nhầm thửa do bên bán chỉ sai vị trí được yêu cầu giao đúng đất dựa trên hợp đồng và hồ sơ nào
+      depends_on_keys: &id032 []
+      time_basis: hien_hanh
+  rejected:
+    issues:
+    - issue_key: ISSUE_01
+      issue: Yêu cầu giao đúng thửa khi bên bán chỉ sai vị trí
+      issue_type: DISPUTE
+      required_evidence:
+      - requirement_key: REQ_01_01
+        target_kind: DISPUTE_REMEDY
+        objective: Hợp đồng giấy chứng nhận bản đồ và mốc giới xác định đúng đối tượng
+        fact_ids: *id031
+        query: thủ tục đính chính giấy chứng nhận khi sơ đồ thửa đất ghi sai vị trí được thực hiện bằng hồ sơ nào
+      depends_on_keys: *id032
+      time_basis: hien_hanh
+  preference:
+    family: QUERY_SEMANTIC_ALIGNMENT
+    subtype: RELATION_DRIFT
+    changed_paths:
+    - /issues/0/required_evidence/0/query
+    rejected_origin: SYNTHETIC_MINIMAL
+    minimal_contrast: true
+    gold_preference: CHOSEN
+    rationale: Rejected giữ schema hợp lệ nhưng query đi sang quan hệ pháp lý khác với issue và objective đã chọn.
+  review:
+    status: GOLD_REVIEWED
+    reviewer: GPT-5.6 Sol
+    reviewed_at: '2026-08-13T12:00:00Z'
+    notes: Đã đối chiếu context, production Planner contract và family mutation; seed được hiệu chỉnh đồng nhất khi cần.
+- pair_id: PDPO_000117
+  source_case_id: scale_easy_038
+  chosen:
+    issues:
+    - issue_key: ISSUE_01
+      issue: Quyền đối với vườn cây chưa đến kỳ thu hoạch khi bán đất
+      issue_type: TRANSACTION
+      required_evidence:
+      - requirement_key: REQ_01_01
+        target_kind: LEGAL_BASIS
+        objective: Xác định chủ thể hưởng cây trồng và sản phẩm chưa thu hoạch
+        fact_ids:
+        - F001
+        - F002
+        - F003
+        query: quyền sở hữu và thu hoạch vườn cây do bên bán trồng trên đất chuyển nhượng được xác định thế nào khi cây chưa
+          đến kỳ thu hoạch
+      - requirement_key: REQ_01_02
+        target_kind: FORM_DOCUMENT
+        objective: Xác định nội dung thỏa thuận về thời điểm bàn giao đất và cây
+        fact_ids:
+        - F001
+        - F002
+        - F003
+        query: hợp đồng chuyển nhượng đất có vườn cây chưa thu hoạch cần thỏa thuận thời điểm bàn giao và quyền thu hoạch
+          của bên bán thế nào
+      depends_on_keys: []
+      time_basis: giao_dich
+  rejected:
+    issues:
+    - issue_key: ISSUE_01
+      issue: Quyền đối với vườn cây chưa đến kỳ thu hoạch khi bán đất
+      issue_type: TRANSACTION
+      required_evidence:
+      - requirement_key: REQ_01_01
+        target_kind: LEGAL_BASIS
+        objective: Xác định chủ thể hưởng cây trồng và sản phẩm chưa thu hoạch
+        fact_ids:
+        - F001
+        - F002
+        - F003
+        query: quyền sở hữu và thu hoạch vườn cây do bên bán trồng trên đất chuyển nhượng được xác định thế nào khi cây chưa
+          đến kỳ thu hoạch
+      depends_on_keys: []
+      time_basis: giao_dich
+    - issue_key: ISSUE_02
+      issue: Bàn giao đất và quyền thu hoạch cây
+      issue_type: TRANSACTION
+      required_evidence:
+      - requirement_key: REQ_01_02
+        target_kind: FORM_DOCUMENT
+        objective: Thỏa thuận thời điểm bàn giao đất và quyền thu hoạch cây
+        fact_ids:
+        - F001
+        - F002
+        - F003
+        query: bàn giao đất và thu hoạch vườn cây chưa đến kỳ thế nào
+      depends_on_keys: []
+      time_basis: giao_dich
+  preference:
+    family: COVERAGE_DECOMPOSITION
+    subtype: ISSUE_REQUIREMENT_TOPOLOGY
+    changed_paths:
+    - /issues/0/required_evidence/1
+    - /issues/1
+    rejected_origin: SYNTHETIC_MINIMAL
+    minimal_contrast: true
+    gold_preference: CHOSEN
+    rationale: Rejected tách hoặc gộp sai các kết quả pháp lý, làm topology không phản ánh đúng phạm vi câu hỏi.
+  review:
+    status: GOLD_REVIEWED
+    reviewer: GPT-5.6 Sol
+    reviewed_at: '2026-08-13T12:00:00Z'
+    notes: Đã đối chiếu context, production Planner contract và family mutation; seed được hiệu chỉnh đồng nhất khi cần.
+- pair_id: PDPO_000118
+  source_case_id: scale2_hard_320
+  chosen:
+    issues:
+    - &id033
+      issue_key: ISSUE_01
+      issue: Chủ sở hữu đất dùng bảo đảm cho khoản vay của công ty
+      issue_type: RIGHTS_REMEDY
+      required_evidence:
+      - requirement_key: REQ_01_01
+        target_kind: SUBJECT_OBJECT_CONDITIONS
+        objective: Giám đốc vẫn là chủ đất khi chuyển cho công ty chưa sang tên
+        fact_ids:
+        - F001
+        - F002
+        - F003
+        - F004
+        - F005
+        - F006
+        query: giám đốc chuyển đất cho công ty để tăng vốn nhưng chưa sang tên còn là chủ tài sản bảo đảm không
+      depends_on_keys: []
+      time_basis: hien_hanh
+    - &id034
+      issue_key: ISSUE_02
+      issue: Hiệu lực góp vốn bằng đất chưa đăng ký sang công ty
+      issue_type: TRANSACTION
+      required_evidence:
+      - requirement_key: REQ_02_01
+        target_kind: REGISTRATION_COMPLETION
+        objective: Công ty và cổ đông có quyền gì trước khi hoàn tất đăng ký góp vốn
+        fact_ids:
+        - F001
+        - F002
+        - F004
+        - F005
+        - F006
+        - F008
+        query: góp vốn bằng đất chưa đăng ký có làm công ty và cổ đông phát sinh quyền đối với thửa đất không
+      depends_on_keys:
+      - ISSUE_01
+      time_basis: hien_hanh
+    - issue_key: ISSUE_03
+      issue: Quyền ngân hàng xử lý đất khi khoản vay công ty quá hạn
+      issue_type: RIGHTS_REMEDY
+      required_evidence:
+      - requirement_key: REQ_03_01
+        target_kind: LEGAL_CONSEQUENCE
+        objective: Thế chấp có trước được ưu tiên so với giao dịch góp vốn chưa đăng ký
+        fact_ids:
+        - F003
+        - F004
+        - F005
+        - F006
+        - F007
+        - F008
+        query: ngân hàng được xử lý đất thế chấp trước giao dịch góp vốn chưa sang tên dù cổ đông mới phản đối không
+      depends_on_keys: &id035
+      - ISSUE_01
+      - ISSUE_02
+      time_basis: hien_hanh
+  rejected:
+    issues:
+    - *id033
+    - *id034
+    - issue_key: ISSUE_03
+      issue: Quyền ngân hàng xử lý đất khi khoản vay công ty quá hạn
+      issue_type: RIGHTS_REMEDY
+      required_evidence:
+      - requirement_key: REQ_03_01
+        target_kind: LEGAL_CONSEQUENCE
+        objective: Thế chấp có trước được ưu tiên so với giao dịch góp vốn chưa đăng ký
+        fact_ids:
+        - F001
+        - F002
+        - F004
+        - F005
+        - F006
+        - F007
+        query: ngân hàng được xử lý đất thế chấp trước giao dịch góp vốn chưa sang tên dù cổ đông mới phản đối không
+      depends_on_keys: *id035
+      time_basis: hien_hanh
+  preference:
+    family: FACT_STATUS_GROUNDING
+    subtype: MATERIAL_FACT_MISLINK
+    changed_paths:
+    - /issues/2/required_evidence/0/fact_ids/0
+    - /issues/2/required_evidence/0/fact_ids/1
+    - /issues/2/required_evidence/0/fact_ids/2
+    - /issues/2/required_evidence/0/fact_ids/3
+    - /issues/2/required_evidence/0/fact_ids/4
+    - /issues/2/required_evidence/0/fact_ids/5
+    rejected_origin: SYNTHETIC_MINIMAL
+    minimal_contrast: true
+    gold_preference: CHOSEN
+    rationale: Rejected liên kết fact_ids không chứa dữ kiện vật chất quyết định đúng requirement dù các fact đều tồn tại.
+  review:
+    status: GOLD_REVIEWED
+    reviewer: GPT-5.6 Sol
+    reviewed_at: '2026-08-13T12:00:00Z'
+    notes: Đã đối chiếu context, production Planner contract và family mutation; seed được hiệu chỉnh đồng nhất khi cần.
+- pair_id: PDPO_000119
+  source_case_id: scale2_medium_353
+  chosen:
+    issues:
+    - &id036
+      issue_key: ISSUE_01
+      issue: Chứng minh thỏa thuận nhờ em trai đứng tên đất
+      issue_type: DISPUTE
+      required_evidence:
+      - requirement_key: REQ_01_01
+        target_kind: FORM_DOCUMENT
+        objective: Xác định chứng cứ nguồn tiền quản lý và thỏa thuận đứng tên
+        fact_ids:
+        - F001
+        - F002
+        - F003
+        - F004
+        - F006
+        query: vợ chồng nhờ em trai đứng tên đất vì chưa đủ điều kiện nhận chuyển nhượng phải chứng minh thỏa thuận bằng nguồn
+          tiền và sử dụng nào
+      depends_on_keys: []
+      time_basis: hien_hanh
+    - issue_key: ISSUE_02
+      issue: Hiệu lực thế chấp đất đứng tên hộ cho khoản vay riêng
+      issue_type: DISPUTE
+      required_evidence:
+      - requirement_key: REQ_02_01
+        target_kind: LEGAL_CONSEQUENCE
+        objective: Xác định ngân hàng ngay tình có được bảo vệ quyền bảo đảm
+        fact_ids: &id037
+        - F001
+        - F002
+        - F003
+        - F004
+        - F005
+        - F006
+        query: ngân hàng nhận thế chấp đất từ người đứng tên hộ cho khoản vay riêng được bảo vệ nếu không biết thỏa thuận
+          nhờ đứng tên không
+      depends_on_keys: &id038
+      - ISSUE_01
+      time_basis: hien_hanh
+  rejected:
+    issues:
+    - *id036
+    - issue_key: ISSUE_02
+      issue: Hiệu lực thế chấp đất đứng tên hộ cho khoản vay riêng
+      issue_type: DISPUTE
+      required_evidence:
+      - requirement_key: REQ_02_01
+        target_kind: LEGAL_CONSEQUENCE
+        objective: Xác định ngân hàng ngay tình có được bảo vệ quyền bảo đảm
+        fact_ids: *id037
+        query: thỏa thuận nhờ người khác đứng tên đất được chứng minh bằng nguồn tiền quản lý sử dụng và giấy tờ nào
+      depends_on_keys: *id038
+      time_basis: hien_hanh
+  preference:
+    family: QUERY_SEMANTIC_ALIGNMENT
+    subtype: RELATION_DRIFT
+    changed_paths:
+    - /issues/1/required_evidence/0/query
+    rejected_origin: SYNTHETIC_MINIMAL
+    minimal_contrast: true
+    gold_preference: CHOSEN
+    rationale: Rejected giữ schema hợp lệ nhưng query đi sang quan hệ pháp lý khác với issue và objective đã chọn.
+  review:
+    status: GOLD_REVIEWED
+    reviewer: GPT-5.6 Sol
+    reviewed_at: '2026-08-13T12:00:00Z'
+    notes: Đã đối chiếu context, production Planner contract và family mutation; seed được hiệu chỉnh đồng nhất khi cần.
+- pair_id: PDPO_000120
+  source_case_id: scale2_hard_286
+  chosen:
+    issues:
+    - issue_key: ISSUE_01
+      issue: Áp dụng chính sách có lợi trước khi ra quyết định xử phạt
+      issue_type: SANCTION
+      required_evidence:
+      - requirement_key: REQ_01_01
+        target_kind: LEGAL_CONSEQUENCE
+        objective: Xác định chính sách mới có làm giảm trách nhiệm xử phạt
+        fact_ids: &id039
+        - F001
+        - F002
+        - F003
+        - F004
+        - F005
+        - F006
+        query: chính sách trước quyết định xử phạt cho phép mô hình chuyển đất lúa nếu đăng ký có được áp dụng có lợi cho
+          hộ không
+      depends_on_keys: &id040 []
+      time_basis: hien_hanh
+    - &id041
+      issue_key: ISSUE_02
+      issue: Phân loại vi phạm khi hồ sơ đăng ký chưa được duyệt
+      issue_type: SANCTION
+      required_evidence:
+      - requirement_key: REQ_02_01
+        target_kind: CONDUCT_CLASSIFICATION
+        objective: Phân biệt lỗi thủ tục với sử dụng đất sai mục đích
+        fact_ids:
+        - F001
+        - F002
+        - F003
+        - F005
+        - F006
+        - F007
+        query: hộ đã nộp đăng ký nhưng chưa được duyệt bị xử lý lỗi thủ tục hay tiếp tục bị xem là sử dụng đất sai mục đích
+      depends_on_keys:
+      - ISSUE_01
+      time_basis: hien_hanh
+    - &id042
+      issue_key: ISSUE_03
+      issue: Khôi phục đất khi mô hình mới được cho phép có điều kiện
+      issue_type: REMEDY
+      required_evidence:
+      - requirement_key: REQ_03_01
+        target_kind: SANCTION_REMEDY
+        objective: Xác định biện pháp phục hồi trong lúc chờ phê duyệt
+        fact_ids:
+        - F001
+        - F002
+        - F003
+        - F005
+        - F006
+        - F007
+        query: biện pháp buộc phục hồi đất lúa còn áp dụng không khi mô hình mới được cho phép có điều kiện và hồ sơ đang
+          chờ duyệt
+      depends_on_keys:
+      - ISSUE_01
+      - ISSUE_02
+      time_basis: hien_hanh
+  rejected:
+    issues:
+    - issue_key: ISSUE_01
+      issue: Áp dụng quy định hành chính có lợi trước khi ban hành quyết định
+      issue_type: SANCTION
+      required_evidence:
+      - requirement_key: REQ_01_01
+        target_kind: LEGAL_CONSEQUENCE
+        objective: Xác định nguyên tắc áp dụng chính sách hành chính có lợi cho người bị xử phạt
+        fact_ids: *id039
+        query: quy định hành chính có lợi ban hành trước quyết định xử phạt được áp dụng hồi tố cho người vi phạm thế nào
+      depends_on_keys: *id040
+      time_basis: hien_hanh
+    - *id041
+    - *id042
+  preference:
+    family: CROSS_DOMAIN_BOUNDARY
+    subtype: LAND_ANCHOR_DROPPED
+    changed_paths:
+    - /issues/0/issue
+    - /issues/0/required_evidence/0/objective
+    - /issues/0/required_evidence/0/query
+    rejected_origin: SYNTHETIC_MINIMAL
+    minimal_contrast: true
+    gold_preference: CHOSEN
+    rationale: Rejected chỉ giữ nhánh pháp luật liên đới và làm mất neo đất đai quyết định phạm vi truy xuất.
+  review:
+    status: GOLD_REVIEWED
+    reviewer: GPT-5.6 Sol
+    reviewed_at: '2026-08-13T12:00:00Z'
+    notes: Đã đối chiếu context, production Planner contract và family mutation; seed được hiệu chỉnh đồng nhất khi cần.
+- pair_id: PDPO_000121
+  source_case_id: scale2_easy_200
+  chosen:
+    issues:
+    - issue_key: ISSUE_01
+      issue: Nghĩa vụ chống thấm ao bảo vệ nhà sát ranh
+      issue_type: LEGAL_BASIS
+      required_evidence:
+      - requirement_key: REQ_01_01
+        target_kind: LEGAL_BASIS
+        objective: Chủ ao phải ngăn nước thấm gây hư hại bất động sản liền kề
+        fact_ids: &id043
+        - F001
+        - F002
+        - F003
+        query: chủ ao có phải thực hiện chống thấm khi nước từ ao làm ẩm tường nhà sát ranh của bất động sản liền kề không
+      depends_on_keys: &id044 []
+      time_basis: hien_hanh
+  rejected:
+    issues:
+    - issue_key: ISSUE_01
+      issue: Nghĩa vụ chống thấm ao bảo vệ nhà sát ranh
+      issue_type: LEGAL_BASIS
+      required_evidence:
+      - requirement_key: REQ_01_01
+        target_kind: DEADLINE_OBLIGATION
+        objective: Chủ ao phải ngăn nước thấm gây hư hại bất động sản liền kề
+        fact_ids: *id043
+        query: chủ ao có phải thực hiện chống thấm khi nước từ ao làm ẩm tường nhà sát ranh của bất động sản liền kề không
+      depends_on_keys: *id044
+      time_basis: hien_hanh
+  preference:
+    family: TERM_TARGET_BOUNDARY
+    subtype: TARGET_KIND
+    changed_paths:
+    - /issues/0/required_evidence/0/target_kind
+    rejected_origin: SYNTHETIC_MINIMAL
+    minimal_contrast: true
+    gold_preference: CHOSEN
+    rationale: Rejected gán sai loại mục tiêu truy xuất dù objective và query thể hiện rõ loại quy phạm cần tìm.
+  review:
+    status: GOLD_REVIEWED
+    reviewer: GPT-5.6 Sol
+    reviewed_at: '2026-08-13T12:00:00Z'
+    notes: Đã đối chiếu context, production Planner contract và family mutation; seed được hiệu chỉnh đồng nhất khi cần.
+- pair_id: PDPO_000122
+  source_case_id: scale_medium_141
+  chosen:
+    issues:
+    - issue_key: ISSUE_01
+      issue: Giao quyết định xử phạt cho người thân không ký nhận
+      issue_type: AUTHORITY_PROCEDURE
+      required_evidence: &id045
+      - requirement_key: REQ_01_01
+        target_kind: FORM_DOCUMENT
+        objective: Xác định việc để lại bản sao có phải giao hợp lệ
+        fact_ids:
+        - F001
+        - F002
+        - F003
+        - F004
+        - F005
+        query: giao quyết định xử phạt cho mẹ tại cùng địa chỉ có hợp lệ khi người nhận không ký và cán bộ chỉ để lại bản
+          sao
+      - requirement_key: REQ_01_02
+        target_kind: DEADLINE_OBLIGATION
+        objective: Xác định thời điểm bắt đầu thời hạn tự nguyện thi hành
+        fact_ids:
+        - F001
+        - F002
+        - F003
+        - F004
+        - F005
+        query: thời hạn tự nguyện thi hành quyết định xử phạt tính từ lúc để lại bản sao hay khi người vi phạm thực tế biết
+          quyết định
+      depends_on_keys: &id046 []
+      time_basis: hien_hanh
+  rejected:
+    issues:
+    - issue_key: ISSUE_01
+      issue: Giao quyết định xử phạt cho người thân không ký nhận
+      issue_type: AUTHORITY_PROCEDURE
+      required_evidence: *id045
+      depends_on_keys: *id046
+      time_basis: vi_pham
+  preference:
+    family: TEMPORAL_VERSION_INTENT
+    subtype: WRONG_OR_UNSUPPORTED_TIME_BASIS
+    changed_paths:
+    - /issues/0/time_basis
+    rejected_origin: SYNTHETIC_MINIMAL
+    minimal_contrast: true
+    gold_preference: CHOSEN
+    rationale: Rejected chọn mốc thời gian không được Temporal Context xác nhận hoặc bỏ qua mốc giao dịch đã xác nhận.
+  review:
+    status: GOLD_REVIEWED
+    reviewer: GPT-5.6 Sol
+    reviewed_at: '2026-08-13T12:00:00Z'
+    notes: Đã đối chiếu context, production Planner contract và family mutation; seed được hiệu chỉnh đồng nhất khi cần.
+- pair_id: PDPO_000123
+  source_case_id: scale_medium_253
+  chosen:
+    issues:
+    - issue_key: ISSUE_01
+      issue: Thẩm quyền giải quyết khiếu nại khi người ký quyết định đã chuyển công tác
+      issue_type: AUTHORITY_PROCEDURE
+      required_evidence: &id047
+      - requirement_key: REQ_01_01
+        target_kind: AUTHORITY_PROCEDURE
+        objective: Xác định trách nhiệm của người đứng đầu cơ quan hiện tại
+        fact_ids:
+        - F001
+        - F002
+        - F003
+        - F004
+        - F005
+        query: khiếu nại quyết định cấp giấy thuộc trách nhiệm người đứng đầu cơ quan hiện tại hay cá nhân đã ký quyết định
+          nhưng chuyển công tác
+      depends_on_keys: &id048 []
+      time_basis: hien_hanh
+  rejected:
+    issues:
+    - issue_key: ISSUE_01
+      issue: Trách nhiệm của cá nhân đã ký quyết định cũ sau khi chuyển công tác
+      issue_type: AUTHORITY_PROCEDURE
+      required_evidence: *id047
+      depends_on_keys: *id048
+      time_basis: hien_hanh
+  preference:
+    family: LEGAL_RELATION_FRAMING
+    subtype: ACTOR_RELATION_OR_POLARITY
+    changed_paths:
+    - /issues/0/issue
+    rejected_origin: SYNTHETIC_MINIMAL
+    minimal_contrast: true
+    gold_preference: CHOSEN
+    rationale: Rejected đảo chủ thể hoặc tiền giả định kết luận nên không còn phản ánh trung lập quan hệ pháp lý trong facts.
+  review:
+    status: GOLD_REVIEWED
+    reviewer: GPT-5.6 Sol
+    reviewed_at: '2026-08-13T12:00:00Z'
+    notes: Đã đối chiếu context, production Planner contract và family mutation; seed được hiệu chỉnh đồng nhất khi cần.
+- pair_id: PDPO_000124
+  source_case_id: scale_easy_263
+  chosen:
+    issues:
+    - issue_key: ISSUE_01
+      issue: Sửa xác nhận nguồn gốc đất ghi nhầm thời điểm bắt đầu sử dụng
+      issue_type: AUTHORITY_PROCEDURE
+      required_evidence:
+      - requirement_key: REQ_01_01
+        target_kind: AUTHORITY_PROCEDURE
+        objective: Yêu cầu xã xác minh và đính chính thông tin trước khi cấp giấy
+        fact_ids:
+        - F001
+        - F002
+        - F003
+        query: người dân đề nghị xã sửa thời điểm bắt đầu sử dụng ghi sai trong xác nhận nguồn gốc đất trước khi cấp giấy
+          bằng thủ tục nào
+      depends_on_keys: &id049 []
+      time_basis: hien_hanh
+  rejected:
+    issues:
+    - issue_key: ISSUE_01
+      issue: Sửa xác nhận nguồn gốc đất ghi nhầm thời điểm bắt đầu sử dụng
+      issue_type: AUTHORITY_PROCEDURE
+      required_evidence:
+      - requirement_key: REQ_01_01
+        target_kind: AUTHORITY_PROCEDURE
+        objective: Yêu cầu xã xác minh và đính chính thông tin trước khi cấp giấy
+        fact_ids:
+        - F001
+        - F002
+        query: người dân đề nghị xã sửa thời điểm bắt đầu sử dụng ghi sai trong xác nhận nguồn gốc đất trước khi cấp giấy
+          bằng thủ tục nào
+      depends_on_keys: *id049
+      time_basis: hien_hanh
+  preference:
+    family: FACT_STATUS_GROUNDING
+    subtype: MATERIAL_FACT_MISLINK
+    changed_paths:
+    - /issues/0/required_evidence/0/fact_ids/2
+    rejected_origin: SYNTHETIC_MINIMAL
+    minimal_contrast: true
+    gold_preference: CHOSEN
+    rationale: Rejected liên kết fact_ids không chứa dữ kiện vật chất quyết định đúng requirement dù các fact đều tồn tại.
+  review:
+    status: GOLD_REVIEWED
+    reviewer: GPT-5.6 Sol
+    reviewed_at: '2026-08-13T12:00:00Z'
+    notes: Đã đối chiếu context, production Planner contract và family mutation; seed được hiệu chỉnh đồng nhất khi cần.
+- pair_id: PDPO_000125
+  source_case_id: pilot_medium_020
+  chosen:
+    issues:
+    - issue_key: ISSUE_01
+      issue: Yêu cầu giải thích và khiếu nại việc chậm giải quyết hồ sơ đăng ký biến động
+      issue_type: AUTHORITY_PROCEDURE
+      required_evidence: &id050
+      - requirement_key: REQ_01_01
+        target_kind: DEADLINE_OBLIGATION
+        objective: Nghĩa vụ thông báo kết quả hoặc yêu cầu bổ sung khi hồ sơ đăng ký biến động quá hạn
+        fact_ids:
+        - F001
+        - F002
+        - F003
+        - F004
+        query: nghĩa vụ giải thích chậm xử lý hồ sơ đăng ký biến động đã có giấy hẹn nhưng quá hạn không có kết quả
+      - requirement_key: REQ_01_02
+        target_kind: AUTHORITY_PROCEDURE
+        objective: Trình tự khiếu nại hành vi chậm giải quyết hồ sơ đăng ký biến động đất đai
+        fact_ids:
+        - F001
+        - F003
+        - F004
+        query: trình tự khiếu nại việc hồ sơ đăng ký biến động quá hạn không có kết quả hoặc yêu cầu bổ sung
+      depends_on_keys: &id051 []
+      time_basis: hien_hanh
+  rejected:
+    issues:
+    - issue_key: ISSUE_01
+      issue: Trách nhiệm người nộp khi hồ sơ đăng ký biến động bị giải quyết chậm
+      issue_type: AUTHORITY_PROCEDURE
+      required_evidence: *id050
+      depends_on_keys: *id051
+      time_basis: hien_hanh
+  preference:
+    family: LEGAL_RELATION_FRAMING
+    subtype: ACTOR_RELATION_OR_POLARITY
+    changed_paths:
+    - /issues/0/issue
+    rejected_origin: SYNTHETIC_MINIMAL
+    minimal_contrast: true
+    gold_preference: CHOSEN
+    rationale: Rejected đảo chủ thể hoặc tiền giả định kết luận nên không còn phản ánh trung lập quan hệ pháp lý trong facts.
+  review:
+    status: GOLD_REVIEWED
+    reviewer: GPT-5.6 Sol
+    reviewed_at: '2026-08-13T12:00:00Z'
+    notes: Đã đối chiếu context, production Planner contract và family mutation; seed được hiệu chỉnh đồng nhất khi cần.
+- pair_id: PDPO_000126
+  source_case_id: scale2_hard_194
+  chosen:
+    issues:
+    - issue_key: ISSUE_01
+      issue: Phân biệt cải tạo đất nông nghiệp với khai thác khoáng sản
+      issue_type: SANCTION
+      required_evidence:
+      - requirement_key: REQ_01_01
+        target_kind: CONDUCT_CLASSIFICATION
+        objective: Xác định bán đá vượt phạm vi giấy phép hạ cốt
+        fact_ids: &id052
+        - F001
+        - F002
+        - F003
+        - F004
+        - F006
+        query: đào đá đem bán khi hạ cốt đất trồng cây là khai thác khoáng sản hay cải tạo nông nghiệp theo giấy phép
+      depends_on_keys: &id053 []
+      time_basis: hien_hanh
+    - &id054
+      issue_key: ISSUE_02
+      issue: Bảo vệ tầng đất và phục hồi khu đất sau hạ cốt
+      issue_type: REMEDY
+      required_evidence:
+      - requirement_key: REQ_02_01
+        target_kind: SANCTION_REMEDY
+        objective: Xác định yêu cầu hoàn nguyên bằng đất từ nơi khác
+        fact_ids:
+        - F001
+        - F002
+        - F003
+        - F005
+        - F006
+        query: dùng đất nơi khác san trả sau khi đào đá có đáp ứng nghĩa vụ bảo vệ tầng đất và phục hồi khả năng canh tác
+          không
+      depends_on_keys:
+      - ISSUE_01
+      time_basis: hien_hanh
+    - &id055
+      issue_key: ISSUE_03
+      issue: Thu hồi khoản lợi từ đá đã bán
+      issue_type: SANCTION
+      required_evidence:
+      - requirement_key: REQ_03_01
+        target_kind: LEGAL_CONSEQUENCE
+        objective: Xác định cách tính khoản lợi ngoài phạm vi cải tạo được phép
+        fact_ids:
+        - F001
+        - F002
+        - F003
+        - F004
+        - F006
+        query: khoản lợi từ đá bán cho đơn vị thi công được tính và buộc nộp lại thế nào khi hoạt động vượt giấy phép cải
+          tạo đất
+      depends_on_keys:
+      - ISSUE_01
+      - ISSUE_02
+      time_basis: hien_hanh
+  rejected:
+    issues:
+    - issue_key: ISSUE_01
+      issue: Phân loại hành vi khai thác khoáng sản từ đá đào được
+      issue_type: SANCTION
+      required_evidence:
+      - requirement_key: REQ_01_01
+        target_kind: CONDUCT_CLASSIFICATION
+        objective: Xác định việc lấy đá đem bán có phải khai thác khoáng sản trái phép
+        fact_ids: *id052
+        query: việc lấy đá đem bán có phải hoạt động khai thác khoáng sản trái phép và bị xử lý theo pháp luật khoáng sản
+          không
+      depends_on_keys: *id053
+      time_basis: hien_hanh
+    - *id054
+    - *id055
+  preference:
+    family: CROSS_DOMAIN_BOUNDARY
+    subtype: LAND_ANCHOR_DROPPED
+    changed_paths:
+    - /issues/0/issue
+    - /issues/0/required_evidence/0/objective
+    - /issues/0/required_evidence/0/query
+    rejected_origin: SYNTHETIC_MINIMAL
+    minimal_contrast: true
+    gold_preference: CHOSEN
+    rationale: Rejected chỉ giữ nhánh pháp luật liên đới và làm mất neo đất đai quyết định phạm vi truy xuất.
+  review:
+    status: GOLD_REVIEWED
+    reviewer: GPT-5.6 Sol
+    reviewed_at: '2026-08-13T12:00:00Z'
+    notes: Đã đối chiếu context, production Planner contract và family mutation; seed được hiệu chỉnh đồng nhất khi cần.
+- pair_id: PDPO_000127
+  source_case_id: scale_medium_183
+  chosen:
+    issues:
+    - issue_key: ISSUE_01
+      issue: Yêu cầu tháo bờ giữ nước và mở lối thoát khi đất phía dưới bị ngập
+      issue_type: DISPUTE
+      required_evidence:
+      - requirement_key: REQ_01_01
+        target_kind: DISPUTE_REMEDY
+        objective: Giới hạn quyền xây công trình trong ranh khi làm cản thoát nước bất động sản liền kề
+        fact_ids:
+        - F001
+        - F002
+        - F003
+        - F004
+        - F005
+        query: chủ đất phía dưới được yêu cầu tháo bờ giữ nước hoặc mở lối thoát dù công trình nằm trong ranh và phục vụ canh
+          tác không
+      depends_on_keys: []
+      time_basis: hien_hanh
+    - issue_key: ISSUE_02
+      issue: Bồi thường thiệt hại do bờ giữ nước làm ngập đất phía dưới
+      issue_type: RIGHTS_REMEDY
+      required_evidence:
+      - requirement_key: REQ_01_02
+        target_kind: LEGAL_CONSEQUENCE
+        objective: Điều kiện bồi thường thiệt hại ngập theo quan hệ nhân quả với bờ giữ nước
+        fact_ids:
+        - F001
+        - F002
+        - F003
+        - F004
+        - F005
+        query: chủ đất phía trên phải bồi thường thiệt hại mùa mưa thế nào khi bờ giữ nước trong đất mình làm ngập thửa phía
+          dưới
+      depends_on_keys:
+      - ISSUE_01
+      time_basis: hien_hanh
+  rejected:
+    issues:
+    - issue_key: ISSUE_01
+      issue: Yêu cầu tháo bờ, mở lối thoát nước và bồi thường thiệt hại khi công trình trong ranh phục vụ canh tác làm ngập
+        đất phía dưới vào mùa mưa cùng điều kiện xác định thiệt hại thực tế
+      issue_type: DISPUTE
+      required_evidence:
+      - requirement_key: REQ_01_01
+        target_kind: DISPUTE_REMEDY
+        objective: Giới hạn quyền xây công trình trong ranh khi làm cản thoát nước bất động sản liền kề
+        fact_ids:
+        - F001
+        - F002
+        - F003
+        - F004
+        - F005
+        query: chủ đất phía dưới được yêu cầu tháo bờ giữ nước hoặc mở lối thoát dù công trình nằm trong ranh và phục vụ canh
+          tác không
+      - requirement_key: REQ_01_02
+        target_kind: LEGAL_CONSEQUENCE
+        objective: Điều kiện bồi thường thiệt hại ngập theo quan hệ nhân quả với bờ giữ nước
+        fact_ids:
+        - F001
+        - F002
+        - F003
+        - F004
+        - F005
+        query: chủ đất phía trên phải bồi thường thiệt hại mùa mưa thế nào khi bờ giữ nước trong đất mình làm ngập thửa phía
+          dưới
+      depends_on_keys: []
+      time_basis: hien_hanh
+  preference:
+    family: COVERAGE_DECOMPOSITION
+    subtype: ISSUE_REQUIREMENT_TOPOLOGY
+    changed_paths:
+    - /issues/0/issue
+    - /issues/0/required_evidence/1
+    - /issues/1
+    rejected_origin: SYNTHETIC_MINIMAL
+    minimal_contrast: true
+    gold_preference: CHOSEN
+    rationale: Rejected tách hoặc gộp sai các kết quả pháp lý, làm topology không phản ánh đúng phạm vi câu hỏi.
+  review:
+    status: GOLD_REVIEWED
+    reviewer: GPT-5.6 Sol
+    reviewed_at: '2026-08-13T12:00:00Z'
+    notes: Đã đối chiếu context, production Planner contract và family mutation; seed được hiệu chỉnh đồng nhất khi cần.
+- pair_id: PDPO_000128
+  source_case_id: scale2_hard_101
+  chosen:
+    issues:
+    - &id056
+      issue_key: ISSUE_01
+      issue: Đăng ký đất và nhà xưởng cho hai pháp nhân sau chia tách
+      issue_type: REGISTRATION
+      required_evidence:
+      - requirement_key: REQ_01_01
+        target_kind: REGISTRATION_COMPLETION
+        objective: Xác định khả năng đăng ký đất và công trình khác chủ
+        fact_ids:
+        - F001
+        - F002
+        - F003
+        - F004
+        - F005
+        - F006
+        query: công ty sau chia tách có thể đăng ký đất cho một pháp nhân và nhà xưởng trên đất cho pháp nhân khác không
+      depends_on_keys: []
+      time_basis: hien_hanh
+    - issue_key: ISSUE_02
+      issue: Quyền sử dụng đất của pháp nhân sở hữu nhà xưởng
+      issue_type: TRANSACTION
+      required_evidence:
+      - requirement_key: REQ_02_01
+        target_kind: SUBJECT_OBJECT_CONDITIONS
+        objective: Xác định cơ chế khai thác nhà xưởng trên đất pháp nhân khác
+        fact_ids:
+        - F002
+        - F003
+        - F004
+        - F005
+        - F006
+        - F007
+        query: pháp nhân sở hữu nhà xưởng trên đất của công ty khác cần xác lập quyền sử dụng hạn chế hay hợp đồng thuê đất
+      depends_on_keys: &id057
+      - ISSUE_01
+      time_basis: hien_hanh
+  rejected:
+    issues:
+    - *id056
+    - issue_key: ISSUE_02
+      issue: Quyền sử dụng đất của pháp nhân sở hữu nhà xưởng
+      issue_type: TRANSACTION
+      required_evidence:
+      - requirement_key: REQ_02_01
+        target_kind: SUBJECT_OBJECT_CONDITIONS
+        objective: Xác định cơ chế khai thác nhà xưởng trên đất pháp nhân khác
+        fact_ids:
+        - F002
+        - F005
+        - F006
+        - F007
+        query: pháp nhân sở hữu nhà xưởng trên đất của công ty khác cần xác lập quyền sử dụng hạn chế hay hợp đồng thuê đất
+      depends_on_keys: *id057
+      time_basis: hien_hanh
+  preference:
+    family: FACT_STATUS_GROUNDING
+    subtype: MATERIAL_FACT_MISLINK
+    changed_paths:
+    - /issues/1/required_evidence/0/fact_ids/1
+    - /issues/1/required_evidence/0/fact_ids/2
+    - /issues/1/required_evidence/0/fact_ids/3
+    - /issues/1/required_evidence/0/fact_ids/4
+    - /issues/1/required_evidence/0/fact_ids/5
+    rejected_origin: SYNTHETIC_MINIMAL
+    minimal_contrast: true
+    gold_preference: CHOSEN
+    rationale: Rejected liên kết fact_ids không chứa dữ kiện vật chất quyết định đúng requirement dù các fact đều tồn tại.
+  review:
+    status: GOLD_REVIEWED
+    reviewer: GPT-5.6 Sol
+    reviewed_at: '2026-08-13T12:00:00Z'
+    notes: Đã đối chiếu context, production Planner contract và family mutation; seed được hiệu chỉnh đồng nhất khi cần.
+- pair_id: PDPO_000129
+  source_case_id: scale_easy_192
+  chosen:
+    issues:
+    - issue_key: ISSUE_01
+      issue: Thực hiện thỏa thuận đổi mốc trong biên bản hòa giải thành
+      issue_type: REMEDY
+      required_evidence:
+      - requirement_key: REQ_01_01
+        target_kind: DISPUTE_REMEDY
+        objective: Xác định đăng ký biến động hoặc yêu cầu công nhận thỏa thuận
+        fact_ids: &id058
+        - F001
+        - F002
+        - F003
+        - F004
+        query: biên bản hòa giải thành về đổi mốc giới được đăng ký biến động hay phải yêu cầu tòa công nhận khi một bên đổi
+          ý
+      depends_on_keys: &id059 []
+      time_basis: hien_hanh
+  rejected:
+    issues:
+    - issue_key: ISSUE_01
+      issue: Thực hiện thỏa thuận đổi mốc trong biên bản hòa giải thành
+      issue_type: REMEDY
+      required_evidence:
+      - requirement_key: REQ_01_01
+        target_kind: FORM_DOCUMENT
+        objective: Xác định đăng ký biến động hoặc yêu cầu công nhận thỏa thuận
+        fact_ids: *id058
+        query: biên bản hòa giải thành về đổi mốc giới được đăng ký biến động hay phải yêu cầu tòa công nhận khi một bên đổi
+          ý
+      depends_on_keys: *id059
+      time_basis: hien_hanh
+  preference:
+    family: TERM_TARGET_BOUNDARY
+    subtype: TARGET_KIND
+    changed_paths:
+    - /issues/0/required_evidence/0/target_kind
+    rejected_origin: SYNTHETIC_MINIMAL
+    minimal_contrast: true
+    gold_preference: CHOSEN
+    rationale: Rejected gán sai loại mục tiêu truy xuất dù objective và query thể hiện rõ loại quy phạm cần tìm.
+  review:
+    status: GOLD_REVIEWED
+    reviewer: GPT-5.6 Sol
+    reviewed_at: '2026-08-13T12:00:00Z'
+    notes: Đã đối chiếu context, production Planner contract và family mutation; seed được hiệu chỉnh đồng nhất khi cần.
+- pair_id: PDPO_000130
+  source_case_id: scale_easy_084
+  chosen:
+    issues:
+    - issue_key: ISSUE_01
+      issue: Thời hạn đăng ký quyết định gia hạn sử dụng đất
+      issue_type: REGISTRATION
+      required_evidence: &id060
+      - requirement_key: REQ_01_01
+        target_kind: DEADLINE_OBLIGATION
+        objective: Xác định hạn nộp quyết định để chỉnh lý giấy chứng nhận
+        fact_ids:
+        - F001
+        query: quyết định gia hạn sử dụng đất phải nộp đăng ký chỉnh lý thời hạn trên giấy chứng nhận trong bao lâu kể từ
+          ngày ban hành
+      depends_on_keys: &id061 []
+      time_basis: hien_hanh
+  rejected:
+    issues:
+    - issue_key: ISSUE_01
+      issue: Thời hạn cơ quan chỉnh lý quyết định gia hạn trên giấy chứng nhận
+      issue_type: REGISTRATION
+      required_evidence: *id060
+      depends_on_keys: *id061
+      time_basis: hien_hanh
+  preference:
+    family: LEGAL_RELATION_FRAMING
+    subtype: ACTOR_RELATION_OR_POLARITY
+    changed_paths:
+    - /issues/0/issue
+    rejected_origin: SYNTHETIC_MINIMAL
+    minimal_contrast: true
+    gold_preference: CHOSEN
+    rationale: Rejected đảo chủ thể hoặc tiền giả định kết luận nên không còn phản ánh trung lập quan hệ pháp lý trong facts.
+  review:
+    status: GOLD_REVIEWED
+    reviewer: GPT-5.6 Sol
+    reviewed_at: '2026-08-13T12:00:00Z'
+    notes: Đã đối chiếu context, production Planner contract và family mutation; seed được hiệu chỉnh đồng nhất khi cần.
+- pair_id: PDPO_000131
+  source_case_id: scale_hard_186
+  chosen:
+    issues:
+    - &id062
+      issue_key: ISSUE_01
+      issue: Xác định quyền của người vợ từ tài sản riêng đóng góp mua đất chỉ đứng tên người chết
+      issue_type: DISPUTE
+      required_evidence:
+      - requirement_key: REQ_01_01
+        target_kind: LEGAL_BASIS
+        objective: Căn cứ công nhận phần quyền của vợ từ tài sản riêng dùng trả tiền mua đất
+        fact_ids:
+        - F002
+        - F003
+        - F004
+        - F005
+        query: xác định phần quyền của vợ dùng tài sản riêng trả tiền mua đất dù giấy chứng nhận chỉ đứng tên người chết
+      depends_on_keys: []
+      time_basis: hien_hanh
+    - issue_key: ISSUE_02
+      issue: Phạm vi quyền sử dụng đất thuộc di sản để lại cho con riêng theo di chúc
+      issue_type: DISPUTE
+      required_evidence:
+      - requirement_key: REQ_02_01
+        target_kind: SUBJECT_OBJECT_CONDITIONS
+        objective: Xác định phần đất còn thuộc người chết sau khi loại trừ đóng góp riêng của người vợ
+        fact_ids: &id063
+        - F001
+        - F002
+        - F003
+        - F004
+        - F005
+        query: phạm vi đất thuộc di sản theo di chúc sau khi xác định phần đóng góp tài sản riêng của người vợ
+      depends_on_keys: &id064
+      - ISSUE_01
+      time_basis: hien_hanh
+    - &id065
+      issue_key: ISSUE_03
+      issue: Phân bổ nghĩa vụ khoản vay còn lại dùng để thanh toán tiền mua đất
+      issue_type: REMEDY
+      required_evidence:
+      - requirement_key: REQ_03_01
+        target_kind: LEGAL_CONSEQUENCE
+        objective: Phân bổ khoản vay còn lại giữa người vợ và di sản theo việc cùng đứng ra vay
+        fact_ids:
+        - F001
+        - F002
+        - F003
+        - F004
+        query: phân bổ nghĩa vụ khoản vay mua đất còn lại giữa người vợ cùng vay và di sản của người chết
+      depends_on_keys:
+      - ISSUE_01
+      - ISSUE_02
+      time_basis: hien_hanh
+  rejected:
+    issues:
+    - *id062
+    - issue_key: ISSUE_02
+      issue: Phạm vi quyền sử dụng đất thuộc di sản để lại cho con riêng theo di chúc
+      issue_type: DISPUTE
+      required_evidence:
+      - requirement_key: REQ_02_01
+        target_kind: SUBJECT_OBJECT_CONDITIONS
+        objective: Xác định phần đất còn thuộc người chết sau khi loại trừ đóng góp riêng của người vợ
+        fact_ids: *id063
+        query: di chúc để lại quyền sử dụng đất cho con riêng phải đáp ứng hình thức và nội dung bắt buộc nào
+      depends_on_keys: *id064
+      time_basis: hien_hanh
+    - *id065
+  preference:
+    family: QUERY_SEMANTIC_ALIGNMENT
+    subtype: RELATION_DRIFT
+    changed_paths:
+    - /issues/1/required_evidence/0/query
+    rejected_origin: SYNTHETIC_MINIMAL
+    minimal_contrast: true
+    gold_preference: CHOSEN
+    rationale: Rejected giữ schema hợp lệ nhưng query đi sang quan hệ pháp lý khác với issue và objective đã chọn.
+  review:
+    status: GOLD_REVIEWED
+    reviewer: GPT-5.6 Sol
+    reviewed_at: '2026-08-13T12:00:00Z'
+    notes: Đã đối chiếu context, production Planner contract và family mutation; seed được hiệu chỉnh đồng nhất khi cần.
+- pair_id: PDPO_000132
+  source_case_id: scale2_hard_038
+  chosen:
+    issues:
+    - &id066
+      issue_key: ISSUE_01
+      issue: Khả năng chuyển giao kết quả đấu giá đất trước khi người trúng nộp đủ tiền
+      issue_type: TRANSACTION
+      required_evidence:
+      - requirement_key: REQ_01_01
+        target_kind: SUBJECT_OBJECT_CONDITIONS
+        objective: Điều kiện chuyển nhượng quyền từ kết quả đấu giá đất chưa hoàn thành nghĩa vụ thanh toán
+        fact_ids:
+        - F001
+        - F002
+        - F003
+        - F004
+        query: người trúng đấu giá đất có được chuyển giao kết quả cho người khác trước khi nộp đủ tiền không
+      depends_on_keys: []
+      time_basis: hien_hanh
+    - issue_key: ISSUE_02
+      issue: Giá trị pháp lý của việc cơ quan nhận tiền từ người nhận chuyển giao kết quả đấu giá
+      issue_type: LEGAL_BASIS
+      required_evidence:
+      - requirement_key: REQ_02_01
+        target_kind: LEGAL_CONSEQUENCE
+        objective: Việc cơ quan nhận tiền có xác nhận tư cách người nhận chuyển giao hay không
+        fact_ids: &id067
+        - F002
+        - F003
+        - F004
+        - F005
+        - F006
+        - F007
+        query: cơ quan nhận tiền từ người nhận chuyển giao có làm phát sinh quyền đứng tên đất đấu giá cho người nộp tiền
+          không
+      depends_on_keys: &id068
+      - ISSUE_01
+      time_basis: hien_hanh
+    - &id069
+      issue_key: ISSUE_03
+      issue: Sửa giấy hoặc thực hiện hợp đồng giữa hai bên khi giấy cấp cho người trúng ban đầu
+      issue_type: REMEDY
+      required_evidence:
+      - requirement_key: REQ_03_01
+        target_kind: DISPUTE_REMEDY
+        objective: Biện pháp đăng ký và hợp đồng khi giấy đã cấp cho người trúng đấu giá ban đầu
+        fact_ids:
+        - F002
+        - F003
+        - F006
+        - F007
+        - F008
+        - F009
+        query: sửa giấy hoặc buộc thực hiện hợp đồng thế nào khi người sau nộp tiền nhưng đất cấp cho người trúng đấu giá
+          ban đầu
+      depends_on_keys:
+      - ISSUE_01
+      - ISSUE_02
+      time_basis: hien_hanh
+  rejected:
+    issues:
+    - *id066
+    - issue_key: ISSUE_02
+      issue: Giá trị pháp lý của việc cơ quan nhận tiền từ người nhận chuyển giao kết quả đấu giá
+      issue_type: LEGAL_BASIS
+      required_evidence:
+      - requirement_key: REQ_02_01
+        target_kind: LEGAL_CONSEQUENCE
+        objective: Việc cơ quan nhận tiền có xác nhận tư cách người nhận chuyển giao hay không
+        fact_ids: *id067
+        query: người nộp tiền thay cho người trúng đấu giá cần làm thủ tục nào để được ghi nhận trong hồ sơ thanh toán
+      depends_on_keys: *id068
+      time_basis: hien_hanh
+    - *id069
+  preference:
+    family: QUERY_SEMANTIC_ALIGNMENT
+    subtype: RELATION_DRIFT
+    changed_paths:
+    - /issues/1/required_evidence/0/query
+    rejected_origin: SYNTHETIC_MINIMAL
+    minimal_contrast: true
+    gold_preference: CHOSEN
+    rationale: Rejected giữ schema hợp lệ nhưng query đi sang quan hệ pháp lý khác với issue và objective đã chọn.
+  review:
+    status: GOLD_REVIEWED
+    reviewer: GPT-5.6 Sol
+    reviewed_at: '2026-08-13T12:00:00Z'
+    notes: Đã đối chiếu context, production Planner contract và family mutation; seed được hiệu chỉnh đồng nhất khi cần.
+- pair_id: PDPO_000133
+  source_case_id: scale2_hard_479
+  chosen:
+    issues:
+    - issue_key: ISSUE_01
+      issue: Thẩm quyền tạm dừng giao dịch đất đang niêm yết di sản
+      issue_type: AUTHORITY_PROCEDURE
+      required_evidence: &id070
+      - requirement_key: REQ_01_01
+        target_kind: AUTHORITY_PROCEDURE
+        objective: Xác định cơ quan có quyền áp dụng việc tạm dừng
+        fact_ids:
+        - F001
+        - F002
+        - F003
+        - F004
+        - F005
+        - F008
+        query: văn phòng đăng ký hay cơ quan nào có quyền tạm dừng sang tên đất khi người thừa kế yêu cầu nhưng chưa khai
+          nhận di sản
+      depends_on_keys: &id071 []
+      time_basis: hien_hanh
+    - &id072
+      issue_key: ISSUE_02
+      issue: Chứng cứ tối thiểu để ngăn giao dịch liên quan di sản
+      issue_type: AUTHORITY_PROCEDURE
+      required_evidence:
+      - requirement_key: REQ_02_01
+        target_kind: FORM_DOCUMENT
+        objective: Xác định giá trị thông báo đang niêm yết di sản
+        fact_ids:
+        - F001
+        - F002
+        - F003
+        - F004
+        - F007
+        - F008
+        query: thông báo của công chứng viên về việc đang niêm yết di sản có đủ để tạm dừng đăng ký hợp đồng bán đất không
+      depends_on_keys:
+      - ISSUE_01
+      time_basis: hien_hanh
+    - &id073
+      issue_key: ISSUE_03
+      issue: Phối hợp công chứng và đăng ký với hợp đồng đã ký trước khi chết
+      issue_type: AUTHORITY_PROCEDURE
+      required_evidence:
+      - requirement_key: REQ_03_01
+        target_kind: AUTHORITY_PROCEDURE
+        objective: Xác định cách kiểm tra giao dịch trước khi xử lý di sản
+        fact_ids:
+        - F004
+        - F006
+        - F007
+        - F008
+        - F009
+        - F010
+        query: công chứng và đăng ký phối hợp xử lý thế nào khi người đứng tên đã ký bán đất trước khi chết nhưng di sản đang
+          niêm yết
+      depends_on_keys:
+      - ISSUE_01
+      - ISSUE_02
+      time_basis: hien_hanh
+  rejected:
+    issues:
+    - issue_key: ISSUE_01
+      issue: Thẩm quyền tạm dừng giao dịch đất đang niêm yết di sản
+      issue_type: AUTHORITY_PROCEDURE
+      required_evidence: *id070
+      depends_on_keys: *id071
+      time_basis: giao_dich
+    - *id072
+    - *id073
+  preference:
+    family: TEMPORAL_VERSION_INTENT
+    subtype: WRONG_OR_UNSUPPORTED_TIME_BASIS
+    changed_paths:
+    - /issues/0/time_basis
+    rejected_origin: SYNTHETIC_MINIMAL
+    minimal_contrast: true
+    gold_preference: CHOSEN
+    rationale: Rejected chọn mốc thời gian không được Temporal Context xác nhận hoặc bỏ qua mốc giao dịch đã xác nhận.
+  review:
+    status: GOLD_REVIEWED
+    reviewer: GPT-5.6 Sol
+    reviewed_at: '2026-08-13T12:00:00Z'
+    notes: Đã đối chiếu context, production Planner contract và family mutation; seed được hiệu chỉnh đồng nhất khi cần.
+- pair_id: PDPO_000134
+  source_case_id: scale_medium_208
+  chosen:
+    issues:
+    - &id074
+      issue_key: ISSUE_01
+      issue: Khả năng tiếp tục sử dụng phần nhà còn lại sau thu hồi
+      issue_type: ELIGIBILITY
+      required_evidence:
+      - requirement_key: REQ_01_01
+        target_kind: ELIGIBILITY
+        objective: Xác định an toàn khoảng lùi lối vào và kết cấu còn lại
+        fact_ids:
+        - F001
+        - F002
+        - F003
+        - F004
+        - F005
+        query: nhà còn kết cấu chính và lối vào nhỏ nhưng thiếu khoảng lùi an toàn sau thu hồi một phần đất có tiếp tục sử
+          dụng được không
+      depends_on_keys: []
+      time_basis: hien_hanh
+    - issue_key: ISSUE_02
+      issue: Bồi thường toàn bộ nhà và bố trí tái định cư
+      issue_type: ELIGIBILITY
+      required_evidence:
+      - requirement_key: REQ_02_01
+        target_kind: ELIGIBILITY
+        objective: Xác định quyền bồi thường khi phần nhà còn lại mất an toàn
+        fact_ids: &id075
+        - F001
+        - F002
+        - F003
+        - F004
+        - F005
+        query: hộ được bồi thường toàn bộ nhà hay bố trí tái định cư theo điều kiện nào nếu phần còn lại mất an toàn sử dụng
+      depends_on_keys: &id076
+      - ISSUE_01
+      time_basis: hien_hanh
+  rejected:
+    issues:
+    - *id074
+    - issue_key: ISSUE_02
+      issue: Bồi thường toàn bộ nhà và bố trí tái định cư
+      issue_type: ELIGIBILITY
+      required_evidence:
+      - requirement_key: REQ_02_01
+        target_kind: LEGAL_CONSEQUENCE
+        objective: Xác định quyền bồi thường khi phần nhà còn lại mất an toàn
+        fact_ids: *id075
+        query: hộ được bồi thường toàn bộ nhà hay bố trí tái định cư theo điều kiện nào nếu phần còn lại mất an toàn sử dụng
+      depends_on_keys: *id076
+      time_basis: hien_hanh
+  preference:
+    family: TERM_TARGET_BOUNDARY
+    subtype: TARGET_KIND
+    changed_paths:
+    - /issues/1/required_evidence/0/target_kind
+    rejected_origin: SYNTHETIC_MINIMAL
+    minimal_contrast: true
+    gold_preference: CHOSEN
+    rationale: Rejected gán sai loại mục tiêu truy xuất dù objective và query thể hiện rõ loại quy phạm cần tìm.
+  review:
+    status: GOLD_REVIEWED
+    reviewer: GPT-5.6 Sol
+    reviewed_at: '2026-08-13T12:00:00Z'
+    notes: Đã đối chiếu context, production Planner contract và family mutation; seed được hiệu chỉnh đồng nhất khi cần.
+- pair_id: PDPO_000135
+  source_case_id: pilot_hard_053
+  chosen:
+    issues:
+    - &id077
+      issue_key: ISSUE_01
+      issue: Quyền thừa kế và đứng tên nhà gắn với đất ở của người Việt Nam ở nước ngoài
+      issue_type: ELIGIBILITY
+      required_evidence:
+      - requirement_key: REQ_01_01
+        target_kind: ELIGIBILITY
+        objective: Điều kiện quốc tịch nguồn gốc và sở hữu nhà để nhận quyền đất ở
+        fact_ids:
+        - F001
+        - F002
+        - F003
+        query: người Việt Nam định cư ở nước ngoài được thừa kế và đứng tên căn nhà gắn với đất ở theo điều kiện nào
+      depends_on_keys: []
+      time_basis: hien_hanh
+    - &id078
+      issue_key: ISSUE_02
+      issue: Quyền nhận và đứng tên thửa đất nông nghiệp thừa kế riêng biệt
+      issue_type: ELIGIBILITY
+      required_evidence:
+      - requirement_key: REQ_02_01
+        target_kind: ELIGIBILITY
+        objective: Hạn chế đối tượng sử dụng đất nông nghiệp và quyền hưởng giá trị di sản
+        fact_ids:
+        - F001
+        - F002
+        - F003
+        query: người Việt Nam định cư ở nước ngoài có được đứng tên thửa đất nông nghiệp thừa kế hay chỉ được hưởng giá trị
+          chuyển nhượng
+      depends_on_keys: []
+      time_basis: hien_hanh
+    - issue_key: ISSUE_03
+      issue: Tặng cho người thân và xử lý phần tài sản không đủ điều kiện đứng tên
+      issue_type: TRANSACTION
+      required_evidence:
+      - requirement_key: REQ_03_01
+        target_kind: AUTHORITY_PROCEDURE
+        objective: Xác định thủ tục tặng cho và xử lý di sản không đủ điều kiện đứng tên
+        fact_ids: &id079
+        - F001
+        - F002
+        - F003
+        - F004
+        query: người ở nước ngoài tặng cho đất thừa kế và chuyển giao phần không đủ điều kiện đứng tên theo thủ tục nào
+      depends_on_keys: &id080
+      - ISSUE_01
+      - ISSUE_02
+      time_basis: hien_hanh
+  rejected:
+    issues:
+    - *id077
+    - *id078
+    - issue_key: ISSUE_03
+      issue: Tặng cho người thân và xử lý phần tài sản không đủ điều kiện đứng tên
+      issue_type: TRANSACTION
+      required_evidence:
+      - requirement_key: REQ_03_01
+        target_kind: FORM_DOCUMENT
+        objective: Xác định thủ tục tặng cho và xử lý di sản không đủ điều kiện đứng tên
+        fact_ids: *id079
+        query: người ở nước ngoài tặng cho đất thừa kế và chuyển giao phần không đủ điều kiện đứng tên theo thủ tục nào
+      depends_on_keys: *id080
+      time_basis: hien_hanh
+  preference:
+    family: TERM_TARGET_BOUNDARY
+    subtype: TARGET_KIND
+    changed_paths:
+    - /issues/2/required_evidence/0/target_kind
+    rejected_origin: SYNTHETIC_MINIMAL
+    minimal_contrast: true
+    gold_preference: CHOSEN
+    rationale: Rejected gán sai loại mục tiêu truy xuất dù objective và query thể hiện rõ loại quy phạm cần tìm.
+  review:
+    status: GOLD_REVIEWED
+    reviewer: GPT-5.6 Sol
+    reviewed_at: '2026-08-13T12:00:00Z'
+    notes: Đã đối chiếu context, production Planner contract và family mutation; seed được hiệu chỉnh đồng nhất khi cần.
+- pair_id: PDPO_000136
+  source_case_id: scale_hard_053
+  chosen:
+    issues:
+    - issue_key: ISSUE_01
+      issue: Chuyển quyền đất thuê và nhà xưởng sang công ty mới theo phương án tách doanh nghiệp
+      issue_type: REGISTRATION
+      required_evidence:
+      - requirement_key: REQ_01_01
+        target_kind: REGISTRATION_COMPLETION
+        objective: Điều kiện đăng ký tài sản sang pháp nhân mới khi đất và nhà xưởng đang bảo đảm
+        fact_ids: &id081
+        - F001
+        - F002
+        - F003
+        - F004
+        - F005
+        query: phương án tách công ty có chuyển đất thuê trả tiền một lần và nhà xưởng đang thế chấp sang công ty mới được
+          không
+      depends_on_keys: &id082 []
+      time_basis: hien_hanh
+    - &id083
+      issue_key: ISSUE_02
+      issue: Tiếp tục hiệu lực thế chấp khi tài sản được phân chia sang pháp nhân mới
+      issue_type: TRANSACTION
+      required_evidence:
+      - requirement_key: REQ_02_01
+        target_kind: LEGAL_CONSEQUENCE
+        objective: Quyền ngân hàng trên tài sản bảo đảm sau khi chủ sở hữu tài sản thay đổi do chia công ty
+        fact_ids:
+        - F001
+        - F002
+        - F003
+        - F004
+        - F005
+        query: thế chấp đất thuê và nhà xưởng tiếp tục ràng buộc công ty mới thế nào khi ngân hàng không đồng ý thay đổi tài
+          sản bảo đảm
+      depends_on_keys:
+      - ISSUE_01
+      time_basis: hien_hanh
+    - &id084
+      issue_key: ISSUE_03
+      issue: Phân bổ nghĩa vụ vay giữa công ty cũ và công ty mới sau khi tách
+      issue_type: RIGHTS_REMEDY
+      required_evidence:
+      - requirement_key: REQ_03_01
+        target_kind: LEGAL_BASIS
+        objective: Trách nhiệm trả nợ và quyền truy đòi khi khoản vay ở công ty cũ còn tài sản sang công ty mới
+        fact_ids:
+        - F001
+        - F002
+        - F003
+        - F004
+        - F005
+        query: công ty cũ và công ty mới chịu khoản vay thế nào khi phương án chia giao tài sản bảo đảm cho công ty mới
+      depends_on_keys:
+      - ISSUE_01
+      - ISSUE_02
+      time_basis: hien_hanh
+  rejected:
+    issues:
+    - issue_key: ISSUE_01
+      issue: Chuyển tài sản doanh nghiệp đang thế chấp sang công ty mới sau chia tách
+      issue_type: REGISTRATION
+      required_evidence:
+      - requirement_key: REQ_01_01
+        target_kind: REGISTRATION_COMPLETION
+        objective: Điều kiện phân chia tài sản bảo đảm sang pháp nhân mới theo phương án tách
+        fact_ids: *id081
+        query: phương án tách doanh nghiệp có chuyển tài sản đang thế chấp sang công ty mới khi ngân hàng không đồng ý được
+          không
+      depends_on_keys: *id082
+      time_basis: hien_hanh
+    - *id083
+    - *id084
+  preference:
+    family: CROSS_DOMAIN_BOUNDARY
+    subtype: LAND_ANCHOR_DROPPED
+    changed_paths:
+    - /issues/0/issue
+    - /issues/0/required_evidence/0/objective
+    - /issues/0/required_evidence/0/query
+    rejected_origin: SYNTHETIC_MINIMAL
+    minimal_contrast: true
+    gold_preference: CHOSEN
+    rationale: Rejected chỉ giữ nhánh pháp luật liên đới và làm mất neo đất đai quyết định phạm vi truy xuất.
+  review:
+    status: GOLD_REVIEWED
+    reviewer: GPT-5.6 Sol
+    reviewed_at: '2026-08-13T12:00:00Z'
+    notes: Đã đối chiếu context, production Planner contract và family mutation; seed được hiệu chỉnh đồng nhất khi cần.
+- pair_id: PDPO_000137
+  source_case_id: scale2_hard_378
+  chosen:
+    issues:
+    - &id085
+      issue_key: ISSUE_01
+      issue: Đại diện nhận hỗ trợ di dời mộ phần thuộc nhiều nhánh họ
+      issue_type: ELIGIBILITY
+      required_evidence:
+      - requirement_key: REQ_01_01
+        target_kind: ELIGIBILITY
+        objective: Xác định người có quyền đại diện nhận khoản hỗ trợ di dời
+        fact_ids:
+        - F001
+        - F002
+        - F003
+        - F004
+        query: một nhánh họ có được tự đại diện nhận hỗ trợ di dời mộ phần chung khi chưa có sự đồng ý của các nhánh khác
+          không
+      depends_on_keys: []
+      time_basis: hien_hanh
+    - issue_key: ISSUE_02
+      issue: Quản lý và phân chia khoản hỗ trợ di dời mộ phần
+      issue_type: DISPUTE
+      required_evidence: &id086
+      - requirement_key: REQ_02_01
+        target_kind: LEGAL_CONSEQUENCE
+        objective: Xác định cách quản lý khoản hỗ trợ đã giao cho một nhánh
+        fact_ids:
+        - F002
+        - F003
+        - F004
+        - F005
+        query: khoản hỗ trợ di dời mộ phần chung do một nhánh tự nhận phải quản lý và quyết toán thế nào với các nhánh họ
+          còn lại
+      depends_on_keys:
+      - ISSUE_01
+      time_basis: hien_hanh
+    - &id087
+      issue_key: ISSUE_03
+      issue: Giải quyết tranh chấp nơi đặt mộ và chi phí di chuyển lần hai
+      issue_type: RIGHTS_REMEDY
+      required_evidence:
+      - requirement_key: REQ_03_01
+        target_kind: DISPUTE_REMEDY
+        objective: Xác định chủ thể chịu chi phí khi phải chuyển mộ lần hai
+        fact_ids:
+        - F002
+        - F003
+        - F004
+        - F005
+        - F006
+        query: chi phí chuyển mộ lần hai do ai chịu khi một nhánh tự chọn nơi đặt mộ bị phản đối sau khi đất dự án đã bàn
+          giao
+      depends_on_keys:
+      - ISSUE_01
+      - ISSUE_02
+      time_basis: hien_hanh
+  rejected:
+    issues:
+    - *id085
+    - issue_key: ISSUE_02
+      issue: Quản lý và phân chia khoản hỗ trợ di dời mộ phần
+      issue_type: DISPUTE
+      required_evidence: *id086
+      depends_on_keys: []
+      time_basis: hien_hanh
+    - *id087
+  preference:
+    family: DEPENDENCY_SEQUENCE
+    subtype: MISSING_PREREQUISITE
+    changed_paths:
+    - /issues/1/depends_on_keys/0
+    rejected_origin: SYNTHETIC_MINIMAL
+    minimal_contrast: true
+    gold_preference: CHOSEN
+    rationale: Rejected bỏ quan hệ tiên quyết cần thiết giữa các issue dù tham chiếu vẫn hợp lệ về cấu trúc.
+  review:
+    status: GOLD_REVIEWED
+    reviewer: GPT-5.6 Sol
+    reviewed_at: '2026-08-13T12:00:00Z'
+    notes: Đã đối chiếu context, production Planner contract và family mutation; seed được hiệu chỉnh đồng nhất khi cần.
+- pair_id: PDPO_000138
+  source_case_id: scale2_hard_420
+  chosen:
+    issues:
+    - issue_key: ISSUE_01
+      issue: Xác định nguyên nhân nhà rung nứt sau thi công đường
+      issue_type: RIGHTS_REMEDY
+      required_evidence: &id088
+      - requirement_key: REQ_01_01
+        target_kind: AUTHORITY_PROCEDURE
+        objective: Xác định thủ tục kiểm định thiệt hại phát sinh sau kiểm đếm
+        fact_ids:
+        - F001
+        - F002
+        - F003
+        - F004
+        - F005
+        - F007
+        query: nhà nứt sau thi công đường nhưng biên bản trước không ghi hư hỏng cần kiểm định nguyên nhân và trách nhiệm
+          theo thủ tục nào
+      depends_on_keys: &id089 []
+      time_basis: hien_hanh
+    - &id090
+      issue_key: ISSUE_02
+      issue: Bổ sung bồi thường thiệt hại kết cấu nhà
+      issue_type: RIGHTS_REMEDY
+      required_evidence:
+      - requirement_key: REQ_02_01
+        target_kind: DISPUTE_REMEDY
+        objective: Phân định bồi thường thu hồi với thiệt hại thi công
+        fact_ids:
+        - F002
+        - F003
+        - F004
+        - F005
+        - F006
+        - F007
+        query: thiệt hại kết cấu sau thu hồi ban công sân được bổ sung phương án bồi thường hay yêu cầu nhà thầu thi công
+          bồi thường
+      depends_on_keys:
+      - ISSUE_01
+      time_basis: hien_hanh
+    - &id091
+      issue_key: ISSUE_03
+      issue: Tái định cư khi phần nhà còn lại không thể ở
+      issue_type: ELIGIBILITY
+      required_evidence:
+      - requirement_key: REQ_03_01
+        target_kind: ELIGIBILITY
+        objective: Xác định điều kiện thu hồi bổ sung hoặc bố trí chỗ ở
+        fact_ids:
+        - F002
+        - F003
+        - F004
+        - F005
+        - F006
+        - F007
+        query: nhà không bị thu hồi kết cấu chính nhưng rung nứt không thể ở có điều kiện thu hồi bổ sung hoặc bố trí tái
+          định cư không
+      depends_on_keys:
+      - ISSUE_01
+      - ISSUE_02
+      time_basis: hien_hanh
+  rejected:
+    issues:
+    - issue_key: ISSUE_01
+      issue: Xác định nguyên nhân nhà rung nứt sau thi công đường
+      issue_type: RIGHTS_REMEDY
+      required_evidence: *id088
+      depends_on_keys: *id089
+      time_basis: vi_pham
+    - *id090
+    - *id091
+  preference:
+    family: TEMPORAL_VERSION_INTENT
+    subtype: WRONG_OR_UNSUPPORTED_TIME_BASIS
+    changed_paths:
+    - /issues/0/time_basis
+    rejected_origin: SYNTHETIC_MINIMAL
+    minimal_contrast: true
+    gold_preference: CHOSEN
+    rationale: Rejected chọn mốc thời gian không được Temporal Context xác nhận hoặc bỏ qua mốc giao dịch đã xác nhận.
+  review:
+    status: GOLD_REVIEWED
+    reviewer: GPT-5.6 Sol
+    reviewed_at: '2026-08-13T12:00:00Z'
+    notes: Đã đối chiếu context, production Planner contract và family mutation; seed được hiệu chỉnh đồng nhất khi cần.
+- pair_id: PDPO_000139
+  source_case_id: scale_medium_011
+  chosen:
+    issues:
+    - issue_key: ISSUE_01
+      issue: Hiệu lực hợp đồng do người đại diện ký sau khi ủy quyền hết hạn
+      issue_type: TRANSACTION
+      required_evidence:
+      - requirement_key: REQ_01_01
+        target_kind: LEGAL_CONSEQUENCE
+        objective: Giao dịch vượt thời hạn đại diện có ràng buộc bên bán và bảo vệ bên mua
+        fact_ids:
+        - F001
+        - F002
+        - F003
+        - F004
+        - F005
+        - F006
+        query: hợp đồng chuyển nhượng do người đại diện ký sau khi ủy quyền hết hạn hai ngày có làm phát sinh quyền cho bên
+          mua ngay tình không
+      depends_on_keys: []
+      time_basis: hien_hanh
+    - issue_key: ISSUE_02
+      issue: Bên bán công nhận lại giao dịch được ký sau khi hết ủy quyền
+      issue_type: TRANSACTION
+      required_evidence:
+      - requirement_key: REQ_02_01
+        target_kind: FORM_DOCUMENT
+        objective: Hình thức chấp thuận sau và thời điểm giao dịch bắt đầu ràng buộc
+        fact_ids:
+        - F001
+        - F003
+        - F005
+        - F006
+        - F007
+        - F008
+        query: bên bán có thể chấp thuận lại hợp đồng do người đại diện ký quá hạn bằng hình thức nào sau khi bên mua đã giao
+          tiền
+      depends_on_keys:
+      - ISSUE_01
+      time_basis: hien_hanh
+  rejected:
+    issues:
+    - issue_key: ISSUE_01
+      issue: Hiệu lực hợp đồng do người đại diện ký sau khi ủy quyền hết hạn, quyền của bên mua đã giao tiền và hình thức
+        bên bán công nhận lại giao dịch cùng thời điểm bắt đầu ràng buộc
+      issue_type: TRANSACTION
+      required_evidence:
+      - requirement_key: REQ_01_01
+        target_kind: LEGAL_CONSEQUENCE
+        objective: Giao dịch vượt thời hạn đại diện có ràng buộc bên bán và bảo vệ bên mua
+        fact_ids:
+        - F001
+        - F002
+        - F003
+        - F004
+        - F005
+        - F006
+        query: hợp đồng chuyển nhượng do người đại diện ký sau khi ủy quyền hết hạn hai ngày có làm phát sinh quyền cho bên
+          mua ngay tình không
+      - requirement_key: REQ_02_01
+        target_kind: FORM_DOCUMENT
+        objective: Hình thức chấp thuận sau và thời điểm giao dịch bắt đầu ràng buộc
+        fact_ids:
+        - F001
+        - F003
+        - F005
+        - F006
+        - F007
+        - F008
+        query: bên bán có thể chấp thuận lại hợp đồng do người đại diện ký quá hạn bằng hình thức nào sau khi bên mua đã giao
+          tiền
+      depends_on_keys: []
+      time_basis: hien_hanh
+  preference:
+    family: COVERAGE_DECOMPOSITION
+    subtype: ISSUE_REQUIREMENT_TOPOLOGY
+    changed_paths:
+    - /issues/0/issue
+    - /issues/0/required_evidence/1
+    - /issues/1
+    rejected_origin: SYNTHETIC_MINIMAL
+    minimal_contrast: true
+    gold_preference: CHOSEN
+    rationale: Rejected tách hoặc gộp sai các kết quả pháp lý, làm topology không phản ánh đúng phạm vi câu hỏi.
+  review:
+    status: GOLD_REVIEWED
+    reviewer: GPT-5.6 Sol
+    reviewed_at: '2026-08-13T12:00:00Z'
+    notes: Đã đối chiếu context, production Planner contract và family mutation; seed được hiệu chỉnh đồng nhất khi cần.
+- pair_id: PDPO_000140
+  source_case_id: scale_medium_110
+  chosen:
+    issues:
+    - issue_key: ISSUE_01
+      issue: Ký túc xá trong nhà xưởng trên đất cơ sở sản xuất
+      issue_type: LEGAL_BASIS
+      required_evidence:
+      - requirement_key: REQ_01_01
+        target_kind: CONDUCT_CLASSIFICATION
+        objective: Phân biệt công trình phụ trợ sản xuất và khu ở thường xuyên
+        fact_ids:
+        - F001
+        - F002
+        - F003
+        - F004
+        - F005
+        query: phần nhà xưởng làm ký túc xá có bếp và công nhân ở thường xuyên là công trình phụ trợ hay sử dụng đất để ở
+      - requirement_key: REQ_01_02
+        target_kind: AUTHORITY_PROCEDURE
+        objective: Xác định phần diện tích phải chuyển mục đích sử dụng đất
+        fact_ids:
+        - F001
+        - F002
+        - F003
+        - F004
+        - F005
+        query: doanh nghiệp thuê đất cơ sở sản xuất phải chuyển mục đích phần diện tích làm chỗ ở thường xuyên cho công nhân
+          theo thủ tục nào
+      depends_on_keys: []
+      time_basis: hien_hanh
+  rejected:
+    issues:
+    - issue_key: ISSUE_01
+      issue: Ký túc xá trong nhà xưởng trên đất cơ sở sản xuất
+      issue_type: LEGAL_BASIS
+      required_evidence:
+      - requirement_key: REQ_01_01
+        target_kind: CONDUCT_CLASSIFICATION
+        objective: Phân biệt công trình phụ trợ sản xuất và khu ở thường xuyên
+        fact_ids:
+        - F001
+        - F002
+        - F003
+        - F004
+        - F005
+        query: phần nhà xưởng làm ký túc xá có bếp và công nhân ở thường xuyên là công trình phụ trợ hay sử dụng đất để ở
+      depends_on_keys: []
+      time_basis: hien_hanh
+    - issue_key: ISSUE_02
+      issue: Chuyển phần nhà xưởng thành chỗ ở
+      issue_type: AUTHORITY_PROCEDURE
+      required_evidence:
+      - requirement_key: REQ_01_02
+        target_kind: AUTHORITY_PROCEDURE
+        objective: Thủ tục chuyển phần nhà xưởng sang chỗ ở công nhân
+        fact_ids:
+        - F001
+        - F002
+        - F003
+        - F004
+        - F005
+        query: chuyển phần nhà xưởng thành chỗ ở công nhân theo thủ tục nào
+      depends_on_keys: []
+      time_basis: hien_hanh
+  preference:
+    family: COVERAGE_DECOMPOSITION
+    subtype: ISSUE_REQUIREMENT_TOPOLOGY
+    changed_paths:
+    - /issues/0/required_evidence/1
+    - /issues/1
+    rejected_origin: SYNTHETIC_MINIMAL
+    minimal_contrast: true
+    gold_preference: CHOSEN
+    rationale: Rejected tách hoặc gộp sai các kết quả pháp lý, làm topology không phản ánh đúng phạm vi câu hỏi.
+  review:
+    status: GOLD_REVIEWED
+    reviewer: GPT-5.6 Sol
+    reviewed_at: '2026-08-13T12:00:00Z'
+    notes: Đã đối chiếu context, production Planner contract và family mutation; seed được hiệu chỉnh đồng nhất khi cần.
+- pair_id: PDPO_000141
+  source_case_id: scale2_easy_075
+  chosen:
+    issues:
+    - issue_key: ISSUE_01
+      issue: Giá trị cam kết không tranh chấp lập riêng sau khi công chứng hợp đồng
+      issue_type: TRANSACTION
+      required_evidence:
+      - requirement_key: REQ_01_01
+        target_kind: FORM_DOCUMENT
+        objective: Điều kiện văn bản bổ sung trở thành phụ lục hoặc nghĩa vụ độc lập
+        fact_ids: &id092
+        - F001
+        - F002
+        - F003
+        query: cam kết không có tranh chấp lập riêng sau công chứng có trở thành nội dung hợp đồng chuyển nhượng hay nghĩa
+          vụ độc lập không
+      depends_on_keys: &id093 []
+      time_basis: hien_hanh
+  rejected:
+    issues:
+    - issue_key: ISSUE_01
+      issue: Giá trị cam kết không tranh chấp lập riêng sau khi công chứng hợp đồng
+      issue_type: TRANSACTION
+      required_evidence:
+      - requirement_key: REQ_01_01
+        target_kind: LEGAL_CONSEQUENCE
+        objective: Điều kiện văn bản bổ sung trở thành phụ lục hoặc nghĩa vụ độc lập
+        fact_ids: *id092
+        query: cam kết không có tranh chấp lập riêng sau công chứng có trở thành nội dung hợp đồng chuyển nhượng hay nghĩa
+          vụ độc lập không
+      depends_on_keys: *id093
+      time_basis: hien_hanh
+  preference:
+    family: TERM_TARGET_BOUNDARY
+    subtype: TARGET_KIND
+    changed_paths:
+    - /issues/0/required_evidence/0/target_kind
+    rejected_origin: SYNTHETIC_MINIMAL
+    minimal_contrast: true
+    gold_preference: CHOSEN
+    rationale: Rejected gán sai loại mục tiêu truy xuất dù objective và query thể hiện rõ loại quy phạm cần tìm.
+  review:
+    status: GOLD_REVIEWED
+    reviewer: GPT-5.6 Sol
+    reviewed_at: '2026-08-13T12:00:00Z'
+    notes: Đã đối chiếu context, production Planner contract và family mutation; seed được hiệu chỉnh đồng nhất khi cần.
+- pair_id: PDPO_000142
+  source_case_id: scale2_medium_395
+  chosen:
+    issues:
+    - issue_key: ISSUE_01
+      issue: Di dời đất ở ngoài ranh dự án do ảnh hưởng môi trường
+      issue_type: ELIGIBILITY
+      required_evidence:
+      - &id094
+        requirement_key: REQ_01_01
+        target_kind: ELIGIBILITY
+        objective: Xác định mức ảnh hưởng làm phát sinh quyền yêu cầu di dời
+        fact_ids:
+        - F001
+        - F002
+        - F003
+        - F004
+        - F005
+        query: đất ở ngoài ranh thu hồi nhưng sát khu xử lý chất thải không còn an toàn có được yêu cầu thu hồi và di dời
+          không
+      - requirement_key: REQ_01_02
+        target_kind: FORM_DOCUMENT
+        objective: Xác định căn cứ môi trường cần chứng minh để được bồi thường
+        fact_ids:
+        - F001
+        - F002
+        - F003
+        - F004
+        - F005
+        query: người dân phải cung cấp kết quả đánh giá môi trường nào để được bồi thường đất ở ngoài ranh dự án chịu ảnh
+          hưởng chất thải
+      depends_on_keys: &id095 []
+      time_basis: hien_hanh
+  rejected:
+    issues:
+    - issue_key: ISSUE_01
+      issue: Di dời đất ở ngoài ranh dự án do ảnh hưởng môi trường
+      issue_type: ELIGIBILITY
+      required_evidence:
+      - *id094
+      - requirement_key: REQ_01_02
+        target_kind: FORM_DOCUMENT
+        objective: Xác định căn cứ môi trường cần chứng minh để được bồi thường
+        fact_ids:
+        - F001
+        - F003
+        - F005
+        query: người dân phải cung cấp kết quả đánh giá môi trường nào để được bồi thường đất ở ngoài ranh dự án chịu ảnh
+          hưởng chất thải
+      depends_on_keys: *id095
+      time_basis: hien_hanh
+  preference:
+    family: FACT_STATUS_GROUNDING
+    subtype: MATERIAL_FACT_MISLINK
+    changed_paths:
+    - /issues/0/required_evidence/1/fact_ids/1
+    - /issues/0/required_evidence/1/fact_ids/2
+    - /issues/0/required_evidence/1/fact_ids/3
+    - /issues/0/required_evidence/1/fact_ids/4
+    rejected_origin: SYNTHETIC_MINIMAL
+    minimal_contrast: true
+    gold_preference: CHOSEN
+    rationale: Rejected liên kết fact_ids không chứa dữ kiện vật chất quyết định đúng requirement dù các fact đều tồn tại.
+  review:
+    status: GOLD_REVIEWED
+    reviewer: GPT-5.6 Sol
+    reviewed_at: '2026-08-13T12:00:00Z'
+    notes: Đã đối chiếu context, production Planner contract và family mutation; seed được hiệu chỉnh đồng nhất khi cần.
+- pair_id: PDPO_000143
+  source_case_id: scale2_hard_281
+  chosen:
+    issues:
+    - &id096
+      issue_key: ISSUE_01
+      issue: Phân biệt chậm sử dụng đất và sử dụng sai mục đích
+      issue_type: SANCTION
+      required_evidence:
+      - requirement_key: REQ_01_01
+        target_kind: CONDUCT_CLASSIFICATION
+        objective: Xác định hai quyết định xử lý hành vi độc lập hay trùng lặp
+        fact_ids:
+        - F001
+        - F002
+        - F003
+        - F004
+        - F005
+        query: chậm sử dụng toàn khu đất và sử dụng sai mục đích phần đã khai thác là hai hành vi độc lập hay xử phạt trùng
+      depends_on_keys: []
+      time_basis: hien_hanh
+    - issue_key: ISSUE_02
+      issue: Thẩm quyền xử phạt của huyện và tỉnh cho cùng khu đất
+      issue_type: AUTHORITY_PROCEDURE
+      required_evidence:
+      - requirement_key: REQ_02_01
+        target_kind: AUTHORITY_PROCEDURE
+        objective: Xác định thẩm quyền theo từng hành vi hay tổng mức phạt
+        fact_ids: &id097
+        - F001
+        - F002
+        - F003
+        - F004
+        - F005
+        - F006
+        query: thẩm quyền xử phạt hai hành vi trên cùng khu đất được tính riêng từng quyết định hay theo tổng mức tiền phạt
+      depends_on_keys: &id098
+      - ISSUE_01
+      time_basis: hien_hanh
+    - &id099
+      issue_key: ISSUE_03
+      issue: Phối hợp biện pháp khắc phục của hai quyết định
+      issue_type: SANCTION
+      required_evidence:
+      - requirement_key: REQ_03_01
+        target_kind: SANCTION_REMEDY
+        objective: Xác định thứ tự và phạm vi thực hiện các biện pháp khắc phục
+        fact_ids:
+        - F001
+        - F002
+        - F003
+        - F004
+        - F005
+        query: biện pháp khắc phục chậm sử dụng và sử dụng đất sai mục đích trên cùng khu đất được phối hợp thực hiện thế
+          nào
+      depends_on_keys:
+      - ISSUE_01
+      - ISSUE_02
+      time_basis: hien_hanh
+  rejected:
+    issues:
+    - *id096
+    - issue_key: ISSUE_02
+      issue: Thẩm quyền xử phạt của huyện và tỉnh cho cùng khu đất
+      issue_type: AUTHORITY_PROCEDURE
+      required_evidence:
+      - requirement_key: REQ_02_01
+        target_kind: SANCTION_REMEDY
+        objective: Xác định thẩm quyền theo từng hành vi hay tổng mức phạt
+        fact_ids: *id097
+        query: thẩm quyền xử phạt hai hành vi trên cùng khu đất được tính riêng từng quyết định hay theo tổng mức tiền phạt
+      depends_on_keys: *id098
+      time_basis: hien_hanh
+    - *id099
+  preference:
+    family: TERM_TARGET_BOUNDARY
+    subtype: TARGET_KIND
+    changed_paths:
+    - /issues/1/required_evidence/0/target_kind
+    rejected_origin: SYNTHETIC_MINIMAL
+    minimal_contrast: true
+    gold_preference: CHOSEN
+    rationale: Rejected gán sai loại mục tiêu truy xuất dù objective và query thể hiện rõ loại quy phạm cần tìm.
+  review:
+    status: GOLD_REVIEWED
+    reviewer: GPT-5.6 Sol
+    reviewed_at: '2026-08-13T12:00:00Z'
+    notes: Đã đối chiếu context, production Planner contract và family mutation; seed được hiệu chỉnh đồng nhất khi cần.
+- pair_id: PDPO_000144
+  source_case_id: pilot_easy_050
+  chosen:
+    issues:
+    - issue_key: ISSUE_01
+      issue: Hạn mức nhận chuyển nhượng đất trồng cây lâu năm
+      issue_type: ELIGIBILITY
+      required_evidence:
+      - requirement_key: REQ_01_01
+        target_kind: ELIGIBILITY
+        objective: Xác định tổng diện tích tính vào hạn mức nhận chuyển quyền
+        fact_ids: &id100
+        - F001
+        - F002
+        - F003
+        query: cá nhân đang có nhiều thửa đất trồng cây lâu năm nhận thêm đất cùng địa phương phải tính tổng diện tích và
+          hạn mức thế nào
+      depends_on_keys: &id101 []
+      time_basis: hien_hanh
+  rejected:
+    issues:
+    - issue_key: ISSUE_01
+      issue: Hạn mức nhận chuyển nhượng đất trồng cây lâu năm
+      issue_type: ELIGIBILITY
+      required_evidence:
+      - requirement_key: REQ_01_01
+        target_kind: DEADLINE_OBLIGATION
+        objective: Xác định tổng diện tích tính vào hạn mức nhận chuyển quyền
+        fact_ids: *id100
+        query: cá nhân đang có nhiều thửa đất trồng cây lâu năm nhận thêm đất cùng địa phương phải tính tổng diện tích và
+          hạn mức thế nào
+      depends_on_keys: *id101
+      time_basis: hien_hanh
+  preference:
+    family: TERM_TARGET_BOUNDARY
+    subtype: TARGET_KIND
+    changed_paths:
+    - /issues/0/required_evidence/0/target_kind
+    rejected_origin: SYNTHETIC_MINIMAL
+    minimal_contrast: true
+    gold_preference: CHOSEN
+    rationale: Rejected gán sai loại mục tiêu truy xuất dù objective và query thể hiện rõ loại quy phạm cần tìm.
+  review:
+    status: GOLD_REVIEWED
+    reviewer: GPT-5.6 Sol
+    reviewed_at: '2026-08-13T12:00:00Z'
+    notes: Đã đối chiếu context, production Planner contract và family mutation; seed được hiệu chỉnh đồng nhất khi cần.
+- pair_id: PDPO_000145
+  source_case_id: scale_medium_236
+  chosen:
+    issues:
+    - &id102
+      issue_key: ISSUE_01
+      issue: Điều kiện lối đi cho thửa phía trong không tiếp giáp đường
+      issue_type: ELIGIBILITY
+      required_evidence:
+      - requirement_key: REQ_01_01
+        target_kind: SUBJECT_OBJECT_CONDITIONS
+        objective: Thỏa thuận đi nhờ chưa đăng ký có bảo đảm kết nối giao thông khi tách
+        fact_ids:
+        - F001
+        - F002
+        - F003
+        - F004
+        - F005
+        query: thửa phía trong đủ diện tích nhưng không giáp đường chỉ có thỏa thuận đi nhờ chưa đăng ký có đủ điều kiện tách
+          không
+      depends_on_keys: []
+      time_basis: hien_hanh
+    - issue_key: ISSUE_02
+      issue: Ảnh hưởng của thế chấp phần đất phía ngoài đến hồ sơ tách thửa
+      issue_type: TRANSACTION
+      required_evidence: &id103
+      - requirement_key: REQ_02_01
+        target_kind: SUBJECT_OBJECT_CONDITIONS
+        objective: Tách tài sản bảo đảm và xác lập lối đi cần ngân hàng đồng ý
+        fact_ids:
+        - F002
+        - F004
+        - F005
+        - F006
+        query: phần đất phía ngoài đang thế chấp có cần ngân hàng đồng ý khi tách thửa và đăng ký lối đi cho phần phía trong
+          không
+      depends_on_keys: &id104
+      - ISSUE_01
+      time_basis: hien_hanh
+  rejected:
+    issues:
+    - *id102
+    - issue_key: ISSUE_02
+      issue: Quyền ngân hàng từ chối tách thửa do phần đất phía ngoài đang thế chấp
+      issue_type: TRANSACTION
+      required_evidence: *id103
+      depends_on_keys: *id104
+      time_basis: hien_hanh
+  preference:
+    family: LEGAL_RELATION_FRAMING
+    subtype: ACTOR_RELATION_OR_POLARITY
+    changed_paths:
+    - /issues/1/issue
+    rejected_origin: SYNTHETIC_MINIMAL
+    minimal_contrast: true
+    gold_preference: CHOSEN
+    rationale: Rejected đảo chủ thể hoặc tiền giả định kết luận nên không còn phản ánh trung lập quan hệ pháp lý trong facts.
+  review:
+    status: GOLD_REVIEWED
+    reviewer: GPT-5.6 Sol
+    reviewed_at: '2026-08-13T12:00:00Z'
+    notes: Đã đối chiếu context, production Planner contract và family mutation; seed được hiệu chỉnh đồng nhất khi cần.
+- pair_id: PDPO_000146
+  source_case_id: scale_medium_133
+  chosen:
+    issues:
+    - issue_key: ISSUE_01
+      issue: Hiệu lực quyết định xử phạt dựa trên biên bản sai số liệu
+      issue_type: SANCTION
+      required_evidence: &id105
+      - requirement_key: REQ_01_01
+        target_kind: LEGAL_CONSEQUENCE
+        objective: Xác định có phải lập lại biên bản trước khi sửa số liệu xử phạt
+        fact_ids:
+        - F001
+        - F002
+        - F003
+        - F004
+        - F005
+        query: quyết định xử phạt có hợp lệ khi biên bản sai loại đất và diện tích nhưng số liệu được sửa mà không lập lại
+          biên bản không
+      depends_on_keys: &id106 []
+      time_basis: hien_hanh
+  rejected:
+    issues:
+    - issue_key: ISSUE_01
+      issue: Biên bản sai số liệu đương nhiên làm vô hiệu quyết định xử phạt
+      issue_type: SANCTION
+      required_evidence: *id105
+      depends_on_keys: *id106
+      time_basis: hien_hanh
+  preference:
+    family: LEGAL_RELATION_FRAMING
+    subtype: ACTOR_RELATION_OR_POLARITY
+    changed_paths:
+    - /issues/0/issue
+    rejected_origin: SYNTHETIC_MINIMAL
+    minimal_contrast: true
+    gold_preference: CHOSEN
+    rationale: Rejected đảo chủ thể hoặc tiền giả định kết luận nên không còn phản ánh trung lập quan hệ pháp lý trong facts.
+  review:
+    status: GOLD_REVIEWED
+    reviewer: GPT-5.6 Sol
+    reviewed_at: '2026-08-13T12:00:00Z'
+    notes: Đã đối chiếu context, production Planner contract và family mutation; seed được hiệu chỉnh đồng nhất khi cần.
+- pair_id: PDPO_000147
+  source_case_id: scale2_medium_013
+  chosen:
+    issues:
+    - issue_key: ISSUE_01
+      issue: Quyền đối với tiền đặt cọc mua đất bằng tài sản riêng trước ly hôn
+      issue_type: TRANSACTION
+      required_evidence: &id107
+      - requirement_key: REQ_01_01
+        target_kind: SUBJECT_OBJECT_CONDITIONS
+        objective: Nguồn tiền và bên đứng tên hợp đồng đặt cọc xác định chủ thể có quyền
+        fact_ids:
+        - F001
+        - F002
+        - F003
+        - F004
+        - F005
+        - F007
+        query: tiền riêng của chồng dùng đặt cọc mua đất dự kiến đứng tên cả vợ chồng được xác định quyền sở hữu thế nào khi
+          ly hôn
+      depends_on_keys: &id108 []
+      time_basis: giao_dich
+    - &id109
+      issue_key: ISSUE_02
+      issue: Chủ thể được yêu cầu ký hợp đồng chuyển nhượng sau khi vợ chồng ly hôn
+      issue_type: RIGHTS_REMEDY
+      required_evidence:
+      - requirement_key: REQ_02_01
+        target_kind: DISPUTE_REMEDY
+        objective: Người ký đặt cọc hay cả hai người có quyền tiếp tục giao dịch
+        fact_ids:
+        - F002
+        - F003
+        - F004
+        - F005
+        - F007
+        - F008
+        query: sau ly hôn ai có quyền yêu cầu ký hợp đồng mua đất khi chồng đặt cọc bằng tiền riêng nhưng dự kiến ghi tên
+          cả hai
+      depends_on_keys:
+      - ISSUE_01
+      time_basis: hien_hanh
+  rejected:
+    issues:
+    - issue_key: ISSUE_01
+      issue: Quyền đối với tiền đặt cọc mua đất bằng tài sản riêng trước ly hôn
+      issue_type: TRANSACTION
+      required_evidence: *id107
+      depends_on_keys: *id108
+      time_basis: hien_hanh
+    - *id109
+  preference:
+    family: TEMPORAL_VERSION_INTENT
+    subtype: WRONG_OR_UNSUPPORTED_TIME_BASIS
+    changed_paths:
+    - /issues/0/time_basis
+    rejected_origin: SYNTHETIC_MINIMAL
+    minimal_contrast: true
+    gold_preference: CHOSEN
+    rationale: Rejected chọn mốc thời gian không được Temporal Context xác nhận hoặc bỏ qua mốc giao dịch đã xác nhận.
+  review:
+    status: GOLD_REVIEWED
+    reviewer: GPT-5.6 Sol
+    reviewed_at: '2026-08-13T12:00:00Z'
+    notes: Đã đối chiếu context, production Planner contract và family mutation; seed được hiệu chỉnh đồng nhất khi cần.
+- pair_id: PDPO_000148
+  source_case_id: scale_easy_012
+  chosen:
+    issues:
+    - issue_key: ISSUE_01
+      issue: Mô tả từng thửa đất trong di chúc
+      issue_type: TRANSACTION
+      required_evidence: &id110
+      - requirement_key: REQ_01_01
+        target_kind: FORM_DOCUMENT
+        objective: Xác định thông tin cần ghi để nhận diện đúng di sản
+        fact_ids:
+        - F001
+        - F002
+        - F003
+        query: di chúc chia hai thửa đất cho hai người con phải ghi thông tin số thửa tờ bản đồ diện tích và giấy chứng nhận
+          thế nào
+      depends_on_keys: &id111 []
+      time_basis: giao_dich
+  rejected:
+    issues:
+    - issue_key: ISSUE_01
+      issue: Hai người con phải chia đều hai thửa đất được ghi trong di chúc
+      issue_type: TRANSACTION
+      required_evidence: *id110
+      depends_on_keys: *id111
+      time_basis: giao_dich
+  preference:
+    family: LEGAL_RELATION_FRAMING
+    subtype: ACTOR_RELATION_OR_POLARITY
+    changed_paths:
+    - /issues/0/issue
+    rejected_origin: SYNTHETIC_MINIMAL
+    minimal_contrast: true
+    gold_preference: CHOSEN
+    rationale: Rejected đảo chủ thể hoặc tiền giả định kết luận nên không còn phản ánh trung lập quan hệ pháp lý trong facts.
+  review:
+    status: GOLD_REVIEWED
+    reviewer: GPT-5.6 Sol
+    reviewed_at: '2026-08-13T12:00:00Z'
+    notes: Đã đối chiếu context, production Planner contract và family mutation; seed được hiệu chỉnh đồng nhất khi cần.
+- pair_id: PDPO_000149
+  source_case_id: scale_easy_005
+  chosen:
+    issues:
+    - issue_key: ISSUE_01
+      issue: Chuyển nhượng đất mua trước hôn nhân
+      issue_type: TRANSACTION
+      required_evidence:
+      - requirement_key: REQ_01_01
+        target_kind: FORM_DOCUMENT
+        objective: Xác định có cần chữ ký người phối ngẫu khi bán đất riêng
+        fact_ids: &id112
+        - F001
+        - F002
+        - F003
+        - F004
+        - F005
+        query: chuyển nhượng đất mua trước khi kết hôn và giấy chỉ ghi một người có cần chữ ký của người phối ngẫu trong hợp
+          đồng không
+      depends_on_keys: &id113 []
+      time_basis: giao_dich
+  rejected:
+    issues:
+    - issue_key: ISSUE_01
+      issue: Chuyển nhượng đất mua trước hôn nhân
+      issue_type: TRANSACTION
+      required_evidence:
+      - requirement_key: REQ_01_01
+        target_kind: FORM_DOCUMENT
+        objective: Xác định có cần chữ ký người phối ngẫu khi bán đất riêng
+        fact_ids: *id112
+        query: đăng ký sang tên đất mua trước hôn nhân sau khi chuyển nhượng cần hồ sơ và thời hạn thực hiện thế nào
+      depends_on_keys: *id113
+      time_basis: giao_dich
+  preference:
+    family: QUERY_SEMANTIC_ALIGNMENT
+    subtype: RELATION_DRIFT
+    changed_paths:
+    - /issues/0/required_evidence/0/query
+    rejected_origin: SYNTHETIC_MINIMAL
+    minimal_contrast: true
+    gold_preference: CHOSEN
+    rationale: Rejected giữ schema hợp lệ nhưng query đi sang quan hệ pháp lý khác với issue và objective đã chọn.
+  review:
+    status: GOLD_REVIEWED
+    reviewer: GPT-5.6 Sol
+    reviewed_at: '2026-08-13T12:00:00Z'
+    notes: Đã đối chiếu context, production Planner contract và family mutation; seed được hiệu chỉnh đồng nhất khi cần.
+- pair_id: PDPO_000150
+  source_case_id: scale2_hard_123
+  chosen:
+    issues:
+    - issue_key: ISSUE_01
+      issue: Thứ tự cập nhật tên vợ và thông tin căn cước chồng trên giấy đất chung
+      issue_type: REGISTRATION
+      required_evidence:
+      - requirement_key: REQ_01_01
+        target_kind: REGISTRATION_COMPLETION
+        objective: Trình tự xử lý bổ sung đồng sở hữu và thay đổi thông tin nhân thân trong các hồ sơ đồng thời
+        fact_ids:
+        - F001
+        - F002
+        - F003
+        - F004
+        - F005
+        - F008
+        query: thứ tự cập nhật tên vợ vào giấy đất chung và căn cước mới của chồng khi hai thay đổi được nộp đồng thời
+      depends_on_keys: []
+      time_basis: hien_hanh
+    - issue_key: ISSUE_02
+      issue: Điều kiện chuyển nhượng phần quyền đất chung của chồng cho em trai
+      issue_type: TRANSACTION
+      required_evidence:
+      - requirement_key: REQ_02_01
+        target_kind: SUBJECT_OBJECT_CONDITIONS
+        objective: Phạm vi quyền định đoạt và yêu cầu đồng ý của vợ khi bán phần đất chung
+        fact_ids:
+        - F002
+        - F003
+        - F004
+        - F006
+        - F007
+        query: chồng được bán phần quyền đất chung cho em trai khi nào và cơ quan phải kiểm tra sự đồng ý của vợ thế nào
+      depends_on_keys:
+      - ISSUE_01
+      time_basis: giao_dich
+    - issue_key: ISSUE_03
+      issue: Xử lý hai hồ sơ cạnh tranh khi cơ quan chỉ giữ một bản gốc giấy chứng nhận
+      issue_type: AUTHORITY_PROCEDURE
+      required_evidence:
+      - requirement_key: REQ_03_01
+        target_kind: AUTHORITY_PROCEDURE
+        objective: Cách tiếp nhận và ưu tiên hồ sơ bổ sung tên với hồ sơ chuyển phần quyền dùng chung giấy gốc
+        fact_ids:
+        - F003
+        - F005
+        - F006
+        - F008
+        - F009
+        - F010
+        query: cơ quan xử lý thứ tự hai hồ sơ bổ sung tên và chuyển phần quyền thế nào khi cùng cần một giấy chứng nhận gốc
+      depends_on_keys:
+      - ISSUE_01
+      - ISSUE_02
+      time_basis: hien_hanh
+  rejected:
+    issues:
+    - issue_key: ISSUE_01
+      issue: Thứ tự cập nhật tên vợ và thông tin căn cước chồng trên giấy đất chung
+      issue_type: REGISTRATION
+      required_evidence:
+      - requirement_key: REQ_01_01
+        target_kind: REGISTRATION_COMPLETION
+        objective: Trình tự xử lý bổ sung đồng sở hữu và thay đổi thông tin nhân thân trong các hồ sơ đồng thời
+        fact_ids:
+        - F001
+        - F002
+        - F003
+        - F004
+        - F005
+        - F008
+        query: thứ tự cập nhật tên vợ vào giấy đất chung và căn cước mới của chồng khi hai thay đổi được nộp đồng thời
+      depends_on_keys: []
+      time_basis: hien_hanh
+    - issue_key: ISSUE_02
+      issue: Thứ tự cập nhật tên vợ, căn cước của chồng, chuyển phần quyền và xử lý hai hồ sơ cạnh tranh khi cơ quan chỉ giữ
+        một giấy chứng nhận gốc
+      issue_type: TRANSACTION
+      required_evidence:
+      - requirement_key: REQ_02_01
+        target_kind: SUBJECT_OBJECT_CONDITIONS
+        objective: Phạm vi quyền định đoạt và yêu cầu đồng ý của vợ khi bán phần đất chung
+        fact_ids:
+        - F002
+        - F003
+        - F004
+        - F006
+        - F007
+        query: chồng được bán phần quyền đất chung cho em trai khi nào và cơ quan phải kiểm tra sự đồng ý của vợ thế nào
+      - requirement_key: REQ_03_01
+        target_kind: AUTHORITY_PROCEDURE
+        objective: Cách tiếp nhận và ưu tiên hồ sơ bổ sung tên với hồ sơ chuyển phần quyền dùng chung giấy gốc
+        fact_ids:
+        - F003
+        - F005
+        - F006
+        - F008
+        - F009
+        - F010
+        query: cơ quan xử lý thứ tự hai hồ sơ bổ sung tên và chuyển phần quyền thế nào khi cùng cần một giấy chứng nhận gốc
+      depends_on_keys:
+      - ISSUE_01
+      time_basis: giao_dich
+  preference:
+    family: COVERAGE_DECOMPOSITION
+    subtype: ISSUE_REQUIREMENT_TOPOLOGY
+    changed_paths:
+    - /issues/1/issue
+    - /issues/1/required_evidence/1
+    - /issues/2
+    rejected_origin: SYNTHETIC_MINIMAL
+    minimal_contrast: true
+    gold_preference: CHOSEN
+    rationale: Rejected tách hoặc gộp sai các kết quả pháp lý, làm topology không phản ánh đúng phạm vi câu hỏi.
+  review:
+    status: GOLD_REVIEWED
+    reviewer: GPT-5.6 Sol
+    reviewed_at: '2026-08-13T12:00:00Z'
+    notes: Đã đối chiếu context, production Planner contract và family mutation; seed được hiệu chỉnh đồng nhất khi cần.

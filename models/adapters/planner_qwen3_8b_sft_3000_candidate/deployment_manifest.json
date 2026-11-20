@@ -1,0 +1,90 @@
+{
+  "status": "candidate_ready_for_clean_ab",
+  "role": "planner_initial",
+  "pipeline_scope": [
+    "clean"
+  ],
+  "api_model_id": "Planner-Qwen3-8B-SFT-3000",
+  "source_zip": "C:\\Users\\ADMIN\\Downloads\\20260907_131609_b02e5c_planner_3000_result.zip",
+  "source_zip_sha256": "5ec7ef0bd4654f8b4172beb9aee70031a88fb29b425d40117049a6d1219fd375",
+  "base_model_id": "Qwen/Qwen3-8B",
+  "base_model_revision": "b968826d9c46dd6066d109eabc6255188de91218",
+  "selected_checkpoint": "checkpoint-300",
+  "selected_by": "validation_loss",
+  "best_validation_loss": 0.37165531516075134,
+  "system_prompt_sha256": "55cbfb56ff530b45a976e288b6081e902a624b70c15f9c3d22aab119638b2e85",
+  "input_blocks": [
+    "CAU HOI",
+    "CASE_FACTS",
+    "TEMPORAL_CONTEXT"
+  ],
+  "planning_budget": {
+    "max_issues": 5,
+    "max_requirements_per_issue": 5,
+    "max_requirements_total": 16,
+    "max_fact_links_per_requirement": 6,
+    "max_dependencies_per_issue": 4
+  },
+  "hf_adapter_sha256": "8067db6579bfa07dde9077076c093125252e669a6ce68749b4fe7a514def4e10",
+  "gguf_adapter": "gguf/planner-qwen3-8b-sft-3000-f16.gguf",
+  "gguf_adapter_sha256": "37c623c71be5a2a2f05c4028b8a9ebff2432272c4b48765c3c87502799234f14",
+  "gguf_adapter_bytes": 87328864,
+  "hidden_test": {
+    "records": 300,
+    "json_valid_rate": 1.0,
+    "contract_valid_rate": 1.0,
+    "issue_count_exact": 0.7433333333333333,
+    "requirement_count_exact": 0.7,
+    "position_fact_id_f1": 0.8174462293690172,
+    "position_query_token_f1": 0.49080421765790533
+  },
+  "training": {
+    "epochs": 3.0,
+    "batch_size": 2,
+    "gradient_accumulation_steps": 8,
+    "learning_rate": 0.0001,
+    "warmup_ratio": 0.1,
+    "max_seq_length": 6144,
+    "seed": 42
+  },
+  "trainer_metrics": {
+    "train": {
+      "train_runtime": 3442.6442,
+      "train_samples_per_second": 2.091,
+      "train_steps_per_second": 0.131,
+      "total_flos": 2.996074625846477e+17,
+      "train_loss": 0.42246802118089466,
+      "epoch": 3.0
+    },
+    "validation": {
+      "eval_loss": 0.37165531516075134,
+      "eval_runtime": 48.2688,
+      "eval_samples_per_second": 6.215,
+      "eval_steps_per_second": 6.215,
+      "epoch": 3.0
+    }
+  },
+  "conversion": {
+    "tool": "llama.cpp convert_lora_to_gguf.py",
+    "llama_cpp_commit": "33a75f41c",
+    "outtype": "f16"
+  },
+  "runtime_smoke": {
+    "status": "PASS",
+    "records": 3,
+    "difficulties": [
+      "EASY",
+      "MEDIUM",
+      "HARD"
+    ],
+    "contract_error_count": 0
+  },
+  "clean_input_smoke": {
+    "status": "PASS",
+    "planner_call_count": 1,
+    "request_fact_excluded": true,
+    "question_preserved": true,
+    "issue_count": 1,
+    "requirement_count": 3
+  }
+}

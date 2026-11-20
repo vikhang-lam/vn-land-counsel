@@ -1,0 +1,69 @@
+{
+  "task": "claim_verifier_v2",
+  "contract_version": 2,
+  "training_phase": "authored3000",
+  "starting_adapter": null,
+  "starting_adapter_sha256": null,
+  "model_id": "Qwen/Qwen3-8B",
+  "platform": "colab",
+  "gpu": "NVIDIA GeForce RTX 5090",
+  "compute_capability": [
+    12,
+    0
+  ],
+  "compute_dtype": "bfloat16",
+  "train_file": "/content/claim_verifier_input/claim_verifier_authored_3000_bundle/claim_verifier_sft_train.jsonl",
+  "val_file": "/content/claim_verifier_input/claim_verifier_authored_3000_bundle/claim_verifier_sft_validation.jsonl",
+  "train_sha256": "22e50a822fa7d3c6899cc0ed206058ea1adf25107bf5c99dbd4fd1903b6007af",
+  "val_sha256": "7eaaab911e8f8847d1a6ce7ded50948f9c5df028cb8cd2f0e256aa1dfbe1038c",
+  "train_stats": {
+    "records": 2386,
+    "tokens_min": 831,
+    "tokens_p50": 937.0,
+    "tokens_p95": 1024.0,
+    "tokens_max": 1161,
+    "completion_tokens_p95": 93.0,
+    "completion_tokens_max": 113
+  },
+  "val_stats": {
+    "records": 307,
+    "tokens_min": 843,
+    "tokens_p50": 945.0,
+    "tokens_p95": 1017.7,
+    "tokens_max": 1058,
+    "completion_tokens_p95": 90.0,
+    "completion_tokens_max": 104
+  },
+  "thinking_mode": false,
+  "completion_only_loss": true,
+  "best_model_checkpoint": "/content/claim_verifier_authored_qwen3_8b_sft/checkpoint-300",
+  "best_metric": 0.49017372727394104,
+  "qlora": {
+    "load_in_4bit": true,
+    "lora_r": 16,
+    "lora_alpha": 32,
+    "lora_dropout": 0.0,
+    "target_modules": [
+      "q_proj",
+      "k_proj",
+      "v_proj",
+      "o_proj",
+      "gate_proj",
+      "up_proj",
+      "down_proj"
+    ],
+    "gradient_checkpointing": "unsloth"
+  },
+  "training": {
+    "epochs": 3.0,
+    "batch_size": 1,
+    "gradient_accumulation_steps": 16,
+    "effective_batch_size": 16,
+    "learning_rate": 0.0001,
+    "max_seq_length": 1536,
+    "seed": 42,
+    "evaluation_strategy": "epoch",
+    "checkpoint_selection": "minimum_eval_loss_across_3_epochs",
+    "load_best_model_at_end": true
+  }
+}

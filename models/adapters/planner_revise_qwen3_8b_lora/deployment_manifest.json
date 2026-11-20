@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "activated_at": "2026-09-02",
+  "role": "targeted_planner_issue_patch",
+  "pipeline_scope": [
+    "clean"
+  ],
+  "api_model_id": "Planner-Revise-Qwen3-8B-LoRA",
+  "base_model_id": "Qwen/Qwen3-8B",
+  "runtime_base_gguf": "C:\\local-ai\\models\\Qwen3-8B-Q5_K_M.gguf",
+  "hf_adapter": "hf_adapter/adapter_model.safetensors",
+  "hf_adapter_bytes": 174655536,
+  "hf_adapter_sha256": "a864d2b5d892323857ae08463ea44beaf500880d988b110e4256e689be7a34fe",
+  "gguf_adapter": "gguf/planner-revise-qwen3-8b-lora-f16.gguf",
+  "gguf_adapter_bytes": 87328928,
+  "gguf_adapter_sha256": "f9db9f5af59c520692e13b26cf76f1535045ed2760308439a3bcda3d5b7521b5",
+  "production_prompt_sha256": "51fc2a758236a8d268a12abe8be6437a11841f215de6595e1fa8767474904eee",
+  "gguf_conversion": {
+    "tool": "llama.cpp convert_lora_to_gguf.py",
+    "llama_cpp_commit": "33a75f41c",
+    "outtype": "f16",
+    "base_config": "conversion_base_config/config.json",
+    "tensor_count": 504
+  },
+  "runtime_contract": {
+    "max_patch_loops": 1,
+    "target_issue_ids_owned_by_python": true,
+    "requirement_ids_reassigned_by_python": true,
+    "json_schema_enabled": true,
+    "post_generation_validation": true,
+    "fallback_model": "Qwen3-8B-Q5_K_M"
+  },
+  "selection": {
+    "selected": "SFT",
+    "rejected": "DPO",
+    "reason": "SFT had higher contract validity and semantic quality than DPO."
+  },
+  "runtime_smoke_test": {
+    "status": "passed",
+    "base_gguf": "Qwen3-8B-Q5_K_M",
+    "adapter_loaded": true,
+    "served_model_id": "Planner-Revise-Qwen3-8B-LoRA",
+    "chat_completion_http": "passed",
+    "json_schema": "passed",
+    "post_generation_contract": "passed",
+    "temporary_router_port": 18082
+  },
+  "deployment_status": "active_clean_patch_role_with_runtime_guard"
+}

@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "activated_at": "2026-07-29",
+  "role": "legal_research_planner",
+  "profile_scope": [
+    "answer_8b"
+  ],
+  "api_model_id": "Planner-Qwen3-8B-LoRA",
+  "base_model_id": "Qwen/Qwen3-8B",
+  "runtime_base_gguf": "C:\\local-ai\\models\\Qwen3-8B-Q5_K_M.gguf",
+  "hf_adapter": "hf_adapter/adapter_model.safetensors",
+  "hf_adapter_sha256": "1A130F8868A2CD31D7DEF9D5CA25571BA432A81E430CDC26EA80E5AA12CF971B",
+  "gguf_adapter": "gguf/planner-qwen3-8b-lora-f16.gguf",
+  "gguf_adapter_sha256": "ECCC535E7BF151D1F5AF7CA0732985DD72BDC7E3290B45C28869558BFE50342A",
+  "source_archive": "results.zip",
+  "source_archive_sha256": "3F9DDE79EAA94E62F8744C76F9A71AC547D147E5C9F1077912CFBFFC2AD980DA",
+  "production_prompt_sha256": "5CCD75B346CE8448884AFAA4D524FD0837E5269C17D2BAA45BD25D33F200E90A",
+  "prompt_contract": {
+    "query_word_range": [8, 28],
+    "query_safe_word_range": [18, 25],
+    "query_max_chars": 220,
+    "status": "restored_to_sft_distribution_2026-08-25"
+  },
+  "gguf_conversion": {
+    "tool": "llama.cpp convert_lora_to_gguf.py",
+    "llama_cpp_commit": "33a75f41c",
+    "outtype": "f16",
+    "base_config": "conversion_base_config/config.json"
+  },
+  "training": {
+    "records": 1600,
+    "validation_records": 200,
+    "epochs": 2,
+    "max_seq_length": 3072,
+    "learning_rate": 0.00015,
+    "lora_r": 16,
+    "lora_alpha": 32,
+    "thinking_mode": false
+  },
+  "held_out_test": {
+    "records": 200,
+    "json_parse_rate": 1.0,
+    "schema_validity_rate_at_28_words": 0.855,
+    "schema_validity_rate_at_35_words": 0.995,
+    "issue_count_accuracy": 0.83,
+    "requirement_id_match_rate": 0.8948655256723717,
+    "target_kind_accuracy_on_matched": 0.6038251366120219,
+    "fact_id_micro_precision": 0.8014366341713699,
+    "fact_id_micro_recall": 0.822538177988415,
+    "fact_id_micro_f1": 0.8118503118503119
+  },
+  "runtime_smoke_test": {
+    "status": "passed",
+    "base_gguf": "Qwen3-8B-Q5_K_M",
+    "adapter_loaded": true,
+    "served_model_id": "Planner-Qwen3-8B-LoRA",
+    "chat_completion_http": "passed",
+    "temporary_port": 18080
+  },
+  "deployment_status": "active_balance"
+}

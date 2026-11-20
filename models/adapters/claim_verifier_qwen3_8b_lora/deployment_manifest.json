@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "activated_at": "2026-08-31",
+  "role": "claim_verifier",
+  "profile_scope": [
+    "clean_local",
+    "legacy_local"
+  ],
+  "api_model_id": "Claim-Verifier-Qwen3-8B-LoRA",
+  "base_model_id": "Qwen/Qwen3-8B",
+  "runtime_base_gguf": "C:\\local-ai\\models\\Qwen3-8B-Q5_K_M.gguf",
+  "hf_adapter": "hf_adapter/adapter_model.safetensors",
+  "hf_adapter_sha256": "1CC38A115946D17B59508CD12BB397F0306FD0FEC6B68812D3D9C0A32E91A0BF",
+  "gguf_adapter": "gguf/claim-verifier-qwen3-8b-lora-f16.gguf",
+  "gguf_adapter_sha256": "BC2C9BA8F03888A7F04FEDD29A4861020F221B1063FA610FAF8ED3FBDDA81914",
+  "source_archive": "C:\\Users\\ADMIN\\Downloads\\claim_verifier_authored_full_result.zip",
+  "source_archive_sha256": "121318FE5084602CF952AF428FD4D115E04A9D5F19B8F59461D3582C384C82DE",
+  "production_contract_source": "core/agents/claim_verifier_contract.py",
+  "system_prompt_sha256": "7dae63aeef68fe1757b326c42c5b5ff3a8cc2e49af9a036e77b71e3545c96f77",
+  "json_schema_sha256": "ce18033e3d6562aff4da2b4ebce75edb31b0dd03513fa48efd062352be37f85e",
+  "gguf_conversion": {
+    "tool": "llama.cpp convert_lora_to_gguf.py",
+    "llama_cpp_commit": "33a75f41c",
+    "outtype": "f16",
+    "base_config": "conversion_base_config/config.json"
+  },
+  "training": {
+    "mode": "ONE_PASS_FROM_BASE",
+    "train_records": 2386,
+    "validation_records": 307,
+    "epochs_requested": 3,
+    "selected_epoch": 2,
+    "selected_checkpoint": 300,
+    "max_seq_length": 1536,
+    "learning_rate": 0.0001,
+    "lora_r": 16,
+    "lora_alpha": 32,
+    "thinking_mode": false,
+    "completion_only_loss": true
+  },
+  "held_out_test": {
+    "records": 307,
+    "json_valid_rate": 1.0,
+    "contract_valid_rate": 1.0,
+    "source_entailment_accuracy": 0.9837133550488599,
+    "requirement_relevance_accuracy": 0.8208469055374593,
+    "requirement_relevance_macro_f1": 0.7751441557352033,
+    "joint_label_accuracy": 0.8045602605863192,
+    "grounding_evidence_exact_rate": 1.0,
+    "false_accept_rate": 0.12666666666666668,
+    "false_reject_rate": 0.03821656050955414,
+    "acceptance_accuracy": 0.9185667752442996,
+    "acceptance_precision": 0.888235294117647,
+    "acceptance_recall": 0.9617834394904459,
+    "acceptance_f1": 0.9235474006116209
+  },
+  "previous_adapter": {
+    "api_model_id": "Claim-Verifier-V2-Qwen3-8B-LoRA",
+    "directory": "../claim_verifier_v2_qwen3_8b_lora",
+    "status": "retained_for_rollback"
+  },
+  "runtime_smoke_test": {
+    "status": "passed",
+    "served_model_id": "Claim-Verifier-Qwen3-8B-LoRA",
+    "base_gguf": "Qwen3-8B-Q5_K_M",
+    "adapter_loaded": true,
+    "canonical_contract_valid": true,
+    "sample_source_entailment": "YES",
+    "sample_requirement_relevance": "DIRECT",
+    "sample_grounding_evidence_ids": [
+      "E001"
+    ]
+  },
+  "deployment_status": "active_trial"
+}

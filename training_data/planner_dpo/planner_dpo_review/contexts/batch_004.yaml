@@ -1,0 +1,4495 @@
+version: 1
+batch_id: batch_004
+records:
+- pair_id: PDPO_000151
+  source_record_id: scale2_easy_300
+  source_case_id: scale2_easy_300
+  source_sha256: bcff0d921a7c85162b9c66a27fcce16c97f4997e1d164edd8d8f65529368a4cd
+  split: train
+  difficulty: EASY
+  primary_topic: DISPUTE
+  secondary_domains: []
+  input:
+    question: Một hộ đặt cổng ở đầu lối đi chung và giao chìa khóa cho các hộ khác. Hỏi việc đặt cổng có được xem là cản trở
+      quyền đi qua không?
+    fact_ledger:
+    - fact_id: F001
+      category: ACTOR
+      value: Một hộ
+      source_quote: Một hộ
+    - fact_id: F002
+      category: CONDUCT
+      value: đặt cổng ở đầu lối đi chung
+      source_quote: đặt cổng ở đầu lối đi chung
+    - fact_id: F003
+      category: CONDUCT
+      value: giao chìa khóa cho các hộ khác
+      source_quote: giao chìa khóa cho các hộ khác
+    - fact_id: F004
+      category: REQUEST
+      value: Hỏi việc đặt cổng có được xem là cản trở quyền đi qua không?
+      source_quote: Hỏi việc đặt cổng có được xem là cản trở quyền đi qua không?
+    temporal_context:
+      giao_dich: null
+      vi_pham: null
+      van_ban_dich_danh: null
+  chosen_seed:
+    issues:
+    - issue_key: ISSUE_01
+      issue: Đặt cổng khóa tại đầu lối đi chung
+      issue_type: DISPUTE
+      required_evidence:
+      - requirement_key: REQ_01_01
+        target_kind: CONDUCT_CLASSIFICATION
+        objective: Xác định cổng có cản trở việc thực hiện quyền đi qua
+        fact_ids:
+        - F001
+        - F002
+        - F003
+        query: đặt cổng khóa ở đầu lối đi chung nhưng giao chìa khóa cho các hộ có bị xem là cản trở quyền đi qua không
+      depends_on_keys: []
+      time_basis: hien_hanh
+  mutation_family: FACT_STATUS_GROUNDING
+  mutation_hints:
+    focus: Liên kết fact_ids và trạng thái chỉ được khẳng định trong Fact Ledger.
+    eligible_fields:
+    - fact_ids
+    - issue
+    - objective
+    - query
+    boundaries:
+    - Chỉ dùng fact_id có trong ledger và thực sự làm đổi requirement.
+    - Không suy chưa làm hoặc đã làm chỉ từ sự im lặng của dữ kiện.
+    - Không dùng REQUEST, tên chủ thể hoặc số tiền chỉ để tăng khớp từ.
+  reviewer_attention: []
+- pair_id: PDPO_000152
+  source_record_id: pilot_hard_018
+  source_case_id: pilot_hard_018
+  source_sha256: b35608c13d95faed4e79d1a0be7f5e4f8cb7d991623fd51f1541a254ca1530b5
+  split: train
+  difficulty: HARD
+  primary_topic: LAND_USE
+  secondary_domains:
+  - CIVIL
+  - ADMINISTRATIVE
+  input:
+    question: Tháng 7 năm 2025, một hộ đổ đất nâng nền trên đất trồng lúa, đồng thời lấp một phần mương thoát nước do xã quản
+      lý và làm ruộng của hộ bên cạnh bị ngập. Hộ đang xin chuyển phần đất này sang đất ở. Hỏi khả năng chuyển mục đích bị
+      ảnh hưởng thế nào, các hành vi san lấp và sử dụng mương được xử lý ra sao, thiệt hại của hộ liền kề được giải quyết
+      bằng cách nào?
+    fact_ledger:
+    - fact_id: F001
+      category: TIME
+      value: Tháng 7 năm 2025
+      source_quote: Tháng 7 năm 2025
+    - fact_id: F002
+      category: ACTOR
+      value: một hộ
+      source_quote: một hộ
+    - fact_id: F003
+      category: CONDUCT
+      value: một hộ đổ đất nâng nền trên đất trồng lúa
+      source_quote: một hộ đổ đất nâng nền trên đất trồng lúa
+    - fact_id: F004
+      category: CONDUCT
+      value: lấp một phần mương thoát nước do xã quản lý
+      source_quote: lấp một phần mương thoát nước do xã quản lý
+    - fact_id: F005
+      category: CONDUCT
+      value: làm ruộng của hộ bên cạnh bị ngập
+      source_quote: làm ruộng của hộ bên cạnh bị ngập
+    - fact_id: F006
+      category: CONDUCT
+      value: Hộ đang xin chuyển phần đất này sang đất ở
+      source_quote: Hộ đang xin chuyển phần đất này sang đất ở
+    - fact_id: F007
+      category: REQUEST
+      value: Hỏi khả năng chuyển mục đích bị ảnh hưởng thế nào, các hành vi san lấp và sử dụng mương được xử lý ra sao, thiệt
+        hại của hộ liền kề được giải quyết bằng cách nào?
+      source_quote: Hỏi khả năng chuyển mục đích bị ảnh hưởng thế nào, các hành vi san lấp và sử dụng mương được xử lý ra
+        sao, thiệt hại của hộ liền kề được giải quyết bằng cách nào?
+    temporal_context:
+      giao_dich: null
+      vi_pham: "2025-07"
+      van_ban_dich_danh: null
+  chosen_seed:
+    issues:
+    - issue_key: ISSUE_01
+      issue: Ảnh hưởng của việc san lấp đất lúa và lấp mương đến hồ sơ chuyển sang đất ở
+      issue_type: ELIGIBILITY
+      required_evidence:
+      - requirement_key: REQ_01_01
+        target_kind: ELIGIBILITY
+        objective: Điều kiện chuyển mục đích khi đất lúa đã bị nâng nền và mương công bị lấp
+        fact_ids:
+        - F001
+        - F002
+        - F003
+        - F004
+        - F006
+        query: san lấp đất lúa và lấp mương thoát nước do xã quản lý ảnh hưởng điều kiện chuyển phần đất sang đất ở thế nào
+      depends_on_keys: []
+      time_basis: hien_hanh
+    - issue_key: ISSUE_02
+      issue: Xử lý hành vi nâng nền đất lúa và lấp mương thoát nước do xã quản lý
+      issue_type: SANCTION
+      required_evidence:
+      - requirement_key: REQ_02_01
+        target_kind: CONDUCT_CLASSIFICATION
+        objective: Phân loại riêng hành vi san lấp đất trồng lúa và lấn sử dụng mương công
+        fact_ids:
+        - F003
+        - F004
+        - F005
+        query: phân loại hành vi đổ đất nâng nền trên đất lúa và lấp một phần mương thoát nước do xã quản lý
+      - requirement_key: REQ_02_02
+        target_kind: SANCTION_REMEDY
+        objective: Biện pháp phục hồi đất lúa và khơi thông phần mương thoát nước bị lấp
+        fact_ids:
+        - F003
+        - F004
+        - F005
+        query: biện pháp khôi phục đất lúa và mương thoát nước do xã quản lý sau hành vi san lấp gây ngập ruộng liền kề
+      depends_on_keys: []
+      time_basis: vi_pham
+    - issue_key: ISSUE_03
+      issue: Bồi thường thiệt hại ruộng liền kề bị ngập do phần mương thoát nước bị lấp
+      issue_type: DISPUTE
+      required_evidence:
+      - requirement_key: REQ_03_01
+        target_kind: DISPUTE_REMEDY
+        objective: Căn cứ xác định thiệt hại và bồi thường cho hộ có ruộng bị ngập
+        fact_ids:
+        - F003
+        - F004
+        - F005
+        query: bồi thường thiệt hại cho hộ liền kề có ruộng bị ngập do san lấp đất lúa và lấp mương thoát nước
+      depends_on_keys:
+      - ISSUE_02
+      time_basis: hien_hanh
+  mutation_family: QUERY_SEMANTIC_ALIGNMENT
+  mutation_hints:
+    focus: Độ khớp ngữ nghĩa giữa query, objective, target_kind và facts.
+    eligible_fields:
+    - query
+    boundaries:
+    - Query phải giữ quan hệ pháp lý quyết định kết quả.
+    - Không đổi sang mục tiêu dễ tìm nhưng khác requirement.
+    - Không thêm tên riêng, số tiền, Điều hoặc Khoản.
+  reviewer_attention: []
+- pair_id: PDPO_000153
+  source_record_id: scale2_easy_072
+  source_case_id: scale2_easy_072
+  source_sha256: 2d9d870a9fe5542f2e1922e84d35345d8d77a59fd1ed010297334521b588a399
+  split: train
+  difficulty: EASY
+  primary_topic: TRANSACTION
+  secondary_domains:
+  - INHERITANCE
+  input:
+    question: Người được giao quản lý đất thờ cúng muốn cho thuê phần vườn không dùng vào thờ cúng. Hỏi họ có quyền ký hợp
+      đồng thuê phần đất này không?
+    fact_ledger:
+    - fact_id: F001
+      category: ACTOR
+      value: Người được giao quản lý đất thờ cúng
+      source_quote: Người được giao quản lý đất thờ cúng
+    - fact_id: F002
+      category: CONDUCT
+      value: muốn cho thuê phần vườn không dùng vào thờ cúng
+      source_quote: muốn cho thuê phần vườn không dùng vào thờ cúng
+    - fact_id: F003
+      category: REQUEST
+      value: Hỏi họ có quyền ký hợp đồng thuê phần đất này không?
+      source_quote: Hỏi họ có quyền ký hợp đồng thuê phần đất này không?
+    temporal_context:
+      giao_dich: null
+      vi_pham: null
+      van_ban_dich_danh: null
+  chosen_seed:
+    issues:
+    - issue_key: ISSUE_01
+      issue: Cho thuê phần vườn thuộc đất dành cho thờ cúng
+      issue_type: TRANSACTION
+      required_evidence:
+      - requirement_key: REQ_01_01
+        target_kind: ELIGIBILITY
+        objective: Xác định quyền định đoạt của người quản lý di sản thờ cúng
+        fact_ids:
+        - F001
+        - F002
+        query: người quản lý đất thờ cúng có quyền cho thuê phần vườn không sử dụng vào việc thờ cúng không
+      depends_on_keys: []
+      time_basis: giao_dich
+  mutation_family: TERM_TARGET_BOUNDARY
+  mutation_hints:
+    focus: Ranh giới thuật ngữ pháp lý và target_kind gần nghĩa.
+    eligible_fields:
+    - target_kind
+    - objective
+    - query
+    boundaries:
+    - Giữ target_kind, objective và query cùng một mục tiêu quy phạm.
+    - Rejected sau này phải vẫn hợp schema và chỉ sai ranh giới thuật ngữ chính.
+    - Không dùng lỗi chính tả, JSON hỏng hoặc câu vô nghĩa làm tín hiệu ưu tiên.
+  reviewer_attention:
+  - TIME_BASIS_GIAO_DICH_WITHOUT_EXPLICIT_EVENT_DATE
+- pair_id: PDPO_000154
+  source_record_id: pilot_hard_024
+  source_case_id: pilot_hard_024
+  source_sha256: 6e51acb4d07f99936d056188188317d5ae5f349632a68792fa130dc4f58939b6
+  split: train
+  difficulty: HARD
+  primary_topic: SANCTION
+  secondary_domains:
+  - CONSTRUCTION
+  - CIVIL
+  input:
+    question: Tháng 6 năm 2025, một người xây phòng cho thuê trên đất nông nghiệp chưa chuyển mục đích và lấn sang đất bên
+      cạnh. Người thuê đã trả trước sáu tháng. Hỏi vi phạm đất đai và xây dựng bị xử lý thế nào, chủ đất bên cạnh được yêu
+      cầu gì, quyền lợi người thuê được giải quyết ra sao?
+    fact_ledger:
+    - fact_id: F001
+      category: TIME
+      value: Tháng 6 năm 2025
+      source_quote: Tháng 6 năm 2025
+    - fact_id: F002
+      category: ACTOR
+      value: một người
+      source_quote: một người
+    - fact_id: F003
+      category: CONDUCT
+      value: xây phòng cho thuê trên đất nông nghiệp chưa chuyển mục đích
+      source_quote: xây phòng cho thuê trên đất nông nghiệp chưa chuyển mục đích
+    - fact_id: F004
+      category: CONDUCT
+      value: lấn sang đất bên cạnh
+      source_quote: lấn sang đất bên cạnh
+    - fact_id: F005
+      category: ACTOR
+      value: Người thuê
+      source_quote: Người thuê
+    - fact_id: F006
+      category: CONDUCT
+      value: đã trả trước sáu tháng
+      source_quote: đã trả trước sáu tháng
+    - fact_id: F007
+      category: REQUEST
+      value: Hỏi vi phạm đất đai và xây dựng bị xử lý thế nào, chủ đất bên cạnh được yêu cầu gì, quyền lợi người thuê được
+        giải quyết ra sao?
+      source_quote: Hỏi vi phạm đất đai và xây dựng bị xử lý thế nào, chủ đất bên cạnh được yêu cầu gì, quyền lợi người thuê
+        được giải quyết ra sao?
+    temporal_context:
+      giao_dich: null
+      vi_pham: null
+      van_ban_dich_danh: null
+  chosen_seed:
+    issues:
+    - issue_key: ISSUE_01
+      issue: Xử lý phòng cho thuê xây trên đất nông nghiệp và lấn ranh
+      issue_type: SANCTION
+      required_evidence:
+      - requirement_key: REQ_01_01
+        target_kind: SANCTION_REMEDY
+        objective: Xác định xử phạt tháo dỡ và khôi phục hai phần đất
+        fact_ids:
+        - F001
+        - F002
+        - F003
+        - F004
+        query: xây phòng cho thuê trên đất nông nghiệp chưa chuyển mục đích và lấn đất liền kề bị xử phạt tháo dỡ khôi phục
+          thế nào
+      depends_on_keys: []
+      time_basis: vi_pham
+    - issue_key: ISSUE_02
+      issue: Quyền của chủ đất liền kề bị lấn
+      issue_type: RIGHTS_REMEDY
+      required_evidence:
+      - requirement_key: REQ_02_01
+        target_kind: DISPUTE_REMEDY
+        objective: Xác định yêu cầu trả đất tháo dỡ và bồi thường thiệt hại
+        fact_ids:
+        - F002
+        - F003
+        - F004
+        query: chủ đất liền kề được yêu cầu trả đất tháo phần phòng lấn ranh và bồi thường thiệt hại theo thủ tục nào
+      depends_on_keys:
+      - ISSUE_01
+      time_basis: hien_hanh
+    - issue_key: ISSUE_03
+      issue: Hoàn trả tiền thuê đã trả trước khi phòng bị tháo dỡ
+      issue_type: REMEDY
+      required_evidence:
+      - requirement_key: REQ_03_01
+        target_kind: LEGAL_CONSEQUENCE
+        objective: Xác định quyền chấm dứt thuê hoàn tiền và bồi thường
+        fact_ids:
+        - F002
+        - F003
+        - F004
+        - F005
+        - F006
+        query: người thuê phòng xây trái phép được hoàn lại tiền trả trước sáu tháng và yêu cầu bồi thường thế nào khi công
+          trình bị tháo dỡ
+      depends_on_keys:
+      - ISSUE_01
+      - ISSUE_02
+      time_basis: giao_dich
+  mutation_family: CROSS_DOMAIN_BOUNDARY
+  mutation_hints:
+    focus: Ranh giới giữa đất đai và lĩnh vực pháp luật liên đới trong corpus.
+    eligible_fields:
+    - issue
+    - target_kind
+    - objective
+    - query
+    boundaries:
+    - Giữ neo đất đai và chỉ mở sang secondary_domains đã khai báo.
+    - Không thay quan hệ đất đai bằng một quan hệ dân sự hoặc hành chính gần nghĩa.
+    - Không thêm lĩnh vực liên đới chỉ từ tri thức có sẵn của mô hình.
+  reviewer_attention:
+  - TIME_BASIS_GIAO_DICH_WITHOUT_EXPLICIT_EVENT_DATE
+  - TIME_BASIS_VI_PHAM_WITHOUT_EXPLICIT_EVENT_DATE
+  - EXPLICIT_DATE_WITHOUT_UNAMBIGUOUS_EVENT_ROLE
+- pair_id: PDPO_000155
+  source_record_id: scale2_medium_195
+  source_case_id: scale2_medium_195
+  source_sha256: 847ac853b77cdccb99a1d3a187ec9ee103b55ab5dd107f903193e9f472914481
+  split: train
+  difficulty: MEDIUM
+  primary_topic: LAND_USE
+  secondary_domains:
+  - BUSINESS
+  input:
+    question: Hợp tác xã thuê đất nông nghiệp của các thành viên để trồng rau, rồi xây khu đóng gói sản phẩm mua thêm từ nơi
+      khác. Hỏi khu đóng gói còn phục vụ sản xuất tại chỗ hay phải sử dụng đất thương mại, sản xuất phi nông nghiệp?
+    fact_ledger:
+    - fact_id: F001
+      category: ACTOR
+      value: Hợp tác xã
+      source_quote: Hợp tác xã
+    - fact_id: F002
+      category: CONDUCT
+      value: thuê đất nông nghiệp của các thành viên để trồng rau
+      source_quote: thuê đất nông nghiệp của các thành viên để trồng rau
+    - fact_id: F003
+      category: TIME
+      value: rồi
+      source_quote: rồi
+    - fact_id: F004
+      category: CONDUCT
+      value: xây khu đóng gói sản phẩm mua thêm từ nơi khác
+      source_quote: xây khu đóng gói sản phẩm mua thêm từ nơi khác
+    - fact_id: F005
+      category: REQUEST
+      value: Hỏi khu đóng gói còn phục vụ sản xuất tại chỗ hay phải sử dụng đất thương mại, sản xuất phi nông nghiệp?
+      source_quote: Hỏi khu đóng gói còn phục vụ sản xuất tại chỗ hay phải sử dụng đất thương mại, sản xuất phi nông nghiệp?
+    temporal_context:
+      giao_dich: null
+      vi_pham: null
+      van_ban_dich_danh: null
+  chosen_seed:
+    issues:
+    - issue_key: ISSUE_01
+      issue: Mục đích đất của khu đóng gói nông sản mua ngoài
+      issue_type: LEGAL_BASIS
+      required_evidence:
+      - requirement_key: REQ_01_01
+        target_kind: CONDUCT_CLASSIFICATION
+        objective: Phân biệt công trình nông nghiệp và cơ sở sản xuất thương mại
+        fact_ids:
+        - F001
+        - F002
+        - F003
+        - F004
+        query: khu đóng gói trên đất trồng rau có xử lý thêm nông sản mua ngoài còn là công trình phục vụ sản xuất tại chỗ
+          không
+      - requirement_key: REQ_01_02
+        target_kind: AUTHORITY_PROCEDURE
+        objective: Xác định loại đất phải chuyển cho khu đóng gói
+        fact_ids:
+        - F001
+        - F002
+        - F003
+        - F004
+        query: khu đóng gói nông sản của hợp tác xã phải chuyển sang đất thương mại hay đất sản xuất phi nông nghiệp theo
+          công năng nào
+      depends_on_keys: []
+      time_basis: hien_hanh
+  mutation_family: TERM_TARGET_BOUNDARY
+  mutation_hints:
+    focus: Ranh giới thuật ngữ pháp lý và target_kind gần nghĩa.
+    eligible_fields:
+    - target_kind
+    - objective
+    - query
+    boundaries:
+    - Giữ target_kind, objective và query cùng một mục tiêu quy phạm.
+    - Rejected sau này phải vẫn hợp schema và chỉ sai ranh giới thuật ngữ chính.
+    - Không dùng lỗi chính tả, JSON hỏng hoặc câu vô nghĩa làm tín hiệu ưu tiên.
+  reviewer_attention: []
+- pair_id: PDPO_000156
+  source_record_id: scale2_hard_474
+  source_case_id: scale2_hard_474
+  source_sha256: fd75cd93cd79c3c59ed9f24773758749722138b4c12c69ede17667efaa783532
+  split: train
+  difficulty: HARD
+  primary_topic: AUTHORITY_PROCEDURE
+  secondary_domains:
+  - BUSINESS
+  - ADMINISTRATIVE
+  input:
+    question: Tháng 6/2023, tỉnh ủy quyền huyện cho phép chuyển mục đích đất của doanh nghiệp, huyện ký quyết định nhưng nghĩa
+      vụ tài chính do tỉnh xác định; sau đó ủy quyền bị kết luận sai phạm. Hỏi giá trị quyết định đã ban hành, thẩm quyền
+      sửa hoặc thu hồi và hồ sơ doanh nghiệp đang đăng ký được xử lý thế nào?
+    fact_ledger:
+    - fact_id: F001
+      category: TIME
+      value: Tháng 6/2023
+      source_quote: Tháng 6/2023
+    - fact_id: F002
+      category: ACTOR
+      value: tỉnh
+      source_quote: tỉnh
+    - fact_id: F003
+      category: CONDUCT
+      value: ủy quyền huyện cho phép chuyển mục đích đất của doanh nghiệp
+      source_quote: ủy quyền huyện cho phép chuyển mục đích đất của doanh nghiệp
+    - fact_id: F004
+      category: ACTOR
+      value: huyện
+      source_quote: huyện
+    - fact_id: F005
+      category: CONDUCT
+      value: ký quyết định
+      source_quote: ký quyết định
+    - fact_id: F006
+      category: OTHER
+      value: nghĩa vụ tài chính do tỉnh xác định
+      source_quote: nghĩa vụ tài chính do tỉnh xác định
+    - fact_id: F007
+      category: TIME
+      value: sau đó
+      source_quote: sau đó
+    - fact_id: F008
+      category: LEGAL_STATUS
+      value: ủy quyền bị kết luận sai phạm
+      source_quote: ủy quyền bị kết luận sai phạm
+    - fact_id: F009
+      category: REQUEST
+      value: Hỏi giá trị quyết định đã ban hành, thẩm quyền sửa hoặc thu hồi và hồ sơ doanh nghiệp đang đăng ký được xử lý
+        thế nào?
+      source_quote: Hỏi giá trị quyết định đã ban hành, thẩm quyền sửa hoặc thu hồi và hồ sơ doanh nghiệp đang đăng ký được
+        xử lý thế nào?
+    temporal_context:
+      giao_dich: null
+      vi_pham: null
+      van_ban_dich_danh: null
+  chosen_seed:
+    issues:
+    - issue_key: ISSUE_01
+      issue: Giá trị quyết định chuyển mục đích do huyện ký theo ủy quyền sai
+      issue_type: AUTHORITY_PROCEDURE
+      required_evidence:
+      - requirement_key: REQ_01_01
+        target_kind: LEGAL_CONSEQUENCE
+        objective: Xác định quyết định đã ban hành có tiếp tục hiệu lực
+        fact_ids:
+        - F001
+        - F002
+        - F003
+        - F004
+        - F005
+        - F008
+        query: quyết định cho doanh nghiệp chuyển mục đích đất do huyện ký còn hiệu lực thế nào khi việc tỉnh ủy quyền bị
+          kết luận sai phạm
+      depends_on_keys: []
+      time_basis: hien_hanh
+    - issue_key: ISSUE_02
+      issue: Thẩm quyền sửa đổi hoặc thu hồi quyết định đã ban hành
+      issue_type: AUTHORITY_PROCEDURE
+      required_evidence:
+      - requirement_key: REQ_02_01
+        target_kind: AUTHORITY_PROCEDURE
+        objective: Xác định tỉnh hay huyện phải xử lý quyết định sai
+        fact_ids:
+        - F002
+        - F003
+        - F004
+        - F005
+        - F006
+        - F008
+        query: tỉnh hay huyện có thẩm quyền sửa hoặc thu hồi quyết định chuyển mục đích ban hành theo ủy quyền sai và xử lý
+          nghĩa vụ tài chính
+      depends_on_keys:
+      - ISSUE_01
+      time_basis: hien_hanh
+    - issue_key: ISSUE_03
+      issue: Giải quyết hồ sơ đăng ký đang dựa trên quyết định sai thẩm quyền
+      issue_type: REGISTRATION
+      required_evidence:
+      - requirement_key: REQ_03_01
+        target_kind: AUTHORITY_PROCEDURE
+        objective: Xác định tạm dừng hay tiếp tục đăng ký cho doanh nghiệp
+        fact_ids:
+        - F002
+        - F003
+        - F004
+        - F005
+        - F006
+        - F008
+        query: hồ sơ doanh nghiệp đăng ký biến động theo quyết định chuyển mục đích đang bị xem xét thu hồi phải tạm dừng
+          hay tiếp tục giải quyết
+      depends_on_keys:
+      - ISSUE_01
+      - ISSUE_02
+      time_basis: hien_hanh
+  mutation_family: TEMPORAL_VERSION_INTENT
+  mutation_hints:
+    focus: Mốc sự kiện, văn bản được gọi đích danh và time_basis.
+    eligible_fields:
+    - time_basis
+    boundaries:
+    - Chỉ dùng ngày hoặc văn bản xuất hiện rõ trong input.
+    - Không lấy năm trong tên văn bản làm ngày sự kiện.
+    - Không tự suy mốc chuyển tiếp hoặc phiên bản áp dụng.
+  reviewer_attention:
+  - EXPLICIT_DATE_WITHOUT_UNAMBIGUOUS_EVENT_ROLE
+  - SECOND_REVIEW_REQUIRED_FOR_TEMPORAL_MUTATION
+- pair_id: PDPO_000157
+  source_record_id: scale2_hard_090
+  source_case_id: scale2_hard_090
+  source_sha256: 44182c5827f55f505c202480ba13fa8128b891b516d3e04a17af179a17f82e2e
+  split: train
+  difficulty: HARD
+  primary_topic: TRANSACTION
+  secondary_domains:
+  - INHERITANCE
+  - CIVIL
+  input:
+    question: Tháng 6/2025, các thừa kế bán đất chung và thỏa thuận một người nhận toàn bộ tiền để phân chia. Người này mất
+      khả năng thanh toán sau khi nhận tiền, còn người mua chưa được giao đất vì các thừa kế khác giữ. Hỏi nghĩa vụ giao đất
+      của từng người, rủi ro ủy quyền nhận tiền và quyền yêu cầu thực hiện hoặc hủy hợp đồng thế nào?
+    fact_ledger:
+    - fact_id: F001
+      category: TIME
+      value: Tháng 6/2025
+      source_quote: Tháng 6/2025
+    - fact_id: F002
+      category: CONDUCT
+      value: các thừa kế bán đất chung
+      source_quote: các thừa kế bán đất chung
+    - fact_id: F003
+      category: CONDUCT
+      value: thỏa thuận một người nhận toàn bộ tiền để phân chia
+      source_quote: thỏa thuận một người nhận toàn bộ tiền để phân chia
+    - fact_id: F004
+      category: CONDUCT
+      value: người này mất khả năng thanh toán sau khi nhận tiền
+      source_quote: người này mất khả năng thanh toán sau khi nhận tiền
+    - fact_id: F005
+      category: CONDUCT
+      value: người mua chưa được giao đất
+      source_quote: người mua chưa được giao đất
+    - fact_id: F006
+      category: CONDUCT
+      value: các thừa kế khác giữ
+      source_quote: các thừa kế khác giữ
+    - fact_id: F007
+      category: REQUEST
+      value: Hỏi nghĩa vụ giao đất của từng người, rủi ro ủy quyền nhận tiền và quyền yêu cầu thực hiện hoặc hủy hợp đồng
+        thế nào?
+      source_quote: Hỏi nghĩa vụ giao đất của từng người, rủi ro ủy quyền nhận tiền và quyền yêu cầu thực hiện hoặc hủy hợp
+        đồng thế nào?
+    temporal_context:
+      giao_dich: "2025"
+      vi_pham: null
+      van_ban_dich_danh: null
+  chosen_seed:
+    issues:
+    - issue_key: ISSUE_01
+      issue: Nghĩa vụ giao đất của các đồng thừa kế đã cùng ký bán
+      issue_type: TRANSACTION
+      required_evidence:
+      - requirement_key: REQ_01_01
+        target_kind: DEADLINE_OBLIGATION
+        objective: Mỗi bên bán phải phối hợp bàn giao dù tiền do một người nhận
+        fact_ids:
+        - F001
+        - F002
+        - F003
+        - F005
+        - F006
+        query: các đồng thừa kế cùng ký bán đất có phải giao đất cho người mua khi đã ủy quyền một người nhận toàn bộ tiền
+          không
+      depends_on_keys: []
+      time_basis: giao_dich
+    - issue_key: ISSUE_02
+      issue: Rủi ro người được giao nhận tiền mất khả năng thanh toán
+      issue_type: LEGAL_BASIS
+      required_evidence:
+      - requirement_key: REQ_02_01
+        target_kind: LEGAL_CONSEQUENCE
+        objective: Thanh toán đúng người được ủy quyền có hoàn thành nghĩa vụ của người mua
+        fact_ids:
+        - F002
+        - F003
+        - F004
+        - F005
+        query: người mua trả đủ tiền cho đồng thừa kế được ủy quyền nhận có hoàn thành nghĩa vụ khi người đó mất khả năng
+          thanh toán không
+      depends_on_keys:
+      - ISSUE_01
+      time_basis: giao_dich
+    - issue_key: ISSUE_03
+      issue: Yêu cầu giao đất hoặc hủy hợp đồng và hoàn tiền
+      issue_type: RIGHTS_REMEDY
+      required_evidence:
+      - requirement_key: REQ_03_01
+        target_kind: DISPUTE_REMEDY
+        objective: Người mua lựa chọn buộc thực hiện hoặc chấm dứt và yêu cầu bồi thường
+        fact_ids:
+        - F002
+        - F003
+        - F004
+        - F005
+        - F006
+        query: người mua được buộc các đồng thừa kế giao đất hay hủy hợp đồng đòi tiền bồi thường khi họ tiếp tục giữ đất
+      depends_on_keys:
+      - ISSUE_01
+      - ISSUE_02
+      time_basis: hien_hanh
+  mutation_family: TEMPORAL_VERSION_INTENT
+  mutation_hints:
+    focus: Mốc sự kiện, văn bản được gọi đích danh và time_basis.
+    eligible_fields:
+    - time_basis
+    boundaries:
+    - Chỉ dùng ngày hoặc văn bản xuất hiện rõ trong input.
+    - Không lấy năm trong tên văn bản làm ngày sự kiện.
+    - Không tự suy mốc chuyển tiếp hoặc phiên bản áp dụng.
+  reviewer_attention:
+  - SECOND_REVIEW_REQUIRED_FOR_TEMPORAL_MUTATION
+- pair_id: PDPO_000158
+  source_record_id: scale2_hard_434
+  source_case_id: scale2_hard_434
+  source_sha256: 2dd6db3042befc13099f7be83d3fd219435b2b9263e223ebebff01bd6174f22e
+  split: train
+  difficulty: HARD
+  primary_topic: ELIGIBILITY
+  secondary_domains:
+  - ADMINISTRATIVE
+  - INHERITANCE
+  input:
+    question: Tháng 9/2022, người Việt Nam định cư ở nước ngoài thừa kế đất ở, đất lúa và phần quyền trong đất rừng; người
+      này muốn đứng tên tất cả rồi tặng lại cho em. Hỏi đủ điều kiện nhận, đứng tên, chuyển giao từng loại đất và nghĩa vụ
+      nếu không trực tiếp sử dụng thế nào?
+    fact_ledger:
+    - fact_id: F001
+      category: TIME
+      value: Tháng 9/2022
+      source_quote: Tháng 9/2022
+    - fact_id: F002
+      category: ACTOR
+      value: người Việt Nam định cư ở nước ngoài
+      source_quote: người Việt Nam định cư ở nước ngoài
+    - fact_id: F003
+      category: CONDUCT
+      value: thừa kế đất ở
+      source_quote: thừa kế đất ở
+    - fact_id: F004
+      category: CONDUCT
+      value: muốn đứng tên tất cả rồi tặng lại cho em
+      source_quote: muốn đứng tên tất cả rồi tặng lại cho em
+    - fact_id: F005
+      category: REQUEST
+      value: Hỏi đủ điều kiện nhận, đứng tên, chuyển giao từng loại đất và nghĩa vụ nếu không trực tiếp sử dụng thế nào?
+      source_quote: Hỏi đủ điều kiện nhận, đứng tên, chuyển giao từng loại đất và nghĩa vụ nếu không trực tiếp sử dụng thế
+        nào?
+    temporal_context:
+      giao_dich: "2022"
+      vi_pham: null
+      van_ban_dich_danh: null
+  chosen_seed:
+    issues:
+    - issue_key: ISSUE_01
+      issue: Điều kiện nhận và đứng tên đất thừa kế của người ở nước ngoài
+      issue_type: ELIGIBILITY
+      required_evidence:
+      - requirement_key: REQ_01_01
+        target_kind: ELIGIBILITY
+        objective: Xác định khả năng đứng tên từng loại đất được thừa kế
+        fact_ids:
+        - F001
+        - F002
+        - F003
+        - F004
+        query: người Việt Nam định cư ở nước ngoài được nhận và đứng tên thừa kế đất ở đất lúa và phần quyền đất rừng trong
+          phạm vi nào
+      depends_on_keys: []
+      time_basis: hien_hanh
+    - issue_key: ISSUE_02
+      issue: Tặng lại từng loại đất thừa kế cho người em
+      issue_type: TRANSACTION
+      required_evidence:
+      - requirement_key: REQ_02_01
+        target_kind: SUBJECT_OBJECT_CONDITIONS
+        objective: Xác định loại đất được đứng tên hoặc chỉ chuyển giá trị
+        fact_ids:
+        - F002
+        - F003
+        - F004
+        query: người thừa kế định cư ở nước ngoài được tặng lại đất ở đất lúa và quyền đất rừng cho người em theo điều kiện
+          nào
+      depends_on_keys:
+      - ISSUE_01
+      time_basis: giao_dich
+    - issue_key: ISSUE_03
+      issue: Nghĩa vụ khi không trực tiếp sử dụng đất nông nghiệp thừa kế
+      issue_type: LEGAL_BASIS
+      required_evidence:
+      - requirement_key: REQ_03_01
+        target_kind: LEGAL_CONSEQUENCE
+        objective: Xác định thời hạn chuyển nhượng hoặc xử lý phần quyền
+        fact_ids:
+        - F002
+        - F003
+        - F004
+        query: người ở nước ngoài không trực tiếp sử dụng đất lúa và đất rừng thừa kế phải chuyển giao hoặc xử lý quyền trong
+          thời hạn nào
+      depends_on_keys:
+      - ISSUE_01
+      - ISSUE_02
+      time_basis: hien_hanh
+  mutation_family: TERM_TARGET_BOUNDARY
+  mutation_hints:
+    focus: Ranh giới thuật ngữ pháp lý và target_kind gần nghĩa.
+    eligible_fields:
+    - target_kind
+    - objective
+    - query
+    boundaries:
+    - Giữ target_kind, objective và query cùng một mục tiêu quy phạm.
+    - Rejected sau này phải vẫn hợp schema và chỉ sai ranh giới thuật ngữ chính.
+    - Không dùng lỗi chính tả, JSON hỏng hoặc câu vô nghĩa làm tín hiệu ưu tiên.
+  reviewer_attention: []
+- pair_id: PDPO_000159
+  source_record_id: scale2_easy_095
+  source_case_id: scale2_easy_095
+  source_sha256: 325cf3100b27459825742459e800c427935f27d7cb8dbd0c42bff3b94ab4f595
+  split: train
+  difficulty: EASY
+  primary_topic: REGISTRATION
+  secondary_domains: []
+  input:
+    question: Chủ đất đổi số định danh cá nhân nhưng họ tên và ngày sinh không thay đổi. Hỏi có bắt buộc cấp đổi giấy chứng
+      nhận hay chỉ cập nhật dữ liệu?
+    fact_ledger:
+    - fact_id: F001
+      category: ACTOR
+      value: Chủ đất
+      source_quote: Chủ đất
+    - fact_id: F002
+      category: CONDUCT
+      value: đổi số định danh cá nhân
+      source_quote: đổi số định danh cá nhân
+    - fact_id: F003
+      category: LEGAL_STATUS
+      value: họ tên và ngày sinh không thay đổi
+      source_quote: họ tên và ngày sinh không thay đổi
+    - fact_id: F004
+      category: REQUEST
+      value: Hỏi có bắt buộc cấp đổi giấy chứng nhận hay chỉ cập nhật dữ liệu?
+      source_quote: Hỏi có bắt buộc cấp đổi giấy chứng nhận hay chỉ cập nhật dữ liệu?
+    temporal_context:
+      giao_dich: null
+      vi_pham: null
+      van_ban_dich_danh: null
+  chosen_seed:
+    issues:
+    - issue_key: ISSUE_01
+      issue: Cập nhật số định danh cá nhân của người sử dụng đất
+      issue_type: REGISTRATION
+      required_evidence:
+      - requirement_key: REQ_01_01
+        target_kind: REGISTRATION_COMPLETION
+        objective: Xác định cấp đổi giấy hay chỉ cập nhật dữ liệu định danh
+        fact_ids:
+        - F001
+        - F002
+        - F003
+        query: đổi số định danh cá nhân nhưng họ tên ngày sinh không đổi có bắt buộc cấp đổi giấy chứng nhận quyền sử dụng
+          đất không
+      depends_on_keys: []
+      time_basis: hien_hanh
+  mutation_family: LEGAL_RELATION_FRAMING
+  mutation_hints:
+    focus: Chủ thể, hành vi, đối tượng, chiều tác động và trạng thái hoàn thành.
+    eligible_fields:
+    - issue
+    - objective
+    - query
+    boundaries:
+    - Không đảo chủ thể hoặc chiều tác động.
+    - Không biến ý định, yêu cầu hoặc hành vi đang diễn ra thành kết quả đã hoàn tất.
+    - Không đóng khung sẵn kết luận pháp lý trong issue.
+  reviewer_attention: []
+- pair_id: PDPO_000160
+  source_record_id: scale_easy_142
+  source_case_id: scale_easy_142
+  source_sha256: 545260af86b248c1068449f1877e92751c82d5256965e358b1eb35804d066998
+  split: train
+  difficulty: EASY
+  primary_topic: SANCTION
+  secondary_domains: []
+  input:
+    question: Tháng 3 năm 2025, một hộ dựng hàng rào trên phần đất chưa được Nhà nước giao hoặc cho thuê. Hỏi hành vi chiếm
+      đất và biện pháp tháo dỡ được xác định ra sao?
+    fact_ledger:
+    - fact_id: F001
+      category: TIME
+      value: Tháng 3 năm 2025
+      source_quote: Tháng 3 năm 2025
+    - fact_id: F002
+      category: ACTOR
+      value: một hộ
+      source_quote: một hộ
+    - fact_id: F003
+      category: CONDUCT
+      value: dựng hàng rào trên phần đất chưa được Nhà nước giao hoặc cho thuê
+      source_quote: dựng hàng rào trên phần đất chưa được Nhà nước giao hoặc cho thuê
+    - fact_id: F004
+      category: LEGAL_STATUS
+      value: chưa được Nhà nước giao hoặc cho thuê
+      source_quote: chưa được Nhà nước giao hoặc cho thuê
+    - fact_id: F005
+      category: REQUEST
+      value: Hỏi hành vi chiếm đất và biện pháp tháo dỡ được xác định ra sao?
+      source_quote: Hỏi hành vi chiếm đất và biện pháp tháo dỡ được xác định ra sao?
+    temporal_context:
+      giao_dich: null
+      vi_pham: "2025-03"
+      van_ban_dich_danh: null
+  chosen_seed:
+    issues:
+    - issue_key: ISSUE_01
+      issue: Xử lý hành vi dựng hàng rào trên đất chưa được Nhà nước giao hoặc cho thuê
+      issue_type: SANCTION
+      required_evidence:
+      - requirement_key: REQ_01_01
+        target_kind: CONDUCT_CLASSIFICATION
+        objective: Phân loại dựng hàng rào trên phần đất chưa được Nhà nước giao hoặc cho thuê
+        fact_ids:
+        - F001
+        - F002
+        - F003
+        - F004
+        query: dựng hàng rào trên đất chưa được Nhà nước giao hoặc cho thuê được xác định là hành vi chiếm đất thế nào
+      - requirement_key: REQ_01_02
+        target_kind: SANCTION_REMEDY
+        objective: Biện pháp tháo dỡ hàng rào và khôi phục phần đất bị chiếm
+        fact_ids:
+        - F003
+        - F004
+        query: biện pháp tháo dỡ hàng rào và khôi phục đất chưa được giao hoặc cho thuê bị chiếm
+      depends_on_keys: []
+      time_basis: vi_pham
+  mutation_family: FACT_STATUS_GROUNDING
+  mutation_hints:
+    focus: Liên kết fact_ids và trạng thái chỉ được khẳng định trong Fact Ledger.
+    eligible_fields:
+    - fact_ids
+    - issue
+    - objective
+    - query
+    boundaries:
+    - Chỉ dùng fact_id có trong ledger và thực sự làm đổi requirement.
+    - Không suy chưa làm hoặc đã làm chỉ từ sự im lặng của dữ kiện.
+    - Không dùng REQUEST, tên chủ thể hoặc số tiền chỉ để tăng khớp từ.
+  reviewer_attention: []
+- pair_id: PDPO_000161
+  source_record_id: pilot_hard_001
+  source_case_id: pilot_hard_001
+  source_sha256: 26b5255937cc0df7d062b90a3a1ae80cf7e79848770e4e6cb4559405ebcd4bbf
+  split: train
+  difficulty: HARD
+  primary_topic: TRANSACTION
+  secondary_domains:
+  - MARRIAGE_FAMILY
+  - INHERITANCE
+  - HOUSING
+  - CIVIL
+  input:
+    question: Một người nhận thừa kế riêng quyền sử dụng đất năm 2018 rồi kết hôn năm 2021. Hai vợ chồng phá căn nhà cũ và
+      dùng tiền chung xây một căn nhà mới trên đất. Năm 2025, người đứng tên giấy chứng nhận tự chuyển nhượng cả đất và nhà,
+      bên mua đã nhận nhà nhưng chưa sang tên. Hỏi quyền đối với đất và căn nhà được xác định thế nào, giao dịch có ràng buộc
+      người còn lại không và bên mua có thể yêu cầu biện pháp gì?
+    fact_ledger:
+    - fact_id: F001
+      category: ACTOR
+      value: Một người
+      source_quote: Một người
+    - fact_id: F002
+      category: CONDUCT
+      value: Một người nhận thừa kế riêng quyền sử dụng đất năm 2018
+      source_quote: Một người nhận thừa kế riêng quyền sử dụng đất năm 2018
+    - fact_id: F003
+      category: TIME
+      value: năm 2018
+      source_quote: năm 2018
+    - fact_id: F004
+      category: CONDUCT
+      value: kết hôn năm 2021
+      source_quote: kết hôn năm 2021
+    - fact_id: F005
+      category: TIME
+      value: năm 2021
+      source_quote: năm 2021
+    - fact_id: F006
+      category: ACTOR
+      value: Hai vợ chồng
+      source_quote: Hai vợ chồng
+    - fact_id: F007
+      category: CONDUCT
+      value: phá căn nhà cũ
+      source_quote: phá căn nhà cũ
+    - fact_id: F008
+      category: CONDUCT
+      value: dùng tiền chung xây một căn nhà mới trên đất
+      source_quote: dùng tiền chung xây một căn nhà mới trên đất
+    - fact_id: F009
+      category: TIME
+      value: Năm 2025
+      source_quote: Năm 2025
+    - fact_id: F010
+      category: ACTOR
+      value: người đứng tên giấy chứng nhận
+      source_quote: người đứng tên giấy chứng nhận
+    - fact_id: F011
+      category: CONDUCT
+      value: tự chuyển nhượng cả đất và nhà
+      source_quote: tự chuyển nhượng cả đất và nhà
+    - fact_id: F012
+      category: CONDUCT
+      value: bên mua đã nhận nhà
+      source_quote: bên mua đã nhận nhà
+    - fact_id: F013
+      category: LEGAL_STATUS
+      value: chưa sang tên
+      source_quote: chưa sang tên
+    - fact_id: F014
+      category: REQUEST
+      value: Hỏi quyền đối với đất và căn nhà được xác định thế nào, giao dịch có ràng buộc người còn lại không và bên mua
+        có thể yêu cầu biện pháp gì?
+      source_quote: Hỏi quyền đối với đất và căn nhà được xác định thế nào, giao dịch có ràng buộc người còn lại không và
+        bên mua có thể yêu cầu biện pháp gì?
+    temporal_context:
+      giao_dich: null
+      vi_pham: null
+      van_ban_dich_danh: null
+  chosen_seed:
+    issues:
+    - issue_key: ISSUE_01
+      issue: Xác định quyền đối với đất thừa kế riêng và căn nhà xây mới bằng tiền chung
+      issue_type: DISPUTE
+      required_evidence:
+      - requirement_key: REQ_01_01
+        target_kind: LEGAL_BASIS
+        objective: Phân loại đất riêng và quyền sở hữu nhà mới do vợ chồng cùng đầu tư trong hôn nhân
+        fact_ids:
+        - F002
+        - F003
+        - F004
+        - F006
+        - F007
+        - F008
+        query: đất thừa kế riêng trước hôn nhân và nhà mới xây bằng tiền chung trên đất được xác định quyền sở hữu thế nào
+      depends_on_keys: []
+      time_basis: giao_dich
+    - issue_key: ISSUE_02
+      issue: Hiệu lực chuyển nhượng cả đất và nhà khi chỉ người đứng tên ký
+      issue_type: TRANSACTION
+      required_evidence:
+      - requirement_key: REQ_02_01
+        target_kind: LEGAL_CONSEQUENCE
+        objective: Phạm vi giao dịch ràng buộc người còn lại đối với nhà thuộc tài sản chung
+        fact_ids:
+        - F006
+        - F008
+        - F009
+        - F010
+        - F011
+        - F012
+        query: người có đất riêng tự bán cả đất và nhà xây bằng tiền chung có ràng buộc quyền của người vợ hoặc chồng còn
+          lại không
+      depends_on_keys:
+      - ISSUE_01
+      time_basis: giao_dich
+    - issue_key: ISSUE_03
+      issue: Biện pháp bảo vệ bên mua đã nhận nhà nhưng chưa đăng ký sang tên
+      issue_type: REMEDY
+      required_evidence:
+      - requirement_key: REQ_03_01
+        target_kind: DISPUTE_REMEDY
+        objective: Yêu cầu tiếp tục đăng ký hoàn trả tiền hoặc bồi thường theo phần giao dịch có hiệu lực
+        fact_ids:
+        - F008
+        - F009
+        - F010
+        - F011
+        - F012
+        - F013
+        query: bên mua đã nhận nhà chưa sang tên được yêu cầu tiếp tục chuyển quyền hay hoàn trả bồi thường khi giao dịch
+          thiếu đồng ý
+      depends_on_keys:
+      - ISSUE_01
+      - ISSUE_02
+      time_basis: hien_hanh
+  mutation_family: CROSS_DOMAIN_BOUNDARY
+  mutation_hints:
+    focus: Ranh giới giữa đất đai và lĩnh vực pháp luật liên đới trong corpus.
+    eligible_fields:
+    - issue
+    - target_kind
+    - objective
+    - query
+    boundaries:
+    - Giữ neo đất đai và chỉ mở sang secondary_domains đã khai báo.
+    - Không thay quan hệ đất đai bằng một quan hệ dân sự hoặc hành chính gần nghĩa.
+    - Không thêm lĩnh vực liên đới chỉ từ tri thức có sẵn của mô hình.
+  reviewer_attention:
+  - TIME_BASIS_GIAO_DICH_WITHOUT_EXPLICIT_EVENT_DATE
+  - MULTIPLE_EXPLICIT_DATES_REVIEW_EVENT_ROLE
+- pair_id: PDPO_000162
+  source_record_id: scale_medium_104
+  source_case_id: scale_medium_104
+  source_sha256: d4c14856d8451a6dae3220381730695bd7afefad360875d81f9e97b97056ae3c
+  split: train
+  difficulty: MEDIUM
+  primary_topic: LAND_USE
+  secondary_domains: []
+  input:
+    question: Hộ thuê đất công ích của xã để trồng hoa theo hợp đồng ba năm. Khi còn sáu tháng, hộ xây nhà kính kiên cố và
+      đề nghị được tiếp tục thuê để thu hồi vốn. Hỏi phạm vi đầu tư được phép và quyền ưu tiên thuê tiếp của hộ được xác định
+      ra sao?
+    fact_ledger:
+    - fact_id: F001
+      category: ACTOR
+      value: Hộ thuê đất công ích của xã
+      source_quote: Hộ thuê đất công ích của xã
+    - fact_id: F002
+      category: CONDUCT
+      value: để trồng hoa
+      source_quote: để trồng hoa
+    - fact_id: F003
+      category: TIME
+      value: theo hợp đồng ba năm
+      source_quote: theo hợp đồng ba năm
+    - fact_id: F004
+      category: TIME
+      value: Khi còn sáu tháng
+      source_quote: Khi còn sáu tháng
+    - fact_id: F005
+      category: CONDUCT
+      value: xây nhà kính kiên cố
+      source_quote: xây nhà kính kiên cố
+    - fact_id: F006
+      category: CONDUCT
+      value: đề nghị được tiếp tục thuê
+      source_quote: đề nghị được tiếp tục thuê
+    - fact_id: F007
+      category: REQUEST
+      value: Hỏi phạm vi đầu tư được phép và quyền ưu tiên thuê tiếp của hộ được xác định ra sao?
+      source_quote: Hỏi phạm vi đầu tư được phép và quyền ưu tiên thuê tiếp của hộ được xác định ra sao?
+    temporal_context:
+      giao_dich: null
+      vi_pham: null
+      van_ban_dich_danh: null
+  chosen_seed:
+    issues:
+    - issue_key: ISSUE_01
+      issue: Đầu tư nhà kính kiên cố trên đất công ích thuê ngắn hạn để trồng hoa
+      issue_type: ELIGIBILITY
+      required_evidence:
+      - requirement_key: REQ_01_01
+        target_kind: SUBJECT_OBJECT_CONDITIONS
+        objective: Phạm vi công trình được đầu tư theo mục đích và thời hạn thuê đất công ích
+        fact_ids:
+        - F001
+        - F002
+        - F003
+        - F004
+        - F005
+        query: hộ thuê đất công ích ba năm để trồng hoa có được xây nhà kính kiên cố khi hợp đồng chỉ còn sáu tháng không
+      - requirement_key: REQ_01_02
+        target_kind: LEGAL_CONSEQUENCE
+        objective: Việc đầu tư công trình có tạo quyền ưu tiên tiếp tục thuê để thu hồi vốn không
+        fact_ids:
+        - F001
+        - F003
+        - F004
+        - F005
+        - F006
+        query: người thuê đất công ích tự đầu tư nhà kính có được ưu tiên gia hạn thuê để thu hồi vốn không
+      depends_on_keys: []
+      time_basis: giao_dich
+  mutation_family: COVERAGE_DECOMPOSITION
+  mutation_hints:
+    focus: Bao phủ các kết quả được hỏi và nhóm issue/requirement đúng cấp.
+    eligible_fields:
+    - issues
+    - required_evidence
+    boundaries:
+    - Không bỏ một kết quả độc lập người dùng hỏi rõ.
+    - Không tạo issue riêng cho từng diễn biến nền.
+    - Không ưu tiên mục tiêu chung chung khi ngân sách hai query bị giới hạn.
+  reviewer_attention:
+  - TIME_BASIS_GIAO_DICH_WITHOUT_EXPLICIT_EVENT_DATE
+- pair_id: PDPO_000163
+  source_record_id: scale2_hard_266
+  source_case_id: scale2_hard_266
+  source_sha256: edbac6a7efec059f58eaad1520d35e8084a2c76cad1687e426ea8f04854cfb18
+  split: train
+  difficulty: HARD
+  primary_topic: SANCTION
+  secondary_domains:
+  - FORESTRY
+  - ENVIRONMENT
+  input:
+    question: Chủ rừng cho đào hồ chữa cháy theo phương án, nhà thầu mở rộng hồ để lấy đất bán và làm đục nguồn nước. Chủ
+      rừng nhận lại hồ lớn hơn nhưng không nhận tiền bán đất. Hỏi trách nhiệm của chủ, nhà thầu đối với khai thác, hủy hoại,
+      ô nhiễm; khoản lợi và biện pháp phục hồi công năng chữa cháy thế nào?
+    fact_ledger:
+    - fact_id: F001
+      category: ACTOR
+      value: Chủ rừng
+      source_quote: Chủ rừng
+    - fact_id: F002
+      category: CONDUCT
+      value: cho đào hồ chữa cháy theo phương án
+      source_quote: cho đào hồ chữa cháy theo phương án
+    - fact_id: F003
+      category: ACTOR
+      value: nhà thầu
+      source_quote: nhà thầu
+    - fact_id: F004
+      category: CONDUCT
+      value: mở rộng hồ để lấy đất bán
+      source_quote: mở rộng hồ để lấy đất bán
+    - fact_id: F005
+      category: CONDUCT
+      value: làm đục nguồn nước
+      source_quote: làm đục nguồn nước
+    - fact_id: F006
+      category: CONDUCT
+      value: Chủ rừng nhận lại hồ lớn hơn
+      source_quote: Chủ rừng nhận lại hồ lớn hơn
+    - fact_id: F007
+      category: LEGAL_STATUS
+      value: không nhận tiền bán đất
+      source_quote: không nhận tiền bán đất
+    - fact_id: F008
+      category: REQUEST
+      value: Hỏi trách nhiệm của chủ, nhà thầu đối với khai thác, hủy hoại, ô nhiễm; khoản lợi và biện pháp phục hồi công
+        năng chữa cháy thế nào?
+      source_quote: Hỏi trách nhiệm của chủ, nhà thầu đối với khai thác, hủy hoại, ô nhiễm; khoản lợi và biện pháp phục hồi
+        công năng chữa cháy thế nào?
+    temporal_context:
+      giao_dich: null
+      vi_pham: null
+      van_ban_dich_danh: null
+  chosen_seed:
+    issues:
+    - issue_key: ISSUE_01
+      issue: Vi phạm do nhà thầu mở rộng hồ chữa cháy để bán đất
+      issue_type: SANCTION
+      required_evidence:
+      - requirement_key: REQ_01_01
+        target_kind: CONDUCT_CLASSIFICATION
+        objective: Phân loại khai thác đất hủy hoại rừng và ô nhiễm nước
+        fact_ids:
+        - F001
+        - F002
+        - F003
+        - F004
+        - F005
+        query: nhà thầu tự mở rộng hồ chữa cháy lấy đất bán và làm đục nước chịu các vi phạm khai thác hủy hoại ô nhiễm nào
+      depends_on_keys: []
+      time_basis: vi_pham
+    - issue_key: ISSUE_02
+      issue: Trách nhiệm chủ rừng nhận lại hồ vượt phương án
+      issue_type: SANCTION
+      required_evidence:
+      - requirement_key: REQ_02_01
+        target_kind: LEGAL_CONSEQUENCE
+        objective: Xác định chấp nhận kết quả có làm phát sinh trách nhiệm
+        fact_ids:
+        - F001
+        - F002
+        - F003
+        - F004
+        - F006
+        - F007
+        query: chủ rừng nhận hồ lớn hơn nhưng không hưởng tiền bán đất có cùng chịu trách nhiệm vì chấp nhận kết quả vượt
+          phương án không
+      depends_on_keys:
+      - ISSUE_01
+      time_basis: vi_pham
+    - issue_key: ISSUE_03
+      issue: Thu hồi khoản lợi và phục hồi công năng hồ chữa cháy
+      issue_type: REMEDY
+      required_evidence:
+      - requirement_key: REQ_03_01
+        target_kind: SANCTION_REMEDY
+        objective: Xác định xử lý lợi ích và khôi phục chất lượng hồ
+        fact_ids:
+        - F001
+        - F002
+        - F003
+        - F004
+        - F005
+        - F006
+        query: khoản lợi bán đất bị thu hồi và hồ phải phục hồi kích thước chất lượng nước công năng chữa cháy theo phương
+          án nào
+      depends_on_keys:
+      - ISSUE_01
+      - ISSUE_02
+      time_basis: hien_hanh
+  mutation_family: QUERY_SEMANTIC_ALIGNMENT
+  mutation_hints:
+    focus: Độ khớp ngữ nghĩa giữa query, objective, target_kind và facts.
+    eligible_fields:
+    - query
+    boundaries:
+    - Query phải giữ quan hệ pháp lý quyết định kết quả.
+    - Không đổi sang mục tiêu dễ tìm nhưng khác requirement.
+    - Không thêm tên riêng, số tiền, Điều hoặc Khoản.
+  reviewer_attention:
+  - TIME_BASIS_VI_PHAM_WITHOUT_EXPLICIT_EVENT_DATE
+- pair_id: PDPO_000164
+  source_record_id: scale2_hard_390
+  source_case_id: scale2_hard_390
+  source_sha256: b24c613438603bff380da6ccfa5c849c156468ca8474904be126c456831e9024
+  split: train
+  difficulty: HARD
+  primary_topic: RECOVERY_COMPENSATION
+  secondary_domains:
+  - BUSINESS
+  - ADMINISTRATIVE
+  input:
+    question: Tháng 3/2024, doanh nghiệp nhận chuyển nhượng dự án trước ngày thông báo thu hồi một phần đất, nhưng thủ tục
+      chuyển dự án hoàn tất sau thông báo. Bên cũ đứng tên phương án, bên mới đã trả giá mua gồm cả giá trị đất. Hỏi chủ thể
+      nhận bồi thường, điều chỉnh giá giao dịch và quyền khiếu nại phương án thuộc ai?
+    fact_ledger:
+    - fact_id: F001
+      category: TIME
+      value: Tháng 3/2024
+      source_quote: Tháng 3/2024
+    - fact_id: F002
+      category: ACTOR
+      value: doanh nghiệp
+      source_quote: doanh nghiệp
+    - fact_id: F003
+      category: CONDUCT
+      value: nhận chuyển nhượng dự án trước ngày thông báo thu hồi một phần đất
+      source_quote: nhận chuyển nhượng dự án trước ngày thông báo thu hồi một phần đất
+    - fact_id: F004
+      category: LEGAL_STATUS
+      value: thủ tục chuyển dự án hoàn tất sau thông báo
+      source_quote: thủ tục chuyển dự án hoàn tất sau thông báo
+    - fact_id: F005
+      category: ACTOR
+      value: Bên cũ
+      source_quote: Bên cũ
+    - fact_id: F006
+      category: LEGAL_STATUS
+      value: đứng tên phương án
+      source_quote: đứng tên phương án
+    - fact_id: F007
+      category: ACTOR
+      value: bên mới
+      source_quote: bên mới
+    - fact_id: F008
+      category: CONDUCT
+      value: đã trả giá mua gồm cả giá trị đất
+      source_quote: đã trả giá mua gồm cả giá trị đất
+    - fact_id: F009
+      category: REQUEST
+      value: Hỏi chủ thể nhận bồi thường, điều chỉnh giá giao dịch và quyền khiếu nại phương án thuộc ai?
+      source_quote: Hỏi chủ thể nhận bồi thường, điều chỉnh giá giao dịch và quyền khiếu nại phương án thuộc ai?
+    temporal_context:
+      giao_dich: "2024"
+      vi_pham: null
+      van_ban_dich_danh: null
+  chosen_seed:
+    issues:
+    - issue_key: ISSUE_01
+      issue: Chủ thể nhận bồi thường khi chuyển dự án đang hoàn tất
+      issue_type: DISPUTE
+      required_evidence:
+      - requirement_key: REQ_01_01
+        target_kind: SUBJECT_OBJECT_CONDITIONS
+        objective: Xác định quyền theo thời điểm thông báo và hoàn tất chuyển dự án
+        fact_ids:
+        - F001
+        - F002
+        - F003
+        - F004
+        - F005
+        - F006
+        query: dự án chuyển nhượng trước thông báo thu hồi nhưng hoàn tất thủ tục sau thông báo thì bên cũ hay bên mới nhận
+          bồi thường đất
+      depends_on_keys: []
+      time_basis: hien_hanh
+    - issue_key: ISSUE_02
+      issue: Điều chỉnh giá chuyển nhượng đã gồm giá trị đất
+      issue_type: TRANSACTION
+      required_evidence:
+      - requirement_key: REQ_02_01
+        target_kind: DISPUTE_REMEDY
+        objective: Xác định hoàn trả phần giá tương ứng khoản bồi thường
+        fact_ids:
+        - F003
+        - F004
+        - F005
+        - F006
+        - F007
+        - F008
+        query: giá mua dự án gồm giá trị đất được điều chỉnh thế nào nếu tiền bồi thường thu hồi trả cho bên chuyển nhượng
+          cũ
+      depends_on_keys:
+      - ISSUE_01
+      time_basis: giao_dich
+    - issue_key: ISSUE_03
+      issue: Quyền khiếu nại phương án bồi thường của bên nhận dự án
+      issue_type: RIGHTS_REMEDY
+      required_evidence:
+      - requirement_key: REQ_03_01
+        target_kind: AUTHORITY_PROCEDURE
+        objective: Xác định bên có quyền khiếu nại và yêu cầu sửa phương án
+        fact_ids:
+        - F003
+        - F004
+        - F005
+        - F006
+        - F007
+        - F008
+        query: bên nhận dự án đã thanh toán nhưng chưa đứng tên phương án có quyền khiếu nại quyết định bồi thường hay phải
+          thông qua bên cũ
+      depends_on_keys:
+      - ISSUE_01
+      - ISSUE_02
+      time_basis: hien_hanh
+  mutation_family: TEMPORAL_VERSION_INTENT
+  mutation_hints:
+    focus: Mốc sự kiện, văn bản được gọi đích danh và time_basis.
+    eligible_fields:
+    - time_basis
+    boundaries:
+    - Chỉ dùng ngày hoặc văn bản xuất hiện rõ trong input.
+    - Không lấy năm trong tên văn bản làm ngày sự kiện.
+    - Không tự suy mốc chuyển tiếp hoặc phiên bản áp dụng.
+  reviewer_attention:
+  - SECOND_REVIEW_REQUIRED_FOR_TEMPORAL_MUTATION
+- pair_id: PDPO_000165
+  source_record_id: scale2_medium_349
+  source_case_id: scale2_medium_349
+  source_sha256: 47abf30a64aa94dfb0f738566cb244b4a1bfeca51e0827d04da60681b0c21311
+  split: train
+  difficulty: MEDIUM
+  primary_topic: DISPUTE
+  secondary_domains:
+  - ADMINISTRATIVE
+  input:
+    question: Hai hộ cùng có giấy chứng nhận hợp lệ cho phần diện tích chồng lấn, giấy của hộ sau dựa trên bản đo mới. Cơ
+      quan cấp giấy từ chối tự thu hồi vì có tranh chấp. Hỏi tòa án xác định quyền trước hay xem xét tính hợp pháp của từng
+      giấy trước?
+    fact_ledger:
+    - fact_id: F001
+      category: ACTOR
+      value: Hai hộ
+      source_quote: Hai hộ
+    - fact_id: F002
+      category: LEGAL_STATUS
+      value: cùng có giấy chứng nhận hợp lệ cho phần diện tích chồng lấn
+      source_quote: cùng có giấy chứng nhận hợp lệ cho phần diện tích chồng lấn
+    - fact_id: F003
+      category: OTHER
+      value: giấy của hộ sau dựa trên bản đo mới
+      source_quote: giấy của hộ sau dựa trên bản đo mới
+    - fact_id: F004
+      category: ACTOR
+      value: Cơ quan cấp giấy
+      source_quote: Cơ quan cấp giấy
+    - fact_id: F005
+      category: CONDUCT
+      value: từ chối tự thu hồi
+      source_quote: từ chối tự thu hồi
+    - fact_id: F006
+      category: OTHER
+      value: vì có tranh chấp
+      source_quote: vì có tranh chấp
+    - fact_id: F007
+      category: REQUEST
+      value: Hỏi tòa án xác định quyền trước hay xem xét tính hợp pháp của từng giấy trước?
+      source_quote: Hỏi tòa án xác định quyền trước hay xem xét tính hợp pháp của từng giấy trước?
+    temporal_context:
+      giao_dich: null
+      vi_pham: null
+      van_ban_dich_danh: null
+  chosen_seed:
+    issues:
+    - issue_key: ISSUE_01
+      issue: Trình tự giải quyết hai giấy chứng nhận chồng lấn
+      issue_type: DISPUTE
+      required_evidence:
+      - requirement_key: REQ_01_01
+        target_kind: AUTHORITY_PROCEDURE
+        objective: Xác định quan hệ giữa tranh chấp quyền và tính hợp pháp giấy
+        fact_ids:
+        - F001
+        - F002
+        - F003
+        - F004
+        - F005
+        - F006
+        query: tranh chấp hai giấy chứng nhận chồng lấn cần xác định người có quyền sử dụng đất hay tính hợp pháp từng giấy
+          trước
+      - requirement_key: REQ_01_02
+        target_kind: DISPUTE_REMEDY
+        objective: Xác định cơ quan cấp giấy có được từ chối tự xử lý
+        fact_ids:
+        - F001
+        - F002
+        - F003
+        - F004
+        - F005
+        - F006
+        query: cơ quan cấp giấy có được từ chối thu hồi giấy cấp chồng lấn và yêu cầu hai hộ khởi kiện tại tòa không
+      depends_on_keys: []
+      time_basis: hien_hanh
+  mutation_family: QUERY_SEMANTIC_ALIGNMENT
+  mutation_hints:
+    focus: Độ khớp ngữ nghĩa giữa query, objective, target_kind và facts.
+    eligible_fields:
+    - query
+    boundaries:
+    - Query phải giữ quan hệ pháp lý quyết định kết quả.
+    - Không đổi sang mục tiêu dễ tìm nhưng khác requirement.
+    - Không thêm tên riêng, số tiền, Điều hoặc Khoản.
+  reviewer_attention: []
+- pair_id: PDPO_000166
+  source_record_id: scale2_hard_476
+  source_case_id: scale2_hard_476
+  source_sha256: 0912bec9febb931073fbb910876780aee4f22ae8d3a7ffd327e96072876119c6
+  split: train
+  difficulty: HARD
+  primary_topic: AUTHORITY_PROCEDURE
+  secondary_domains:
+  - CONSTRUCTION
+  - ADMINISTRATIVE
+  input:
+    question: Hồ sơ đăng ký nhà dùng giấy phép do huyện cũ cấp trước khi sáp nhập, bản hoàn công do cơ quan mới xác nhận nhưng
+      diện tích khác nhau. Văn phòng đăng ký yêu cầu chủ nhà xin điều chỉnh giấy phép đã hết hiệu lực. Hỏi cơ quan nào xác
+      minh, văn bản nào cần đính chính và người dân có phải làm lại thủ tục không?
+    fact_ledger:
+    - fact_id: F001
+      category: OTHER
+      value: Hồ sơ đăng ký nhà dùng giấy phép do huyện cũ cấp trước khi sáp nhập
+      source_quote: Hồ sơ đăng ký nhà dùng giấy phép do huyện cũ cấp trước khi sáp nhập
+    - fact_id: F002
+      category: OTHER
+      value: bản hoàn công do cơ quan mới xác nhận
+      source_quote: bản hoàn công do cơ quan mới xác nhận
+    - fact_id: F003
+      category: LEGAL_STATUS
+      value: diện tích khác nhau
+      source_quote: diện tích khác nhau
+    - fact_id: F004
+      category: ACTOR
+      value: Văn phòng đăng ký
+      source_quote: Văn phòng đăng ký
+    - fact_id: F005
+      category: CONDUCT
+      value: yêu cầu chủ nhà xin điều chỉnh giấy phép đã hết hiệu lực
+      source_quote: yêu cầu chủ nhà xin điều chỉnh giấy phép đã hết hiệu lực
+    - fact_id: F006
+      category: REQUEST
+      value: Hỏi cơ quan nào xác minh, văn bản nào cần đính chính và người dân có phải làm lại thủ tục không?
+      source_quote: Hỏi cơ quan nào xác minh, văn bản nào cần đính chính và người dân có phải làm lại thủ tục không?
+    temporal_context:
+      giao_dich: null
+      vi_pham: null
+      van_ban_dich_danh: null
+  chosen_seed:
+    issues:
+    - issue_key: ISSUE_01
+      issue: Cơ quan xác minh giấy phép xây dựng do huyện cũ cấp
+      issue_type: AUTHORITY_PROCEDURE
+      required_evidence:
+      - requirement_key: REQ_01_01
+        target_kind: AUTHORITY_PROCEDURE
+        objective: Xác định cơ quan kế thừa trách nhiệm xác minh sau sáp nhập
+        fact_ids:
+        - F001
+        - F002
+        - F003
+        - F004
+        query: cơ quan nào xác minh giấy phép xây dựng do huyện cũ cấp khi bản hoàn công của cơ quan mới ghi diện tích khác
+      depends_on_keys: []
+      time_basis: hien_hanh
+    - issue_key: ISSUE_02
+      issue: Đính chính giấy phép hay bản hoàn công có diện tích khác nhau
+      issue_type: REGISTRATION
+      required_evidence:
+      - requirement_key: REQ_02_01
+        target_kind: FORM_DOCUMENT
+        objective: Xác định văn bản cần sửa để đăng ký quyền sở hữu nhà
+        fact_ids:
+        - F001
+        - F002
+        - F003
+        - F005
+        query: phải đính chính giấy phép đã hết hiệu lực hay bản hoàn công khi hai văn bản ghi khác diện tích căn nhà
+      depends_on_keys:
+      - ISSUE_01
+      time_basis: hien_hanh
+    - issue_key: ISSUE_03
+      issue: Trách nhiệm làm lại thủ tục của chủ nhà
+      issue_type: RIGHTS_REMEDY
+      required_evidence:
+      - requirement_key: REQ_03_01
+        target_kind: AUTHORITY_PROCEDURE
+        objective: Xác định cơ quan tự phối hợp hay người dân phải nộp lại
+        fact_ids:
+        - F001
+        - F002
+        - F003
+        - F004
+        - F005
+        query: chủ nhà có phải làm lại thủ tục khi giấy phép của huyện cũ và hoàn công của cơ quan mới chênh diện tích không
+      depends_on_keys:
+      - ISSUE_01
+      - ISSUE_02
+      time_basis: hien_hanh
+  mutation_family: COVERAGE_DECOMPOSITION
+  mutation_hints:
+    focus: Bao phủ các kết quả được hỏi và nhóm issue/requirement đúng cấp.
+    eligible_fields:
+    - issues
+    - required_evidence
+    boundaries:
+    - Không bỏ một kết quả độc lập người dùng hỏi rõ.
+    - Không tạo issue riêng cho từng diễn biến nền.
+    - Không ưu tiên mục tiêu chung chung khi ngân sách hai query bị giới hạn.
+  reviewer_attention: []
+- pair_id: PDPO_000167
+  source_record_id: scale2_hard_443
+  source_case_id: scale2_hard_443
+  source_sha256: eaa0f0884e73d3b5339753844f80200ca4900b259b5adf93a2f5ff4e3777c13f
+  split: train
+  difficulty: HARD
+  primary_topic: ELIGIBILITY
+  secondary_domains:
+  - CIVIL
+  - CONSTRUCTION
+  input:
+    question: Hai chủ căn hộ muốn đổi phần diện tích phụ cho nhau, nhưng phần đổi làm thay đổi kết cấu, diện tích sở hữu chung
+      và giấy chứng nhận từng căn. Hỏi tài sản có đủ điều kiện chuyển đổi riêng, cần sự đồng ý của cộng đồng chủ sở hữu và
+      thủ tục xây dựng, đăng ký nào?
+    fact_ledger:
+    - fact_id: F001
+      category: ACTOR
+      value: Hai chủ căn hộ
+      source_quote: Hai chủ căn hộ
+    - fact_id: F002
+      category: CONDUCT
+      value: muốn đổi phần diện tích phụ cho nhau
+      source_quote: muốn đổi phần diện tích phụ cho nhau
+    - fact_id: F003
+      category: CONDUCT
+      value: phần đổi làm thay đổi kết cấu
+      source_quote: phần đổi làm thay đổi kết cấu
+    - fact_id: F004
+      category: CONDUCT
+      value: diện tích sở hữu chung
+      source_quote: diện tích sở hữu chung
+    - fact_id: F005
+      category: CONDUCT
+      value: giấy chứng nhận từng căn
+      source_quote: giấy chứng nhận từng căn
+    - fact_id: F006
+      category: REQUEST
+      value: Hỏi tài sản có đủ điều kiện chuyển đổi riêng, cần sự đồng ý của cộng đồng chủ sở hữu và thủ tục xây dựng, đăng
+        ký nào?
+      source_quote: Hỏi tài sản có đủ điều kiện chuyển đổi riêng, cần sự đồng ý của cộng đồng chủ sở hữu và thủ tục xây dựng,
+        đăng ký nào?
+    temporal_context:
+      giao_dich: null
+      vi_pham: null
+      van_ban_dich_danh: null
+  chosen_seed:
+    issues:
+    - issue_key: ISSUE_01
+      issue: Điều kiện đổi riêng phần diện tích phụ giữa hai căn hộ
+      issue_type: ELIGIBILITY
+      required_evidence:
+      - requirement_key: REQ_01_01
+        target_kind: SUBJECT_OBJECT_CONDITIONS
+        objective: Xác định phần diện tích phụ có thể là đối tượng chuyển đổi riêng
+        fact_ids:
+        - F001
+        - F002
+        - F003
+        - F004
+        - F005
+        query: phần diện tích phụ của hai căn hộ được đổi riêng không khi việc đổi làm thay đổi kết cấu và diện tích sở hữu
+          chung
+      depends_on_keys: []
+      time_basis: giao_dich
+    - issue_key: ISSUE_02
+      issue: Sự đồng ý của cộng đồng chủ sở hữu chung cư
+      issue_type: TRANSACTION
+      required_evidence:
+      - requirement_key: REQ_02_01
+        target_kind: SUBJECT_OBJECT_CONDITIONS
+        objective: Xác định tỷ lệ đồng thuận khi tác động phần sở hữu chung
+        fact_ids:
+        - F001
+        - F002
+        - F003
+        - F004
+        query: đổi diện tích phụ giữa hai căn hộ cần sự đồng ý nào của chủ sở hữu khi ảnh hưởng kết cấu và sở hữu chung
+      depends_on_keys:
+      - ISSUE_01
+      time_basis: giao_dich
+    - issue_key: ISSUE_03
+      issue: Thủ tục xây dựng và cập nhật giấy từng căn hộ
+      issue_type: REGISTRATION
+      required_evidence:
+      - requirement_key: REQ_03_01
+        target_kind: REGISTRATION_COMPLETION
+        objective: Xác định phê duyệt cải tạo và đăng ký lại diện tích riêng
+        fact_ids:
+        - F001
+        - F002
+        - F003
+        - F004
+        - F005
+        query: thay đổi kết cấu và diện tích hai căn hộ phải thực hiện thủ tục xây dựng và cập nhật giấy chứng nhận theo thứ
+          tự nào
+      depends_on_keys:
+      - ISSUE_01
+      - ISSUE_02
+      time_basis: hien_hanh
+  mutation_family: CROSS_DOMAIN_BOUNDARY
+  mutation_hints:
+    focus: Ranh giới giữa đất đai và lĩnh vực pháp luật liên đới trong corpus.
+    eligible_fields:
+    - issue
+    - target_kind
+    - objective
+    - query
+    boundaries:
+    - Giữ neo đất đai và chỉ mở sang secondary_domains đã khai báo.
+    - Không thay quan hệ đất đai bằng một quan hệ dân sự hoặc hành chính gần nghĩa.
+    - Không thêm lĩnh vực liên đới chỉ từ tri thức có sẵn của mô hình.
+  reviewer_attention:
+  - TIME_BASIS_GIAO_DICH_WITHOUT_EXPLICIT_EVENT_DATE
+- pair_id: PDPO_000168
+  source_record_id: scale2_hard_290
+  source_case_id: scale2_hard_290
+  source_sha256: 4404ca03df4c334ec69fbc951e5998ec68e1896e8bb803aad617d50c027ea64a
+  split: train
+  difficulty: HARD
+  primary_topic: DISPUTE
+  secondary_domains:
+  - INHERITANCE
+  - BANKING
+  input:
+    question: Đất di sản được một người thừa kế tự thế chấp toàn bộ bằng giấy chứng nhận đứng tên người chết; ngân hàng nhận
+      bảo đảm dựa trên văn bản khai nhận có chữ ký giả. Sau đó các thừa kế khác chia đất cho nhiều người. Hỏi hiệu lực thế
+      chấp, trách nhiệm chứng minh giả mạo, quyền ngân hàng và việc xử lý từng phần đất sau phân chia ra sao?
+    fact_ledger:
+    - fact_id: F001
+      category: LEGAL_STATUS
+      value: Đất di sản
+      source_quote: Đất di sản
+    - fact_id: F002
+      category: ACTOR
+      value: một người thừa kế
+      source_quote: một người thừa kế
+    - fact_id: F003
+      category: CONDUCT
+      value: tự thế chấp toàn bộ bằng giấy chứng nhận đứng tên người chết
+      source_quote: tự thế chấp toàn bộ bằng giấy chứng nhận đứng tên người chết
+    - fact_id: F004
+      category: ACTOR
+      value: ngân hàng
+      source_quote: ngân hàng
+    - fact_id: F005
+      category: CONDUCT
+      value: nhận bảo đảm dựa trên văn bản khai nhận có chữ ký giả
+      source_quote: nhận bảo đảm dựa trên văn bản khai nhận có chữ ký giả
+    - fact_id: F006
+      category: TIME
+      value: Sau đó
+      source_quote: Sau đó
+    - fact_id: F007
+      category: ACTOR
+      value: các thừa kế khác
+      source_quote: các thừa kế khác
+    - fact_id: F008
+      category: CONDUCT
+      value: chia đất cho nhiều người
+      source_quote: chia đất cho nhiều người
+    - fact_id: F009
+      category: REQUEST
+      value: Hỏi hiệu lực thế chấp, trách nhiệm chứng minh giả mạo, quyền ngân hàng và việc xử lý từng phần đất sau phân chia
+        ra sao?
+      source_quote: Hỏi hiệu lực thế chấp, trách nhiệm chứng minh giả mạo, quyền ngân hàng và việc xử lý từng phần đất sau
+        phân chia ra sao?
+    temporal_context:
+      giao_dich: null
+      vi_pham: null
+      van_ban_dich_danh: null
+  chosen_seed:
+    issues:
+    - issue_key: ISSUE_01
+      issue: Thế chấp đất di sản bằng văn bản khai nhận giả chữ ký
+      issue_type: TRANSACTION
+      required_evidence:
+      - requirement_key: REQ_01_01
+        target_kind: LEGAL_CONSEQUENCE
+        objective: Xác định hiệu lực định đoạt toàn bộ đất di sản
+        fact_ids:
+        - F001
+        - F002
+        - F003
+        - F004
+        - F005
+        query: người thừa kế tự thế chấp toàn bộ đất đứng tên người chết bằng văn bản khai nhận chữ ký giả làm hợp đồng có
+          hiệu lực không
+      depends_on_keys: []
+      time_basis: giao_dich
+    - issue_key: ISSUE_02
+      issue: Chứng minh giả mạo và bảo vệ ngân hàng
+      issue_type: DISPUTE
+      required_evidence:
+      - requirement_key: REQ_02_01
+        target_kind: DISPUTE_REMEDY
+        objective: Xác định nghĩa vụ chứng minh và mức độ ngay tình
+        fact_ids:
+        - F001
+        - F002
+        - F003
+        - F004
+        - F005
+        - F007
+        query: ai phải chứng minh chữ ký khai nhận di sản bị giả và ngân hàng có được bảo vệ ngay tình khi nhận thế chấp không
+      depends_on_keys:
+      - ISSUE_01
+      time_basis: hien_hanh
+    - issue_key: ISSUE_03
+      issue: Xử lý thế chấp sau khi di sản được chia thành nhiều phần
+      issue_type: RIGHTS_REMEDY
+      required_evidence:
+      - requirement_key: REQ_03_01
+        target_kind: LEGAL_CONSEQUENCE
+        objective: Xác định phần đất nào tiếp tục chịu bảo đảm
+        fact_ids:
+        - F001
+        - F002
+        - F003
+        - F005
+        - F007
+        - F008
+        query: thế chấp vô hiệu hoặc có hiệu lực một phần được xử lý thế nào trên các thửa đã chia cho nhiều người thừa kế
+      depends_on_keys:
+      - ISSUE_01
+      - ISSUE_02
+      time_basis: hien_hanh
+  mutation_family: QUERY_SEMANTIC_ALIGNMENT
+  mutation_hints:
+    focus: Độ khớp ngữ nghĩa giữa query, objective, target_kind và facts.
+    eligible_fields:
+    - query
+    boundaries:
+    - Query phải giữ quan hệ pháp lý quyết định kết quả.
+    - Không đổi sang mục tiêu dễ tìm nhưng khác requirement.
+    - Không thêm tên riêng, số tiền, Điều hoặc Khoản.
+  reviewer_attention:
+  - TIME_BASIS_GIAO_DICH_WITHOUT_EXPLICIT_EVENT_DATE
+- pair_id: PDPO_000169
+  source_record_id: scale2_medium_269
+  source_case_id: scale2_medium_269
+  source_sha256: 542516948f64e0e089e59c046144c6c75c2dd304f4f06c0ac6c0aabced71abf9
+  split: train
+  difficulty: MEDIUM
+  primary_topic: SANCTION
+  secondary_domains:
+  - ADMINISTRATIVE
+  input:
+    question: Tháng 8/2024, người vi phạm nộp tiền phạt nhưng chưa thực hiện biện pháp trả lại đất. Sau đó đất được Nhà nước
+      cho chính người đó thuê hợp pháp. Hỏi nghĩa vụ khắc phục cũ có chấm dứt và thời gian sử dụng trước khi thuê được xử
+      lý ra sao?
+    fact_ledger:
+    - fact_id: F001
+      category: TIME
+      value: Tháng 8/2024
+      source_quote: Tháng 8/2024
+    - fact_id: F002
+      category: CONDUCT
+      value: người vi phạm nộp tiền phạt
+      source_quote: người vi phạm nộp tiền phạt
+    - fact_id: F003
+      category: LEGAL_STATUS
+      value: chưa thực hiện biện pháp trả lại đất
+      source_quote: chưa thực hiện biện pháp trả lại đất
+    - fact_id: F004
+      category: CONDUCT
+      value: đất được Nhà nước cho chính người đó thuê hợp pháp
+      source_quote: đất được Nhà nước cho chính người đó thuê hợp pháp
+    - fact_id: F005
+      category: REQUEST
+      value: Hỏi nghĩa vụ khắc phục cũ có chấm dứt và thời gian sử dụng trước khi thuê được xử lý ra sao?
+      source_quote: Hỏi nghĩa vụ khắc phục cũ có chấm dứt và thời gian sử dụng trước khi thuê được xử lý ra sao?
+    temporal_context:
+      giao_dich: null
+      vi_pham: null
+      van_ban_dich_danh: null
+  chosen_seed:
+    issues:
+    - issue_key: ISSUE_01
+      issue: Nghĩa vụ trả lại đất sau khi chính người vi phạm được Nhà nước cho thuê hợp pháp
+      issue_type: REMEDY
+      required_evidence:
+      - requirement_key: REQ_01_01
+        target_kind: LEGAL_CONSEQUENCE
+        objective: Quyết định thuê mới thay thế hay làm mất mục đích của biện pháp khắc phục cũ
+        fact_ids:
+        - F001
+        - F002
+        - F003
+        - F004
+        query: nghĩa vụ trả lại đất theo quyết định xử phạt có chấm dứt khi người vi phạm sau đó được Nhà nước cho thuê chính
+          đất đó không
+      - requirement_key: REQ_01_02
+        target_kind: SANCTION_REMEDY
+        objective: Xử lý khoảng sử dụng trái phép và lợi ích phát sinh trước ngày thuê hợp pháp
+        fact_ids:
+        - F001
+        - F002
+        - F003
+        - F004
+        query: thời gian sử dụng đất trái phép trước ngày được cho thuê hợp pháp và khoản lợi phát sinh được xử lý thế nào
+      depends_on_keys: []
+      time_basis: hien_hanh
+  mutation_family: TERM_TARGET_BOUNDARY
+  mutation_hints:
+    focus: Ranh giới thuật ngữ pháp lý và target_kind gần nghĩa.
+    eligible_fields:
+    - target_kind
+    - objective
+    - query
+    boundaries:
+    - Giữ target_kind, objective và query cùng một mục tiêu quy phạm.
+    - Rejected sau này phải vẫn hợp schema và chỉ sai ranh giới thuật ngữ chính.
+    - Không dùng lỗi chính tả, JSON hỏng hoặc câu vô nghĩa làm tín hiệu ưu tiên.
+  reviewer_attention:
+  - EXPLICIT_DATE_WITHOUT_UNAMBIGUOUS_EVENT_ROLE
+- pair_id: PDPO_000170
+  source_record_id: scale2_easy_186
+  source_case_id: scale2_easy_186
+  source_sha256: 64de78d54c7907530e30e3904056d3e26e0159112945155aa938900d7b780788
+  split: train
+  difficulty: EASY
+  primary_topic: LAND_USE
+  secondary_domains: []
+  input:
+    question: Người sử dụng đất muốn luân canh rau và hoa trên đất trồng cây hằng năm. Hỏi việc luân canh có phải đăng ký
+      thay đổi loại cây không?
+    fact_ledger:
+    - fact_id: F001
+      category: ACTOR
+      value: Người sử dụng đất
+      source_quote: Người sử dụng đất
+    - fact_id: F002
+      category: CONDUCT
+      value: muốn luân canh rau và hoa
+      source_quote: muốn luân canh rau và hoa
+    - fact_id: F003
+      category: LAND_TYPE
+      value: đất trồng cây hằng năm
+      source_quote: đất trồng cây hằng năm
+    - fact_id: F004
+      category: REQUEST
+      value: Hỏi việc luân canh có phải đăng ký thay đổi loại cây không?
+      source_quote: Hỏi việc luân canh có phải đăng ký thay đổi loại cây không?
+    temporal_context:
+      giao_dich: null
+      vi_pham: null
+      van_ban_dich_danh: null
+  chosen_seed:
+    issues:
+    - issue_key: ISSUE_01
+      issue: Luân canh rau và hoa trên đất trồng cây hằng năm
+      issue_type: ELIGIBILITY
+      required_evidence:
+      - requirement_key: REQ_01_01
+        target_kind: AUTHORITY_PROCEDURE
+        objective: Việc thay đổi loại cây cùng nhóm sử dụng có phải đăng ký hay không
+        fact_ids:
+        - F001
+        - F002
+        - F003
+        query: luân canh rau và hoa trên đất trồng cây hằng năm có phải đăng ký thay đổi loại cây hoặc mục đích sử dụng không
+      depends_on_keys: []
+      time_basis: hien_hanh
+  mutation_family: TERM_TARGET_BOUNDARY
+  mutation_hints:
+    focus: Ranh giới thuật ngữ pháp lý và target_kind gần nghĩa.
+    eligible_fields:
+    - target_kind
+    - objective
+    - query
+    boundaries:
+    - Giữ target_kind, objective và query cùng một mục tiêu quy phạm.
+    - Rejected sau này phải vẫn hợp schema và chỉ sai ranh giới thuật ngữ chính.
+    - Không dùng lỗi chính tả, JSON hỏng hoặc câu vô nghĩa làm tín hiệu ưu tiên.
+  reviewer_attention: []
+- pair_id: PDPO_000171
+  source_record_id: scale2_medium_010
+  source_case_id: scale2_medium_010
+  source_sha256: 4a9f46597c233ca383332a5a03f8c27f584e901f50d6874ffb75d5ca2a8a7448
+  split: train
+  difficulty: MEDIUM
+  primary_topic: TRANSACTION
+  secondary_domains:
+  - INHERITANCE
+  input:
+    question: Một đồng thừa kế bán phần quyền dự kiến của mình cho người khác trước khi di sản được chia. Khi phân chia, người
+      này lại được nhận một tài sản khác thay cho đất. Hỏi hợp đồng bán phần quyền có thực hiện được và bên mua được hoàn
+      tiền hay nhận tài sản thay thế thế nào?
+    fact_ledger:
+    - fact_id: F001
+      category: ACTOR
+      value: Một đồng thừa kế
+      source_quote: Một đồng thừa kế
+    - fact_id: F002
+      category: CONDUCT
+      value: bán phần quyền dự kiến của mình cho người khác
+      source_quote: bán phần quyền dự kiến của mình cho người khác
+    - fact_id: F003
+      category: TIME
+      value: trước khi di sản được chia
+      source_quote: trước khi di sản được chia
+    - fact_id: F004
+      category: TIME
+      value: Khi phân chia
+      source_quote: Khi phân chia
+    - fact_id: F005
+      category: CONDUCT
+      value: được nhận một tài sản khác thay cho đất
+      source_quote: được nhận một tài sản khác thay cho đất
+    - fact_id: F006
+      category: REQUEST
+      value: Hỏi hợp đồng bán phần quyền có thực hiện được và bên mua được hoàn tiền hay nhận tài sản thay thế thế nào?
+      source_quote: Hỏi hợp đồng bán phần quyền có thực hiện được và bên mua được hoàn tiền hay nhận tài sản thay thế thế
+        nào?
+    temporal_context:
+      giao_dich: null
+      vi_pham: null
+      van_ban_dich_danh: null
+  chosen_seed:
+    issues:
+    - issue_key: ISSUE_01
+      issue: Chuyển nhượng phần quyền thừa kế dự kiến trước khi chia di sản
+      issue_type: TRANSACTION
+      required_evidence:
+      - requirement_key: REQ_01_01
+        target_kind: SUBJECT_OBJECT_CONDITIONS
+        objective: Xác định khả năng định đoạt phần quyền chưa được phân chia
+        fact_ids:
+        - F001
+        - F002
+        - F003
+        - F004
+        - F005
+        query: đồng thừa kế bán phần quyền dự kiến đối với đất trước khi chia di sản có thực hiện được nếu sau đó nhận tài
+          sản khác không
+      depends_on_keys: []
+      time_basis: giao_dich
+    - issue_key: ISSUE_02
+      issue: Quyền của bên mua khi người bán không nhận phần đất
+      issue_type: REMEDY
+      required_evidence:
+      - requirement_key: REQ_02_01
+        target_kind: LEGAL_CONSEQUENCE
+        objective: Xác định hoàn tiền hoặc chuyển giao tài sản thay thế
+        fact_ids:
+        - F001
+        - F002
+        - F003
+        - F004
+        - F005
+        query: bên mua phần quyền thừa kế được hoàn tiền hay nhận tài sản thay thế khi người bán được chia tài sản khác thay
+          cho đất
+      depends_on_keys:
+      - ISSUE_01
+      time_basis: hien_hanh
+  mutation_family: DEPENDENCY_SEQUENCE
+  mutation_hints:
+    focus: Thứ tự phụ thuộc giữa các issue pháp lý.
+    eligible_fields:
+    - depends_on
+    boundaries:
+    - Chỉ tham chiếu issue đứng trước.
+    - Không đặt remedy phụ thuộc trước quan hệ nền quyết định quyền.
+    - Không thêm dependency chỉ vì hai issue cùng nhắc đến một thửa đất.
+  reviewer_attention:
+  - TIME_BASIS_GIAO_DICH_WITHOUT_EXPLICIT_EVENT_DATE
+- pair_id: PDPO_000172
+  source_record_id: scale_easy_179
+  source_case_id: scale_easy_179
+  source_sha256: 9d5408deeff18d8a6ba401409292c620b7030c5774d27a484c99777d7c8bfbf0
+  split: train
+  difficulty: EASY
+  primary_topic: SANCTION
+  secondary_domains: []
+  input:
+    question: Chủ đất không cung cấp giấy chứng nhận khi cơ quan kiểm tra yêu cầu nhưng vẫn hợp tác đo đạc. Hỏi việc không
+      cung cấp tài liệu có được xem là hành vi cản trở không?
+    fact_ledger:
+    - fact_id: F001
+      category: ACTOR
+      value: Chủ đất
+      source_quote: Chủ đất
+    - fact_id: F002
+      category: CONDUCT
+      value: không cung cấp giấy chứng nhận
+      source_quote: không cung cấp giấy chứng nhận
+    - fact_id: F003
+      category: CONDUCT
+      value: vẫn hợp tác đo đạc
+      source_quote: vẫn hợp tác đo đạc
+    - fact_id: F004
+      category: LEGAL_STATUS
+      value: khi cơ quan kiểm tra yêu cầu
+      source_quote: khi cơ quan kiểm tra yêu cầu
+    - fact_id: F005
+      category: REQUEST
+      value: Hỏi việc không cung cấp tài liệu có được xem là hành vi cản trở không?
+      source_quote: Hỏi việc không cung cấp tài liệu có được xem là hành vi cản trở không?
+    temporal_context:
+      giao_dich: null
+      vi_pham: null
+      van_ban_dich_danh: null
+  chosen_seed:
+    issues:
+    - issue_key: ISSUE_01
+      issue: Không cung cấp giấy chứng nhận khi vẫn hợp tác kiểm tra đo đạc
+      issue_type: SANCTION
+      required_evidence:
+      - requirement_key: REQ_01_01
+        target_kind: CONDUCT_CLASSIFICATION
+        objective: Phân biệt không giao tài liệu với hành vi cản trở hoạt động kiểm tra
+        fact_ids:
+        - F001
+        - F002
+        - F003
+        - F004
+        query: chủ đất không cung cấp giấy chứng nhận theo yêu cầu nhưng vẫn hợp tác đo đạc có bị xem là cản trở kiểm tra
+          không
+      depends_on_keys: []
+      time_basis: vi_pham
+  mutation_family: QUERY_SEMANTIC_ALIGNMENT
+  mutation_hints:
+    focus: Độ khớp ngữ nghĩa giữa query, objective, target_kind và facts.
+    eligible_fields:
+    - query
+    boundaries:
+    - Query phải giữ quan hệ pháp lý quyết định kết quả.
+    - Không đổi sang mục tiêu dễ tìm nhưng khác requirement.
+    - Không thêm tên riêng, số tiền, Điều hoặc Khoản.
+  reviewer_attention:
+  - TIME_BASIS_VI_PHAM_WITHOUT_EXPLICIT_EVENT_DATE
+- pair_id: PDPO_000173
+  source_record_id: scale_medium_149
+  source_case_id: scale_medium_149
+  source_sha256: 570fe4e0bef3cbc80401bcad07c702bfa5476818f7786afd41f4e789a2662659
+  split: train
+  difficulty: MEDIUM
+  primary_topic: SANCTION
+  secondary_domains:
+  - BUSINESS
+  input:
+    question: Tháng 7/2025, doanh nghiệp được chấp thuận dự án nhưng sử dụng một phần đất ngoài ranh được giao làm đường nội
+      bộ. Tuyến đường sau đó được người dân cùng sử dụng. Hỏi việc tạo lợi ích chung có loại trừ hành vi chiếm đất và biện
+      pháp trả lại đất không?
+    fact_ledger:
+    - fact_id: F001
+      category: TIME
+      value: Tháng 7/2025
+      source_quote: Tháng 7/2025
+    - fact_id: F002
+      category: ACTOR
+      value: doanh nghiệp
+      source_quote: doanh nghiệp
+    - fact_id: F003
+      category: LEGAL_STATUS
+      value: được chấp thuận dự án
+      source_quote: được chấp thuận dự án
+    - fact_id: F004
+      category: CONDUCT
+      value: sử dụng một phần đất ngoài ranh được giao làm đường nội bộ
+      source_quote: sử dụng một phần đất ngoài ranh được giao làm đường nội bộ
+    - fact_id: F005
+      category: TIME
+      value: sau đó
+      source_quote: sau đó
+    - fact_id: F006
+      category: LEGAL_STATUS
+      value: được người dân cùng sử dụng
+      source_quote: được người dân cùng sử dụng
+    - fact_id: F007
+      category: REQUEST
+      value: Hỏi việc tạo lợi ích chung có loại trừ hành vi chiếm đất và biện pháp trả lại đất không?
+      source_quote: Hỏi việc tạo lợi ích chung có loại trừ hành vi chiếm đất và biện pháp trả lại đất không?
+    temporal_context:
+      giao_dich: null
+      vi_pham: "2025"
+      van_ban_dich_danh: null
+  chosen_seed:
+    issues:
+    - issue_key: ISSUE_01
+      issue: Sử dụng đất ngoài ranh dự án làm đường nội bộ
+      issue_type: SANCTION
+      required_evidence:
+      - requirement_key: REQ_01_01
+        target_kind: CONDUCT_CLASSIFICATION
+        objective: Xác định hành vi chiếm đất ngoài phạm vi được giao
+        fact_ids:
+        - F001
+        - F002
+        - F003
+        - F004
+        - F006
+        query: doanh nghiệp dùng đất ngoài ranh dự án làm đường nội bộ có cấu thành chiếm đất dù tuyến đường được người dân
+          cùng sử dụng không
+      depends_on_keys: []
+      time_basis: vi_pham
+    - issue_key: ISSUE_02
+      issue: Khắc phục phần đất ngoài ranh đã làm đường
+      issue_type: REMEDY
+      required_evidence:
+      - requirement_key: REQ_02_01
+        target_kind: SANCTION_REMEDY
+        objective: Xác định trả lại đất và phục hồi hiện trạng đường
+        fact_ids:
+        - F001
+        - F002
+        - F003
+        - F004
+        - F006
+        query: doanh nghiệp chiếm đất ngoài ranh để làm đường bị buộc trả lại đất tháo dỡ hay được xem xét duy trì công trình
+          phục vụ chung
+      depends_on_keys:
+      - ISSUE_01
+      time_basis: vi_pham
+  mutation_family: COVERAGE_DECOMPOSITION
+  mutation_hints:
+    focus: Bao phủ các kết quả được hỏi và nhóm issue/requirement đúng cấp.
+    eligible_fields:
+    - issues
+    - required_evidence
+    boundaries:
+    - Không bỏ một kết quả độc lập người dùng hỏi rõ.
+    - Không tạo issue riêng cho từng diễn biến nền.
+    - Không ưu tiên mục tiêu chung chung khi ngân sách hai query bị giới hạn.
+  reviewer_attention: []
+- pair_id: PDPO_000174
+  source_record_id: pilot_medium_015
+  source_case_id: pilot_medium_015
+  source_sha256: f34947f75579951c4672c7740b47a6a3e27735e5530ec887b2a1656df41f194a
+  split: train
+  difficulty: MEDIUM
+  primary_topic: REGISTRATION
+  secondary_domains: []
+  input:
+    question: Một thửa đất có giấy chứng nhận ghi sai số căn cước của chủ sử dụng và đồng thời có thay đổi tên đường nơi có
+      đất. Chủ đất chuẩn bị chuyển nhượng thửa đất. Hỏi nên đính chính thông tin hay cấp đổi giấy chứng nhận trước khi ký
+      giao dịch?
+    fact_ledger:
+    - fact_id: F001
+      category: LEGAL_STATUS
+      value: giấy chứng nhận ghi sai số căn cước của chủ sử dụng
+      source_quote: giấy chứng nhận ghi sai số căn cước của chủ sử dụng
+    - fact_id: F002
+      category: TIME
+      value: đồng thời
+      source_quote: đồng thời
+    - fact_id: F003
+      category: LEGAL_STATUS
+      value: có thay đổi tên đường nơi có đất
+      source_quote: có thay đổi tên đường nơi có đất
+    - fact_id: F004
+      category: ACTOR
+      value: Chủ đất
+      source_quote: Chủ đất
+    - fact_id: F005
+      category: CONDUCT
+      value: chuẩn bị chuyển nhượng thửa đất
+      source_quote: chuẩn bị chuyển nhượng thửa đất
+    - fact_id: F006
+      category: REQUEST
+      value: Hỏi nên đính chính thông tin hay cấp đổi giấy chứng nhận trước khi ký giao dịch?
+      source_quote: Hỏi nên đính chính thông tin hay cấp đổi giấy chứng nhận trước khi ký giao dịch?
+    temporal_context:
+      giao_dich: null
+      vi_pham: null
+      van_ban_dich_danh: null
+  chosen_seed:
+    issues:
+    - issue_key: ISSUE_01
+      issue: Sửa căn cước và tên đường trên giấy trước chuyển nhượng
+      issue_type: REGISTRATION
+      required_evidence:
+      - requirement_key: REQ_01_01
+        target_kind: AUTHORITY_PROCEDURE
+        objective: Phân biệt đính chính sai căn cước với cập nhật địa chỉ mới
+        fact_ids:
+        - F001
+        - F002
+        - F003
+        - F004
+        - F005
+        query: giấy chứng nhận sai số căn cước và có tên đường mới cần đính chính hay cấp đổi trước khi chủ đất ký chuyển
+          nhượng
+      depends_on_keys: []
+      time_basis: hien_hanh
+  mutation_family: TERM_TARGET_BOUNDARY
+  mutation_hints:
+    focus: Ranh giới thuật ngữ pháp lý và target_kind gần nghĩa.
+    eligible_fields:
+    - target_kind
+    - objective
+    - query
+    boundaries:
+    - Giữ target_kind, objective và query cùng một mục tiêu quy phạm.
+    - Rejected sau này phải vẫn hợp schema và chỉ sai ranh giới thuật ngữ chính.
+    - Không dùng lỗi chính tả, JSON hỏng hoặc câu vô nghĩa làm tín hiệu ưu tiên.
+  reviewer_attention: []
+- pair_id: PDPO_000175
+  source_record_id: scale_hard_012
+  source_case_id: scale_hard_012
+  source_sha256: cf8a591ed94b4511547da17517c881aae2075a5694a4450490f0cbb461bb0ed1
+  split: train
+  difficulty: HARD
+  primary_topic: TRANSACTION
+  secondary_domains:
+  - BUSINESS
+  - TAX
+  input:
+    question: Hai công ty ký hợp đồng chuyển nhượng đất với giá thấp hơn thỏa thuận thực tế và lập thêm hợp đồng tư vấn để
+      thanh toán phần chênh lệch. Bên mua đã sang tên, nhưng cơ quan thuế phát hiện hồ sơ và một chủ nợ của bên bán yêu cầu
+      tuyên giao dịch vô hiệu do tẩu tán tài sản. Hỏi hiệu lực giao dịch, nghĩa vụ thuế và quyền của chủ nợ được xem xét thế
+      nào?
+    fact_ledger:
+    - fact_id: F001
+      category: ACTOR
+      value: Hai công ty
+      source_quote: Hai công ty
+    - fact_id: F002
+      category: CONDUCT
+      value: ký hợp đồng chuyển nhượng đất
+      source_quote: ký hợp đồng chuyển nhượng đất
+    - fact_id: F003
+      category: OTHER
+      value: với giá thấp hơn thỏa thuận thực tế
+      source_quote: với giá thấp hơn thỏa thuận thực tế
+    - fact_id: F004
+      category: CONDUCT
+      value: lập thêm hợp đồng tư vấn
+      source_quote: lập thêm hợp đồng tư vấn
+    - fact_id: F005
+      category: OTHER
+      value: để thanh toán phần chênh lệch
+      source_quote: để thanh toán phần chênh lệch
+    - fact_id: F006
+      category: LEGAL_STATUS
+      value: Bên mua đã sang tên
+      source_quote: Bên mua đã sang tên
+    - fact_id: F007
+      category: ACTOR
+      value: cơ quan thuế
+      source_quote: cơ quan thuế
+    - fact_id: F008
+      category: CONDUCT
+      value: cơ quan thuế phát hiện hồ sơ
+      source_quote: cơ quan thuế phát hiện hồ sơ
+    - fact_id: F009
+      category: ACTOR
+      value: một chủ nợ của bên bán
+      source_quote: một chủ nợ của bên bán
+    - fact_id: F010
+      category: CONDUCT
+      value: yêu cầu tuyên giao dịch vô hiệu do tẩu tán tài sản
+      source_quote: yêu cầu tuyên giao dịch vô hiệu do tẩu tán tài sản
+    - fact_id: F011
+      category: REQUEST
+      value: Hỏi hiệu lực giao dịch, nghĩa vụ thuế và quyền của chủ nợ được xem xét thế nào?
+      source_quote: Hỏi hiệu lực giao dịch, nghĩa vụ thuế và quyền của chủ nợ được xem xét thế nào?
+    temporal_context:
+      giao_dich: null
+      vi_pham: null
+      van_ban_dich_danh: null
+  chosen_seed:
+    issues:
+    - issue_key: ISSUE_01
+      issue: Hiệu lực chuyển nhượng đất che giấu một phần giá bằng hợp đồng tư vấn
+      issue_type: TRANSACTION
+      required_evidence:
+      - requirement_key: REQ_01_01
+        target_kind: LEGAL_CONSEQUENCE
+        objective: Hậu quả giả tạo về giá và hợp đồng phụ đối với giao dịch đất đã sang tên
+        fact_ids:
+        - F001
+        - F002
+        - F003
+        - F004
+        - F005
+        - F006
+        query: hợp đồng chuyển nhượng đất ghi giá thấp và dùng hợp đồng tư vấn trả chênh lệch có bị vô hiệu toàn bộ hay một
+          phần không
+      depends_on_keys: []
+      time_basis: giao_dich
+    - issue_key: ISSUE_02
+      issue: Truy thu và xử lý nghĩa vụ thuế theo giá giao dịch thực tế bị che giấu
+      issue_type: SANCTION
+      required_evidence:
+      - requirement_key: REQ_02_01
+        target_kind: LEGAL_CONSEQUENCE
+        objective: Căn cứ ấn định thuế tiền chậm nộp và xử lý hành vi khai giá thấp
+        fact_ids:
+        - F001
+        - F002
+        - F003
+        - F004
+        - F005
+        - F007
+        query: nghĩa vụ thuế được tính lại và xử lý thế nào khi hai công ty dùng hợp đồng tư vấn che phần giá chuyển nhượng
+          đất
+      depends_on_keys:
+      - ISSUE_01
+      time_basis: vi_pham
+    - issue_key: ISSUE_03
+      issue: Quyền chủ nợ yêu cầu hủy giao dịch nhằm tẩu tán tài sản của bên bán
+      issue_type: RIGHTS_REMEDY
+      required_evidence:
+      - requirement_key: REQ_03_01
+        target_kind: DISPUTE_REMEDY
+        objective: Điều kiện chứng minh giao dịch làm giảm khả năng thanh toán và bảo vệ người mua
+        fact_ids:
+        - F002
+        - F003
+        - F004
+        - F005
+        - F006
+        - F009
+        query: chủ nợ được yêu cầu hủy chuyển nhượng đất giá thấp khi nào nếu cho rằng bên bán tẩu tán tài sản dù bên mua
+          đã sang tên
+      depends_on_keys:
+      - ISSUE_01
+      - ISSUE_02
+      time_basis: hien_hanh
+  mutation_family: LEGAL_RELATION_FRAMING
+  mutation_hints:
+    focus: Chủ thể, hành vi, đối tượng, chiều tác động và trạng thái hoàn thành.
+    eligible_fields:
+    - issue
+    - objective
+    - query
+    boundaries:
+    - Không đảo chủ thể hoặc chiều tác động.
+    - Không biến ý định, yêu cầu hoặc hành vi đang diễn ra thành kết quả đã hoàn tất.
+    - Không đóng khung sẵn kết luận pháp lý trong issue.
+  reviewer_attention:
+  - TIME_BASIS_GIAO_DICH_WITHOUT_EXPLICIT_EVENT_DATE
+  - TIME_BASIS_VI_PHAM_WITHOUT_EXPLICIT_EVENT_DATE
+- pair_id: PDPO_000176
+  source_record_id: scale_hard_108
+  source_case_id: scale_hard_108
+  source_sha256: 3b71716f3879b1d0e5610dfc6ce2ff227709fb62ec204d60239c3930f1608663
+  split: train
+  difficulty: HARD
+  primary_topic: LAND_USE
+  secondary_domains:
+  - ENVIRONMENT
+  - CONSTRUCTION
+  input:
+    question: Tháng 8/2025, chủ đất ven biển dựng kè để chống xói lở theo giấy phép, nhưng kè làm bồi đất ở phía mình và xói
+      mạnh phía hàng xóm. Chủ đất muốn xin cấp giấy cho phần bồi mới. Hỏi quyền đối với đất bồi, trách nhiệm do thay đổi dòng
+      chảy và hiệu lực giấy phép kè được xem xét thế nào?
+    fact_ledger:
+    - fact_id: F001
+      category: TIME
+      value: Tháng 8/2025
+      source_quote: Tháng 8/2025
+    - fact_id: F002
+      category: ACTOR
+      value: chủ đất ven biển
+      source_quote: chủ đất ven biển
+    - fact_id: F003
+      category: CONDUCT
+      value: chủ đất ven biển dựng kè để chống xói lở theo giấy phép
+      source_quote: chủ đất ven biển dựng kè để chống xói lở theo giấy phép
+    - fact_id: F004
+      category: CONDUCT
+      value: kè làm bồi đất ở phía mình
+      source_quote: kè làm bồi đất ở phía mình
+    - fact_id: F005
+      category: CONDUCT
+      value: xói mạnh phía hàng xóm
+      source_quote: xói mạnh phía hàng xóm
+    - fact_id: F006
+      category: CONDUCT
+      value: Chủ đất muốn xin cấp giấy cho phần bồi mới
+      source_quote: Chủ đất muốn xin cấp giấy cho phần bồi mới
+    - fact_id: F007
+      category: REQUEST
+      value: Hỏi quyền đối với đất bồi, trách nhiệm do thay đổi dòng chảy và hiệu lực giấy phép kè được xem xét thế nào?
+      source_quote: Hỏi quyền đối với đất bồi, trách nhiệm do thay đổi dòng chảy và hiệu lực giấy phép kè được xem xét thế
+        nào?
+    temporal_context:
+      giao_dich: null
+      vi_pham: null
+      van_ban_dich_danh: null
+  chosen_seed:
+    issues:
+    - issue_key: ISSUE_01
+      issue: Quyền sử dụng đối với phần đất bồi hình thành do kè chống xói lở ven biển
+      issue_type: ELIGIBILITY
+      required_evidence:
+      - requirement_key: REQ_01_01
+        target_kind: ELIGIBILITY
+        objective: Điều kiện xác lập quyền và cấp giấy cho phần đất bồi do công trình kè tạo ra
+        fact_ids:
+        - F001
+        - F003
+        - F004
+        - F006
+        query: điều kiện cấp giấy chứng nhận cho đất bồi ven biển hình thành do công trình kè chống xói lở có phép
+      depends_on_keys: []
+      time_basis: hien_hanh
+    - issue_key: ISSUE_02
+      issue: Trách nhiệm do kè làm thay đổi dòng chảy gây xói lở đất liền kề
+      issue_type: DISPUTE
+      required_evidence:
+      - requirement_key: REQ_02_01
+        target_kind: LEGAL_CONSEQUENCE
+        objective: Trách nhiệm khắc phục và bồi thường khi kè làm bồi một bên và xói đất liền kề
+        fact_ids:
+        - F003
+        - F004
+        - F005
+        query: trách nhiệm bồi thường và khắc phục khi kè ven biển làm bồi đất một phía và xói lở đất liền kề
+      depends_on_keys:
+      - ISSUE_01
+      time_basis: hien_hanh
+    - issue_key: ISSUE_03
+      issue: Phạm vi bảo vệ của giấy phép kè khi công trình gây hậu quả ngoài dự kiến
+      issue_type: AUTHORITY_PROCEDURE
+      required_evidence:
+      - requirement_key: REQ_03_01
+        target_kind: LEGAL_CONSEQUENCE
+        objective: Ảnh hưởng của giấy phép kè đến trách nhiệm đối với thay đổi dòng chảy và xói lở
+        fact_ids:
+        - F003
+        - F004
+        - F005
+        query: giấy phép xây kè ảnh hưởng thế nào đến trách nhiệm khi công trình thay đổi dòng chảy gây xói lở đất khác
+      depends_on_keys:
+      - ISSUE_02
+      time_basis: hien_hanh
+  mutation_family: COVERAGE_DECOMPOSITION
+  mutation_hints:
+    focus: Bao phủ các kết quả được hỏi và nhóm issue/requirement đúng cấp.
+    eligible_fields:
+    - issues
+    - required_evidence
+    boundaries:
+    - Không bỏ một kết quả độc lập người dùng hỏi rõ.
+    - Không tạo issue riêng cho từng diễn biến nền.
+    - Không ưu tiên mục tiêu chung chung khi ngân sách hai query bị giới hạn.
+  reviewer_attention:
+  - EXPLICIT_DATE_WITHOUT_UNAMBIGUOUS_EVENT_ROLE
+- pair_id: PDPO_000177
+  source_record_id: scale_easy_022
+  source_case_id: scale_easy_022
+  source_sha256: b234131172c8f6a8282f4147ce8841d4df933be03933afc2dae8a51e44724986
+  split: train
+  difficulty: EASY
+  primary_topic: TRANSACTION
+  secondary_domains:
+  - COMMUNITY
+  input:
+    question: Tháng 1/2024, một cá nhân muốn tặng cho một phần đất cho cộng đồng dân cư để mở rộng khu sinh hoạt chung. Hỏi
+      bên nhận và mục đích tặng cho cần được xác định trong văn bản ra sao?
+    fact_ledger:
+    - fact_id: F001
+      category: TIME
+      value: Tháng 1/2024
+      source_quote: Tháng 1/2024
+    - fact_id: F002
+      category: ACTOR
+      value: một cá nhân
+      source_quote: một cá nhân
+    - fact_id: F003
+      category: CONDUCT
+      value: muốn tặng cho một phần đất cho cộng đồng dân cư
+      source_quote: muốn tặng cho một phần đất cho cộng đồng dân cư
+    - fact_id: F004
+      category: OTHER
+      value: để mở rộng khu sinh hoạt chung
+      source_quote: để mở rộng khu sinh hoạt chung
+    - fact_id: F005
+      category: REQUEST
+      value: Hỏi bên nhận và mục đích tặng cho cần được xác định trong văn bản ra sao?
+      source_quote: Hỏi bên nhận và mục đích tặng cho cần được xác định trong văn bản ra sao?
+    temporal_context:
+      giao_dich: "2024"
+      vi_pham: null
+      van_ban_dich_danh: null
+  chosen_seed:
+    issues:
+    - issue_key: ISSUE_01
+      issue: Văn bản tặng đất cho cộng đồng mở rộng khu sinh hoạt chung
+      issue_type: TRANSACTION
+      required_evidence:
+      - requirement_key: REQ_01_01
+        target_kind: FORM_DOCUMENT
+        objective: Xác định đúng cộng đồng nhận đại diện và mục đích sử dụng chung
+        fact_ids:
+        - F001
+        - F002
+        - F003
+        - F004
+        query: văn bản tặng một phần đất cho cộng đồng dân cư phải ghi bên nhận đại diện và mục đích mở rộng khu sinh hoạt
+          chung thế nào
+      depends_on_keys: []
+      time_basis: giao_dich
+  mutation_family: QUERY_SEMANTIC_ALIGNMENT
+  mutation_hints:
+    focus: Độ khớp ngữ nghĩa giữa query, objective, target_kind và facts.
+    eligible_fields:
+    - query
+    boundaries:
+    - Query phải giữ quan hệ pháp lý quyết định kết quả.
+    - Không đổi sang mục tiêu dễ tìm nhưng khác requirement.
+    - Không thêm tên riêng, số tiền, Điều hoặc Khoản.
+  reviewer_attention: []
+- pair_id: PDPO_000178
+  source_record_id: scale2_medium_466
+  source_case_id: scale2_medium_466
+  source_sha256: 3e27c54fcb41dfaedee8a8757e9d1a177860de6ed06da6040bdd8e8912ef01fc
+  split: train
+  difficulty: MEDIUM
+  primary_topic: ELIGIBILITY
+  secondary_domains:
+  - BUSINESS
+  input:
+    question: Nhà đầu tư nước ngoài mua cổ phần chi phối công ty đang sở hữu nhiều thửa đất ở khu vực nhạy cảm. Giao dịch
+      không chuyển tên đất. Hỏi thay đổi quyền kiểm soát có phải đáp ứng điều kiện tiếp cận đất đai riêng không?
+    fact_ledger:
+    - fact_id: F001
+      category: ACTOR
+      value: nhà đầu tư nước ngoài
+      source_quote: nhà đầu tư nước ngoài
+    - fact_id: F002
+      category: CONDUCT
+      value: mua cổ phần chi phối
+      source_quote: mua cổ phần chi phối
+    - fact_id: F003
+      category: ACTOR
+      value: công ty
+      source_quote: công ty
+    - fact_id: F004
+      category: LEGAL_STATUS
+      value: sở hữu nhiều thửa đất
+      source_quote: sở hữu nhiều thửa đất
+    - fact_id: F005
+      category: LOCATION
+      value: khu vực nhạy cảm
+      source_quote: khu vực nhạy cảm
+    - fact_id: F006
+      category: CONDUCT
+      value: giao dịch không chuyển tên đất
+      source_quote: giao dịch không chuyển tên đất
+    - fact_id: F007
+      category: REQUEST
+      value: Hỏi thay đổi quyền kiểm soát có phải đáp ứng điều kiện tiếp cận đất đai riêng không?
+      source_quote: Hỏi thay đổi quyền kiểm soát có phải đáp ứng điều kiện tiếp cận đất đai riêng không?
+    temporal_context:
+      giao_dich: null
+      vi_pham: null
+      van_ban_dich_danh: null
+  chosen_seed:
+    issues:
+    - issue_key: ISSUE_01
+      issue: Điều kiện tiếp cận đất đai khi nhà đầu tư nước ngoài mua cổ phần chi phối
+      issue_type: ELIGIBILITY
+      required_evidence:
+      - requirement_key: REQ_01_01
+        target_kind: SUBJECT_OBJECT_CONDITIONS
+        objective: Khu vực nhạy cảm và tỷ lệ sở hữu làm phát sinh thẩm tra dù không sang tên đất
+        fact_ids:
+        - F001
+        - F002
+        - F003
+        - F004
+        - F005
+        - F006
+        query: nhà đầu tư nước ngoài mua cổ phần chi phối công ty có đất tại khu vực nhạy cảm đáp ứng điều kiện tiếp cận đất
+          đai nào
+      depends_on_keys: []
+      time_basis: giao_dich
+  mutation_family: LEGAL_RELATION_FRAMING
+  mutation_hints:
+    focus: Chủ thể, hành vi, đối tượng, chiều tác động và trạng thái hoàn thành.
+    eligible_fields:
+    - issue
+    - objective
+    - query
+    boundaries:
+    - Không đảo chủ thể hoặc chiều tác động.
+    - Không biến ý định, yêu cầu hoặc hành vi đang diễn ra thành kết quả đã hoàn tất.
+    - Không đóng khung sẵn kết luận pháp lý trong issue.
+  reviewer_attention:
+  - TIME_BASIS_GIAO_DICH_WITHOUT_EXPLICIT_EVENT_DATE
+- pair_id: PDPO_000179
+  source_record_id: scale2_easy_214
+  source_case_id: scale2_easy_214
+  source_sha256: d8421e2023c09b475f137d9c1a55d341a8d79525afe13e1a250254294cf43a53
+  split: train
+  difficulty: EASY
+  primary_topic: LAND_USE
+  secondary_domains: []
+  input:
+    question: Người sử dụng đất trồng cây đào rãnh phân chia các khu canh tác trong cùng thửa. Hỏi việc tạo ranh nội bộ có
+      phải tách thửa không?
+    fact_ledger:
+    - fact_id: F001
+      category: ACTOR
+      value: Người sử dụng đất
+      source_quote: Người sử dụng đất
+    - fact_id: F002
+      category: LAND_TYPE
+      value: đất trồng cây
+      source_quote: đất trồng cây
+    - fact_id: F003
+      category: CONDUCT
+      value: đào rãnh phân chia các khu canh tác trong cùng thửa
+      source_quote: đào rãnh phân chia các khu canh tác trong cùng thửa
+    - fact_id: F004
+      category: REQUEST
+      value: Hỏi việc tạo ranh nội bộ có phải tách thửa không?
+      source_quote: Hỏi việc tạo ranh nội bộ có phải tách thửa không?
+    temporal_context:
+      giao_dich: null
+      vi_pham: null
+      van_ban_dich_danh: null
+  chosen_seed:
+    issues:
+    - issue_key: ISSUE_01
+      issue: Đào rãnh tạo ranh nội bộ giữa các khu canh tác trong cùng thửa đất
+      issue_type: REGISTRATION
+      required_evidence:
+      - requirement_key: REQ_01_01
+        target_kind: CONDUCT_CLASSIFICATION
+        objective: Phân biệt tạo ranh canh tác nội bộ và tách thửa đất trồng cây
+        fact_ids:
+        - F001
+        - F002
+        - F003
+        query: đào rãnh chia khu canh tác trong cùng thửa đất trồng cây có phải thực hiện tách thửa không
+      depends_on_keys: []
+      time_basis: hien_hanh
+  mutation_family: LEGAL_RELATION_FRAMING
+  mutation_hints:
+    focus: Chủ thể, hành vi, đối tượng, chiều tác động và trạng thái hoàn thành.
+    eligible_fields:
+    - issue
+    - objective
+    - query
+    boundaries:
+    - Không đảo chủ thể hoặc chiều tác động.
+    - Không biến ý định, yêu cầu hoặc hành vi đang diễn ra thành kết quả đã hoàn tất.
+    - Không đóng khung sẵn kết luận pháp lý trong issue.
+  reviewer_attention: []
+- pair_id: PDPO_000180
+  source_record_id: scale2_medium_397
+  source_case_id: scale2_medium_397
+  source_sha256: b400d9e4b3faf2f233eea9336e1693956e6520665e3d7bca9d99b6d31fccd6a2
+  split: train
+  difficulty: MEDIUM
+  primary_topic: RECOVERY_COMPENSATION
+  secondary_domains:
+  - INHERITANCE
+  input:
+    question: Một phần mộ của dòng họ phải di dời, người quản lý khu mộ đã mất và các nhánh họ không thống nhất nơi chuyển
+      đến. Hỏi ai đại diện nhận chi phí di chuyển và bất đồng nội bộ có làm chậm bàn giao đất không?
+    fact_ledger:
+    - fact_id: F001
+      category: LEGAL_STATUS
+      value: Một phần mộ của dòng họ phải di dời
+      source_quote: Một phần mộ của dòng họ phải di dời
+    - fact_id: F002
+      category: LEGAL_STATUS
+      value: người quản lý khu mộ đã mất
+      source_quote: người quản lý khu mộ đã mất
+    - fact_id: F003
+      category: ACTOR
+      value: các nhánh họ
+      source_quote: các nhánh họ
+    - fact_id: F004
+      category: LEGAL_STATUS
+      value: các nhánh họ không thống nhất nơi chuyển đến
+      source_quote: các nhánh họ không thống nhất nơi chuyển đến
+    - fact_id: F005
+      category: REQUEST
+      value: Hỏi ai đại diện nhận chi phí di chuyển và bất đồng nội bộ có làm chậm bàn giao đất không?
+      source_quote: Hỏi ai đại diện nhận chi phí di chuyển và bất đồng nội bộ có làm chậm bàn giao đất không?
+    temporal_context:
+      giao_dich: null
+      vi_pham: null
+      van_ban_dich_danh: null
+  chosen_seed:
+    issues:
+    - issue_key: ISSUE_01
+      issue: Đại diện dòng họ nhận chi phí di chuyển mộ khi người quản lý đã mất
+      issue_type: RIGHTS_REMEDY
+      required_evidence:
+      - requirement_key: REQ_01_01
+        target_kind: SUBJECT_OBJECT_CONDITIONS
+        objective: Cách cử người đại diện và nhận tiền khi nhiều nhánh họ cùng có quyền
+        fact_ids:
+        - F001
+        - F002
+        - F003
+        - F004
+        query: các nhánh họ cử ai đại diện nhận chi phí di chuyển mộ khi người quản lý khu mộ đã mất
+      - requirement_key: REQ_01_02
+        target_kind: DEADLINE_OBLIGATION
+        objective: Ảnh hưởng bất đồng nơi di chuyển đến thời hạn bàn giao phần đất
+        fact_ids:
+        - F001
+        - F002
+        - F003
+        - F004
+        query: dòng họ không thống nhất nơi chuyển mộ có được kéo dài thời hạn bàn giao đất thu hồi không
+      depends_on_keys: []
+      time_basis: hien_hanh
+  mutation_family: TERM_TARGET_BOUNDARY
+  mutation_hints:
+    focus: Ranh giới thuật ngữ pháp lý và target_kind gần nghĩa.
+    eligible_fields:
+    - target_kind
+    - objective
+    - query
+    boundaries:
+    - Giữ target_kind, objective và query cùng một mục tiêu quy phạm.
+    - Rejected sau này phải vẫn hợp schema và chỉ sai ranh giới thuật ngữ chính.
+    - Không dùng lỗi chính tả, JSON hỏng hoặc câu vô nghĩa làm tín hiệu ưu tiên.
+  reviewer_attention: []
+- pair_id: PDPO_000181
+  source_record_id: scale_easy_041
+  source_case_id: scale_easy_041
+  source_sha256: 348a6f506ebefcc0d3cc36704fe1ea9040f47bea197a209c2ba131a3659196c2
+  split: train
+  difficulty: EASY
+  primary_topic: TRANSACTION
+  secondary_domains:
+  - CIVIL
+  input:
+    question: Chủ thửa đất phía trong muốn mua một dải đất của hộ liền kề để mở lối đi. Hỏi phần đất này phải được tách và
+      đăng ký thế nào trước khi chuyển nhượng?
+    fact_ledger:
+    - fact_id: F001
+      category: ACTOR
+      value: Chủ thửa đất phía trong
+      source_quote: Chủ thửa đất phía trong
+    - fact_id: F002
+      category: CONDUCT
+      value: muốn mua một dải đất của hộ liền kề để mở lối đi
+      source_quote: muốn mua một dải đất của hộ liền kề để mở lối đi
+    - fact_id: F003
+      category: REQUEST
+      value: Hỏi phần đất này phải được tách và đăng ký thế nào trước khi chuyển nhượng?
+      source_quote: Hỏi phần đất này phải được tách và đăng ký thế nào trước khi chuyển nhượng?
+    temporal_context:
+      giao_dich: null
+      vi_pham: null
+      van_ban_dich_danh: null
+  chosen_seed:
+    issues:
+    - issue_key: ISSUE_01
+      issue: Tách và chuyển nhượng dải đất làm lối đi
+      issue_type: TRANSACTION
+      required_evidence:
+      - requirement_key: REQ_01_01
+        target_kind: REGISTRATION_COMPLETION
+        objective: Xác định điều kiện tách và đăng ký phần đất chuyển nhượng
+        fact_ids:
+        - F001
+        - F002
+        query: dải đất của thửa liền kề mua để mở lối đi phải đáp ứng điều kiện tách thửa và đăng ký chuyển nhượng thế nào
+      depends_on_keys: []
+      time_basis: giao_dich
+  mutation_family: CROSS_DOMAIN_BOUNDARY
+  mutation_hints:
+    focus: Ranh giới giữa đất đai và lĩnh vực pháp luật liên đới trong corpus.
+    eligible_fields:
+    - issue
+    - target_kind
+    - objective
+    - query
+    boundaries:
+    - Giữ neo đất đai và chỉ mở sang secondary_domains đã khai báo.
+    - Không thay quan hệ đất đai bằng một quan hệ dân sự hoặc hành chính gần nghĩa.
+    - Không thêm lĩnh vực liên đới chỉ từ tri thức có sẵn của mô hình.
+  reviewer_attention:
+  - TIME_BASIS_GIAO_DICH_WITHOUT_EXPLICIT_EVENT_DATE
+- pair_id: PDPO_000182
+  source_record_id: scale_medium_142
+  source_case_id: scale_medium_142
+  source_sha256: 64930beeb837dcdac0df8d5dc707e4a978d08383d008e0e35c90750fbae734f5
+  split: train
+  difficulty: MEDIUM
+  primary_topic: SANCTION
+  secondary_domains:
+  - ENVIRONMENT
+  input:
+    question: Tháng 9/2022, chủ đất đào sâu lấy đất bán khiến thửa liền kề có nguy cơ sạt lở, nhưng cơ quan chưa ghi nhận
+      diện tích đất đã bán. Chủ đất cho rằng chỉ cải tạo ao. Hỏi cần căn cứ vào dấu hiệu nào để xác định hành vi hủy hoại
+      đất và phạm vi khắc phục?
+    fact_ledger:
+    - fact_id: F001
+      category: TIME
+      value: Tháng 9/2022
+      source_quote: Tháng 9/2022
+    - fact_id: F002
+      category: CONDUCT
+      value: chủ đất đào sâu lấy đất bán
+      source_quote: chủ đất đào sâu lấy đất bán
+    - fact_id: F003
+      category: CONDUCT
+      value: khiến thửa liền kề có nguy cơ sạt lở
+      source_quote: khiến thửa liền kề có nguy cơ sạt lở
+    - fact_id: F004
+      category: LEGAL_STATUS
+      value: cơ quan chưa ghi nhận diện tích đất đã bán
+      source_quote: cơ quan chưa ghi nhận diện tích đất đã bán
+    - fact_id: F005
+      category: CONDUCT
+      value: Chủ đất cho rằng chỉ cải tạo ao
+      source_quote: Chủ đất cho rằng chỉ cải tạo ao
+    - fact_id: F006
+      category: REQUEST
+      value: Hỏi cần căn cứ vào dấu hiệu nào để xác định hành vi hủy hoại đất và phạm vi khắc phục?
+      source_quote: Hỏi cần căn cứ vào dấu hiệu nào để xác định hành vi hủy hoại đất và phạm vi khắc phục?
+    temporal_context:
+      giao_dich: null
+      vi_pham: "2022"
+      van_ban_dich_danh: null
+  chosen_seed:
+    issues:
+    - issue_key: ISSUE_01
+      issue: Xác định hành vi đào đất bán có phải hủy hoại đất
+      issue_type: SANCTION
+      required_evidence:
+      - requirement_key: REQ_01_01
+        target_kind: CONDUCT_CLASSIFICATION
+        objective: Phân biệt khai thác làm biến dạng đất với hoạt động cải tạo ao hợp pháp
+        fact_ids:
+        - F001
+        - F002
+        - F003
+        - F004
+        - F005
+        query: đào sâu lấy đất bán gây nguy cơ sạt lở được xác định là hủy hoại đất hay cải tạo ao dựa trên dấu hiệu nào
+      - requirement_key: REQ_01_02
+        target_kind: SANCTION_REMEDY
+        objective: Căn cứ xác định diện tích và mức độ phải khôi phục khi chưa đo phần đất bán
+        fact_ids:
+        - F002
+        - F003
+        - F004
+        query: chưa xác định diện tích đất đã đào bán thì phạm vi buộc khôi phục và ngăn ngừa sạt lở được tính thế nào
+      depends_on_keys: []
+      time_basis: vi_pham
+  mutation_family: LEGAL_RELATION_FRAMING
+  mutation_hints:
+    focus: Chủ thể, hành vi, đối tượng, chiều tác động và trạng thái hoàn thành.
+    eligible_fields:
+    - issue
+    - objective
+    - query
+    boundaries:
+    - Không đảo chủ thể hoặc chiều tác động.
+    - Không biến ý định, yêu cầu hoặc hành vi đang diễn ra thành kết quả đã hoàn tất.
+    - Không đóng khung sẵn kết luận pháp lý trong issue.
+  reviewer_attention: []
+- pair_id: PDPO_000183
+  source_record_id: scale2_hard_414
+  source_case_id: scale2_hard_414
+  source_sha256: 8fd8553051a9ef3a0fbf2d68661ef016f858951252ae87025fcefb4a9a39c46a
+  split: train
+  difficulty: HARD
+  primary_topic: RECOVERY_COMPENSATION
+  secondary_domains:
+  - BUSINESS
+  - ADMINISTRATIVE
+  input:
+    question: Tháng 9/2025, doanh nghiệp bị thu hồi đất dự án nhưng đang khiếu nại quyết định chấm dứt dự án đầu tư, còn nhà
+      xưởng đã bán cho đối tác theo hợp đồng có điều kiện. Hỏi quyền bồi thường đất, tài sản phụ thuộc kết quả nào, tư cách
+      đối tác tham gia và khoản hỗ trợ di dời, ngừng sản xuất thuộc ai?
+    fact_ledger:
+    - fact_id: F001
+      category: TIME
+      value: Tháng 9/2025
+      source_quote: Tháng 9/2025
+    - fact_id: F002
+      category: ACTOR
+      value: doanh nghiệp
+      source_quote: doanh nghiệp
+    - fact_id: F003
+      category: CONDUCT
+      value: bị thu hồi đất dự án
+      source_quote: bị thu hồi đất dự án
+    - fact_id: F004
+      category: CONDUCT
+      value: đang khiếu nại quyết định chấm dứt dự án đầu tư
+      source_quote: đang khiếu nại quyết định chấm dứt dự án đầu tư
+    - fact_id: F005
+      category: LEGAL_STATUS
+      value: nhà xưởng đã bán cho đối tác theo hợp đồng có điều kiện
+      source_quote: nhà xưởng đã bán cho đối tác theo hợp đồng có điều kiện
+    - fact_id: F006
+      category: REQUEST
+      value: Hỏi quyền bồi thường đất, tài sản phụ thuộc kết quả nào, tư cách đối tác tham gia và khoản hỗ trợ di dời, ngừng
+        sản xuất thuộc ai?
+      source_quote: Hỏi quyền bồi thường đất, tài sản phụ thuộc kết quả nào, tư cách đối tác tham gia và khoản hỗ trợ di dời,
+        ngừng sản xuất thuộc ai?
+    temporal_context:
+      giao_dich: "2025"
+      vi_pham: null
+      van_ban_dich_danh: null
+  chosen_seed:
+    issues:
+    - issue_key: ISSUE_01
+      issue: Bồi thường đất dự án khi quyết định chấm dứt đang bị khiếu nại
+      issue_type: ELIGIBILITY
+      required_evidence:
+      - requirement_key: REQ_01_01
+        target_kind: ELIGIBILITY
+        objective: Xác định quyền bồi thường phụ thuộc căn cứ thu hồi dự án
+        fact_ids:
+        - F001
+        - F002
+        - F003
+        - F004
+        query: doanh nghiệp bị thu hồi đất dự án có được bồi thường khi quyết định chấm dứt dự án đang bị khiếu nại chưa có
+          kết quả không
+      depends_on_keys: []
+      time_basis: hien_hanh
+    - issue_key: ISSUE_02
+      issue: Quyền đối với nhà xưởng đã bán theo hợp đồng có điều kiện
+      issue_type: DISPUTE
+      required_evidence:
+      - requirement_key: REQ_02_01
+        target_kind: LEGAL_CONSEQUENCE
+        objective: Xác định chủ thể nhận bồi thường tài sản nhà xưởng
+        fact_ids:
+        - F001
+        - F002
+        - F003
+        - F004
+        - F005
+        query: bồi thường nhà xưởng thuộc doanh nghiệp hay đối tác khi tài sản bán theo hợp đồng có điều kiện trước lúc đất
+          dự án bị thu hồi
+      - requirement_key: REQ_02_02
+        target_kind: AUTHORITY_PROCEDURE
+        objective: Xác định tư cách đối tác tham gia lập phương án bồi thường
+        fact_ids:
+        - F002
+        - F003
+        - F004
+        - F005
+        query: đối tác mua nhà xưởng theo hợp đồng có điều kiện được tham gia kiểm đếm và phương án bồi thường tài sản với
+          tư cách nào
+      depends_on_keys:
+      - ISSUE_01
+      time_basis: giao_dich
+    - issue_key: ISSUE_03
+      issue: Hỗ trợ di dời và ngừng sản xuất khi thu hồi dự án
+      issue_type: ELIGIBILITY
+      required_evidence:
+      - requirement_key: REQ_03_01
+        target_kind: ELIGIBILITY
+        objective: Xác định bên hoạt động thực tế được nhận các khoản hỗ trợ
+        fact_ids:
+        - F001
+        - F002
+        - F003
+        - F004
+        - F005
+        query: hỗ trợ di dời ngừng sản xuất khi thu hồi đất dự án thuộc doanh nghiệp sử dụng đất hay đối tác mua nhà xưởng
+          có điều kiện
+      depends_on_keys:
+      - ISSUE_01
+      - ISSUE_02
+      time_basis: hien_hanh
+  mutation_family: DEPENDENCY_SEQUENCE
+  mutation_hints:
+    focus: Thứ tự phụ thuộc giữa các issue pháp lý.
+    eligible_fields:
+    - depends_on
+    boundaries:
+    - Chỉ tham chiếu issue đứng trước.
+    - Không đặt remedy phụ thuộc trước quan hệ nền quyết định quyền.
+    - Không thêm dependency chỉ vì hai issue cùng nhắc đến một thửa đất.
+  reviewer_attention: []
+- pair_id: PDPO_000184
+  source_record_id: scale_hard_064
+  source_case_id: scale_hard_064
+  source_sha256: 3b4756113bf7d45d084f55e4119a3fb8193f17ce02ff021dfdfdaa4c9896cc22
+  split: train
+  difficulty: HARD
+  primary_topic: REGISTRATION
+  secondary_domains:
+  - CIVIL
+  - ENFORCEMENT
+  input:
+    question: Tháng 5/2024, bên mua có bản án buộc sang tên, nhưng trước khi án có hiệu lực cơ quan thi hành án đã kê biên
+      thửa đất cho một vụ khác của bên bán. Bên mua nộp hồ sơ đăng ký sau ngày kê biên và yêu cầu công nhận giao dịch có trước.
+      Hỏi hồ sơ được giải quyết thế nào, bên mua phản đối kê biên ở đâu và thứ tự quyền được xác định ra sao?
+    fact_ledger:
+    - fact_id: F001
+      category: TIME
+      value: Tháng 5/2024
+      source_quote: Tháng 5/2024
+    - fact_id: F002
+      category: LEGAL_STATUS
+      value: bên mua có bản án buộc sang tên
+      source_quote: bên mua có bản án buộc sang tên
+    - fact_id: F003
+      category: TIME
+      value: trước khi án có hiệu lực
+      source_quote: trước khi án có hiệu lực
+    - fact_id: F004
+      category: CONDUCT
+      value: cơ quan thi hành án đã kê biên thửa đất cho một vụ khác của bên bán
+      source_quote: cơ quan thi hành án đã kê biên thửa đất cho một vụ khác của bên bán
+    - fact_id: F005
+      category: CONDUCT
+      value: Bên mua nộp hồ sơ đăng ký sau ngày kê biên
+      source_quote: Bên mua nộp hồ sơ đăng ký sau ngày kê biên
+    - fact_id: F006
+      category: CONDUCT
+      value: yêu cầu công nhận giao dịch có trước
+      source_quote: yêu cầu công nhận giao dịch có trước
+    - fact_id: F007
+      category: REQUEST
+      value: Hỏi hồ sơ được giải quyết thế nào, bên mua phản đối kê biên ở đâu và thứ tự quyền được xác định ra sao?
+      source_quote: Hỏi hồ sơ được giải quyết thế nào, bên mua phản đối kê biên ở đâu và thứ tự quyền được xác định ra sao?
+    temporal_context:
+      giao_dich: null
+      vi_pham: null
+      van_ban_dich_danh: null
+  chosen_seed:
+    issues:
+    - issue_key: ISSUE_01
+      issue: Giải quyết sang tên theo bản án khi đất đã bị kê biên trước ngày án có hiệu lực
+      issue_type: REGISTRATION
+      required_evidence:
+      - requirement_key: REQ_01_01
+        target_kind: REGISTRATION_COMPLETION
+        objective: Khả năng đăng ký sau kê biên dựa trên bản án công nhận giao dịch có trước
+        fact_ids:
+        - F001
+        - F002
+        - F003
+        - F004
+        - F005
+        - F006
+        query: cơ quan đăng ký xử lý sang tên theo bản án thế nào khi đất đã bị kê biên trước ngày bản án có hiệu lực
+      depends_on_keys: []
+      time_basis: hien_hanh
+    - issue_key: ISSUE_02
+      issue: Thủ tục bên mua phản đối việc kê biên đất cho nghĩa vụ khác của bên bán
+      issue_type: AUTHORITY_PROCEDURE
+      required_evidence:
+      - requirement_key: REQ_02_01
+        target_kind: DISPUTE_REMEDY
+        objective: Cơ quan nhận yêu cầu loại tài sản và thủ tục giải quyết quyền của người thứ ba
+        fact_ids:
+        - F002
+        - F003
+        - F004
+        - F005
+        - F006
+        query: bên mua có bản án buộc sang tên phải phản đối kê biên tại cơ quan thi hành án hay khởi kiện tòa án
+      depends_on_keys:
+      - ISSUE_01
+      time_basis: hien_hanh
+    - issue_key: ISSUE_03
+      issue: Thứ tự quyền giữa bên mua theo giao dịch trước và người được thi hành án
+      issue_type: RIGHTS_REMEDY
+      required_evidence:
+      - requirement_key: REQ_03_01
+        target_kind: LEGAL_CONSEQUENCE
+        objective: Mốc xác lập giao dịch bản án kê biên và đăng ký để xếp ưu tiên
+        fact_ids:
+        - F002
+        - F003
+        - F004
+        - F005
+        - F006
+        query: giao dịch mua đất có trước nhưng bản án và đăng ký sau kê biên được ưu tiên thế nào với quyền của người thi
+          hành án
+      depends_on_keys:
+      - ISSUE_01
+      - ISSUE_02
+      time_basis: hien_hanh
+  mutation_family: COVERAGE_DECOMPOSITION
+  mutation_hints:
+    focus: Bao phủ các kết quả được hỏi và nhóm issue/requirement đúng cấp.
+    eligible_fields:
+    - issues
+    - required_evidence
+    boundaries:
+    - Không bỏ một kết quả độc lập người dùng hỏi rõ.
+    - Không tạo issue riêng cho từng diễn biến nền.
+    - Không ưu tiên mục tiêu chung chung khi ngân sách hai query bị giới hạn.
+  reviewer_attention:
+  - EXPLICIT_DATE_WITHOUT_UNAMBIGUOUS_EVENT_ROLE
+- pair_id: PDPO_000185
+  source_record_id: scale2_easy_333
+  source_case_id: scale2_easy_333
+  source_sha256: d72b89391f0420dec7f63739d036e826496f545496f5fece90d1bde317120f9e
+  split: train
+  difficulty: EASY
+  primary_topic: RECOVERY_COMPENSATION
+  secondary_domains: []
+  input:
+    question: Chủ đất không đồng ý số lượng cây trong biên bản nhưng vẫn ký và ghi ý kiến. Hỏi ý kiến bảo lưu phải được xử
+      lý trước khi phê duyệt phương án thế nào?
+    fact_ledger:
+    - fact_id: F001
+      category: ACTOR
+      value: Chủ đất
+      source_quote: Chủ đất
+    - fact_id: F002
+      category: CONDUCT
+      value: không đồng ý số lượng cây trong biên bản
+      source_quote: không đồng ý số lượng cây trong biên bản
+    - fact_id: F003
+      category: CONDUCT
+      value: vẫn ký và ghi ý kiến
+      source_quote: vẫn ký và ghi ý kiến
+    - fact_id: F004
+      category: REQUEST
+      value: Hỏi ý kiến bảo lưu phải được xử lý trước khi phê duyệt phương án thế nào?
+      source_quote: Hỏi ý kiến bảo lưu phải được xử lý trước khi phê duyệt phương án thế nào?
+    temporal_context:
+      giao_dich: null
+      vi_pham: null
+      van_ban_dich_danh: null
+  chosen_seed:
+    issues:
+    - issue_key: ISSUE_01
+      issue: Xử lý ý kiến bảo lưu về số lượng cây trong biên bản kiểm kê
+      issue_type: AUTHORITY_PROCEDURE
+      required_evidence:
+      - requirement_key: REQ_01_01
+        target_kind: AUTHORITY_PROCEDURE
+        objective: Cơ quan phải xác minh ý kiến trước khi phê duyệt phương án bồi thường
+        fact_ids:
+        - F001
+        - F002
+        - F003
+        query: ý kiến bảo lưu về số lượng cây trong biên bản kiểm kê phải được xác minh thế nào trước khi phê duyệt phương
+          án bồi thường
+      depends_on_keys: []
+      time_basis: hien_hanh
+  mutation_family: TERM_TARGET_BOUNDARY
+  mutation_hints:
+    focus: Ranh giới thuật ngữ pháp lý và target_kind gần nghĩa.
+    eligible_fields:
+    - target_kind
+    - objective
+    - query
+    boundaries:
+    - Giữ target_kind, objective và query cùng một mục tiêu quy phạm.
+    - Rejected sau này phải vẫn hợp schema và chỉ sai ranh giới thuật ngữ chính.
+    - Không dùng lỗi chính tả, JSON hỏng hoặc câu vô nghĩa làm tín hiệu ưu tiên.
+  reviewer_attention: []
+- pair_id: PDPO_000186
+  source_record_id: scale2_medium_146
+  source_case_id: scale2_medium_146
+  source_sha256: 82939ba21f675e4d68bac0d4db6276de285f54f35b21561ab8919c7f45d57f4f
+  split: train
+  difficulty: MEDIUM
+  primary_topic: REGISTRATION
+  secondary_domains:
+  - DISPUTE
+  input:
+    question: Bản án chia thửa đất cho hai bên nhưng kích thước trong sơ đồ thi hành án khác kết quả đo địa chính do mốc giới
+      đã mất. Hỏi cơ quan đăng ký có được dùng kết quả đo mới hay phải yêu cầu tòa giải thích bản án?
+    fact_ledger:
+    - fact_id: F001
+      category: LEGAL_STATUS
+      value: Bản án chia thửa đất cho hai bên
+      source_quote: Bản án chia thửa đất cho hai bên
+    - fact_id: F002
+      category: LEGAL_STATUS
+      value: kích thước trong sơ đồ thi hành án khác kết quả đo địa chính
+      source_quote: kích thước trong sơ đồ thi hành án khác kết quả đo địa chính
+    - fact_id: F003
+      category: OTHER
+      value: do mốc giới đã mất
+      source_quote: do mốc giới đã mất
+    - fact_id: F004
+      category: REQUEST
+      value: Hỏi cơ quan đăng ký có được dùng kết quả đo mới hay phải yêu cầu tòa giải thích bản án?
+      source_quote: Hỏi cơ quan đăng ký có được dùng kết quả đo mới hay phải yêu cầu tòa giải thích bản án?
+    temporal_context:
+      giao_dich: null
+      vi_pham: null
+      van_ban_dich_danh: null
+  chosen_seed:
+    issues:
+    - issue_key: ISSUE_01
+      issue: Đăng ký chia đất khi sơ đồ bản án khác kết quả đo do mất mốc
+      issue_type: REGISTRATION
+      required_evidence:
+      - requirement_key: REQ_01_01
+        target_kind: REGISTRATION_COMPLETION
+        objective: Sai lệch đo đạc có thể hiệu chỉnh mà không thay đổi phần quyền đã tuyên
+        fact_ids:
+        - F001
+        - F002
+        - F003
+        query: cơ quan đăng ký được dùng kết quả đo mới khi mốc giới mất và kích thước khác sơ đồ thi hành án trong trường
+          hợp nào
+      - requirement_key: REQ_01_02
+        target_kind: AUTHORITY_PROCEDURE
+        objective: Khi sai lệch làm thay đổi nội dung phải yêu cầu tòa giải thích bản án
+        fact_ids:
+        - F001
+        - F002
+        - F003
+        query: sai lệch kích thước giữa bản án và đo địa chính đến mức nào thì phải yêu cầu tòa giải thích thay vì đăng ký
+      depends_on_keys: []
+      time_basis: hien_hanh
+  mutation_family: COVERAGE_DECOMPOSITION
+  mutation_hints:
+    focus: Bao phủ các kết quả được hỏi và nhóm issue/requirement đúng cấp.
+    eligible_fields:
+    - issues
+    - required_evidence
+    boundaries:
+    - Không bỏ một kết quả độc lập người dùng hỏi rõ.
+    - Không tạo issue riêng cho từng diễn biến nền.
+    - Không ưu tiên mục tiêu chung chung khi ngân sách hai query bị giới hạn.
+  reviewer_attention: []
+- pair_id: PDPO_000187
+  source_record_id: scale2_hard_124
+  source_case_id: scale2_hard_124
+  source_sha256: 132d5aaa2a35d26c888d4096ae399ddc438e7b3555fc2687eb66adba941d5f6a
+  split: train
+  difficulty: HARD
+  primary_topic: REGISTRATION
+  secondary_domains:
+  - CONSTRUCTION
+  - BANKING
+  input:
+    question: Chủ đất xây hai căn nhà trên một thửa, một căn đang thế chấp cùng đất, căn kia muốn bán riêng. Hồ sơ tách đất
+      đủ diện tích nhưng hệ thống kỹ thuật dùng chung. Hỏi điều kiện đăng ký riêng từng nhà, phân chia tài sản bảo đảm và
+      xác lập quyền dùng chung hạ tầng được thực hiện ra sao?
+    fact_ledger:
+    - fact_id: F001
+      category: ACTOR
+      value: Chủ đất
+      source_quote: Chủ đất
+    - fact_id: F002
+      category: CONDUCT
+      value: xây hai căn nhà trên một thửa
+      source_quote: xây hai căn nhà trên một thửa
+    - fact_id: F003
+      category: LEGAL_STATUS
+      value: một căn đang thế chấp cùng đất
+      source_quote: một căn đang thế chấp cùng đất
+    - fact_id: F004
+      category: CONDUCT
+      value: căn kia muốn bán riêng
+      source_quote: căn kia muốn bán riêng
+    - fact_id: F005
+      category: LEGAL_STATUS
+      value: Hồ sơ tách đất đủ diện tích
+      source_quote: Hồ sơ tách đất đủ diện tích
+    - fact_id: F006
+      category: LEGAL_STATUS
+      value: hệ thống kỹ thuật dùng chung
+      source_quote: hệ thống kỹ thuật dùng chung
+    - fact_id: F007
+      category: REQUEST
+      value: Hỏi điều kiện đăng ký riêng từng nhà, phân chia tài sản bảo đảm và xác lập quyền dùng chung hạ tầng được thực
+        hiện ra sao?
+      source_quote: Hỏi điều kiện đăng ký riêng từng nhà, phân chia tài sản bảo đảm và xác lập quyền dùng chung hạ tầng được
+        thực hiện ra sao?
+    temporal_context:
+      giao_dich: null
+      vi_pham: null
+      van_ban_dich_danh: null
+  chosen_seed:
+    issues:
+    - issue_key: ISSUE_01
+      issue: Tách đất và đăng ký riêng hai căn nhà
+      issue_type: REGISTRATION
+      required_evidence:
+      - requirement_key: REQ_01_01
+        target_kind: REGISTRATION_COMPLETION
+        objective: Xác định điều kiện tách thửa và chứng nhận từng căn nhà
+        fact_ids:
+        - F001
+        - F002
+        - F003
+        - F004
+        - F005
+        - F006
+        query: hai căn nhà trên một thửa đủ diện tích tách nhưng dùng chung hạ tầng được đăng ký riêng từng nhà theo điều
+          kiện nào
+      depends_on_keys: []
+      time_basis: hien_hanh
+    - issue_key: ISSUE_02
+      issue: Phân chia phạm vi tài sản đang thế chấp khi tách thửa
+      issue_type: TRANSACTION
+      required_evidence:
+      - requirement_key: REQ_02_01
+        target_kind: LEGAL_CONSEQUENCE
+        objective: Xác định điều kiện giải chấp phần nhà đất muốn bán riêng
+        fact_ids:
+        - F001
+        - F002
+        - F003
+        - F004
+        - F005
+        query: một căn nhà đang thế chấp cùng đất thì căn còn lại được tách bán riêng và phân chia tài sản bảo đảm thế nào
+      depends_on_keys:
+      - ISSUE_01
+      time_basis: giao_dich
+    - issue_key: ISSUE_03
+      issue: Xác lập quyền dùng chung hệ thống kỹ thuật sau khi tách
+      issue_type: RIGHTS_REMEDY
+      required_evidence:
+      - requirement_key: REQ_03_01
+        target_kind: REGISTRATION_COMPLETION
+        objective: Xác định cách ghi nhận quyền dùng chung hạ tầng giữa hai thửa
+        fact_ids:
+        - F001
+        - F002
+        - F004
+        - F005
+        - F006
+        query: quyền dùng chung hệ thống kỹ thuật giữa hai nhà sau tách thửa được thỏa thuận và đăng ký để ràng buộc bên mua
+          thế nào
+      depends_on_keys:
+      - ISSUE_01
+      - ISSUE_02
+      time_basis: hien_hanh
+  mutation_family: LEGAL_RELATION_FRAMING
+  mutation_hints:
+    focus: Chủ thể, hành vi, đối tượng, chiều tác động và trạng thái hoàn thành.
+    eligible_fields:
+    - issue
+    - objective
+    - query
+    boundaries:
+    - Không đảo chủ thể hoặc chiều tác động.
+    - Không biến ý định, yêu cầu hoặc hành vi đang diễn ra thành kết quả đã hoàn tất.
+    - Không đóng khung sẵn kết luận pháp lý trong issue.
+  reviewer_attention:
+  - TIME_BASIS_GIAO_DICH_WITHOUT_EXPLICIT_EVENT_DATE
+- pair_id: PDPO_000188
+  source_record_id: scale_medium_034
+  source_case_id: scale_medium_034
+  source_sha256: 6c8b2fa5be0412ec00c1aecb476c9f3ddd02950cf796892b678f76b4b8cc628c
+  split: train
+  difficulty: MEDIUM
+  primary_topic: TRANSACTION
+  secondary_domains:
+  - INHERITANCE
+  input:
+    question: Tháng 9/2022, một đồng thừa kế bán phần quyền của mình trong khối di sản đất cho người ngoài mà không thông
+      báo cho các đồng thừa kế khác. Việc phân chia di sản chưa thực hiện nhưng người mua đã trả tiền. Hỏi giao dịch có được
+      công nhận và những người còn lại có quyền ưu tiên gì không?
+    fact_ledger:
+    - fact_id: F001
+      category: TIME
+      value: Tháng 9/2022
+      source_quote: Tháng 9/2022
+    - fact_id: F002
+      category: ACTOR
+      value: một đồng thừa kế
+      source_quote: một đồng thừa kế
+    - fact_id: F003
+      category: CONDUCT
+      value: bán phần quyền của mình trong khối di sản đất cho người ngoài
+      source_quote: bán phần quyền của mình trong khối di sản đất cho người ngoài
+    - fact_id: F004
+      category: LEGAL_STATUS
+      value: không thông báo cho các đồng thừa kế khác
+      source_quote: không thông báo cho các đồng thừa kế khác
+    - fact_id: F005
+      category: LEGAL_STATUS
+      value: Việc phân chia di sản chưa thực hiện
+      source_quote: Việc phân chia di sản chưa thực hiện
+    - fact_id: F006
+      category: ACTOR
+      value: người mua
+      source_quote: người mua
+    - fact_id: F007
+      category: CONDUCT
+      value: đã trả tiền
+      source_quote: đã trả tiền
+    - fact_id: F008
+      category: REQUEST
+      value: Hỏi giao dịch có được công nhận và những người còn lại có quyền ưu tiên gì không?
+      source_quote: Hỏi giao dịch có được công nhận và những người còn lại có quyền ưu tiên gì không?
+    temporal_context:
+      giao_dich: "2022"
+      vi_pham: null
+      van_ban_dich_danh: null
+  chosen_seed:
+    issues:
+    - issue_key: ISSUE_01
+      issue: Bán phần quyền trong di sản đất chưa chia
+      issue_type: TRANSACTION
+      required_evidence:
+      - requirement_key: REQ_01_01
+        target_kind: LEGAL_CONSEQUENCE
+        objective: Xác định hiệu lực định đoạt phần quyền thừa kế chưa chia
+        fact_ids:
+        - F001
+        - F002
+        - F003
+        - F004
+        - F005
+        - F007
+        query: đồng thừa kế có được bán phần quyền trong di sản đất chưa chia cho người ngoài khi chưa thông báo người còn
+          lại không
+      depends_on_keys: []
+      time_basis: giao_dich
+    - issue_key: ISSUE_02
+      issue: Quyền ưu tiên của các đồng thừa kế còn lại
+      issue_type: RIGHTS_REMEDY
+      required_evidence:
+      - requirement_key: REQ_02_01
+        target_kind: DISPUTE_REMEDY
+        objective: Xác định quyền yêu cầu chuyển giao phần quyền đã bán
+        fact_ids:
+        - F002
+        - F003
+        - F004
+        - F005
+        - F006
+        - F007
+        query: các đồng thừa kế có quyền ưu tiên mua phần di sản đất đã bán cho người ngoài và yêu cầu chuyển giao trong thời
+          hạn nào
+      depends_on_keys:
+      - ISSUE_01
+      time_basis: hien_hanh
+  mutation_family: QUERY_SEMANTIC_ALIGNMENT
+  mutation_hints:
+    focus: Độ khớp ngữ nghĩa giữa query, objective, target_kind và facts.
+    eligible_fields:
+    - query
+    boundaries:
+    - Query phải giữ quan hệ pháp lý quyết định kết quả.
+    - Không đổi sang mục tiêu dễ tìm nhưng khác requirement.
+    - Không thêm tên riêng, số tiền, Điều hoặc Khoản.
+  reviewer_attention: []
+- pair_id: PDPO_000189
+  source_record_id: scale_medium_090
+  source_case_id: scale_medium_090
+  source_sha256: b946a0e8b032e0057f214f5b7d5976b37b4550ecf79090125c2443bfbeb42f8c
+  split: train
+  difficulty: MEDIUM
+  primary_topic: REGISTRATION
+  secondary_domains:
+  - BUSINESS
+  input:
+    question: Doanh nghiệp chia tách thành hai công ty và phương án chia xác định một công ty mới nhận quyền sử dụng đất.
+      Giấy chứng nhận vẫn đứng tên doanh nghiệp cũ đang làm thủ tục chấm dứt hoạt động. Hỏi hồ sơ đăng ký cần chứng minh việc
+      kế thừa quyền và nghĩa vụ bằng tài liệu nào?
+    fact_ledger:
+    - fact_id: F001
+      category: ACTOR
+      value: Doanh nghiệp
+      source_quote: Doanh nghiệp
+    - fact_id: F002
+      category: CONDUCT
+      value: chia tách thành hai công ty
+      source_quote: chia tách thành hai công ty
+    - fact_id: F003
+      category: CONDUCT
+      value: phương án chia xác định một công ty mới nhận quyền sử dụng đất
+      source_quote: phương án chia xác định một công ty mới nhận quyền sử dụng đất
+    - fact_id: F004
+      category: LEGAL_STATUS
+      value: Giấy chứng nhận vẫn đứng tên doanh nghiệp cũ
+      source_quote: Giấy chứng nhận vẫn đứng tên doanh nghiệp cũ
+    - fact_id: F005
+      category: CONDUCT
+      value: đang làm thủ tục chấm dứt hoạt động
+      source_quote: đang làm thủ tục chấm dứt hoạt động
+    - fact_id: F006
+      category: REQUEST
+      value: Hỏi hồ sơ đăng ký cần chứng minh việc kế thừa quyền và nghĩa vụ bằng tài liệu nào?
+      source_quote: Hỏi hồ sơ đăng ký cần chứng minh việc kế thừa quyền và nghĩa vụ bằng tài liệu nào?
+    temporal_context:
+      giao_dich: null
+      vi_pham: null
+      van_ban_dich_danh: null
+  chosen_seed:
+    issues:
+    - issue_key: ISSUE_01
+      issue: Đăng ký đất cho công ty kế thừa sau khi doanh nghiệp chia tách
+      issue_type: REGISTRATION
+      required_evidence:
+      - requirement_key: REQ_01_01
+        target_kind: FORM_DOCUMENT
+        objective: Phương án chia quyết định đăng ký doanh nghiệp và biên bản bàn giao quyền nghĩa vụ
+        fact_ids:
+        - F001
+        - F002
+        - F003
+        - F004
+        - F005
+        query: công ty mới nhận đất sau chia tách cần phương án chia và tài liệu nào chứng minh kế thừa quyền nghĩa vụ để
+          sang tên
+      - requirement_key: REQ_01_02
+        target_kind: AUTHORITY_PROCEDURE
+        objective: Thực hiện biến động trước khi doanh nghiệp cũ hoàn tất chấm dứt hoạt động
+        fact_ids:
+        - F002
+        - F003
+        - F004
+        - F005
+        query: có thể đăng ký đất cho công ty kế thừa khi doanh nghiệp cũ đang chấm dứt hoạt động và vẫn đứng tên giấy không
+      depends_on_keys: []
+      time_basis: hien_hanh
+  mutation_family: LEGAL_RELATION_FRAMING
+  mutation_hints:
+    focus: Chủ thể, hành vi, đối tượng, chiều tác động và trạng thái hoàn thành.
+    eligible_fields:
+    - issue
+    - objective
+    - query
+    boundaries:
+    - Không đảo chủ thể hoặc chiều tác động.
+    - Không biến ý định, yêu cầu hoặc hành vi đang diễn ra thành kết quả đã hoàn tất.
+    - Không đóng khung sẵn kết luận pháp lý trong issue.
+  reviewer_attention: []
+- pair_id: PDPO_000190
+  source_record_id: scale_easy_007
+  source_case_id: scale_easy_007
+  source_sha256: 1273d21413cc98d452ac1eb5b896e37e2c18704e1ea282b013396fe98066ba23
+  split: train
+  difficulty: EASY
+  primary_topic: TRANSACTION
+  secondary_domains:
+  - CIVIL
+  input:
+    question: Chủ đất muốn cho một người thuê quyền sử dụng đất ở để làm sân chứa hàng trong hai năm. Hỏi hợp đồng thuê cần
+      ghi rõ thời hạn, mục đích và nghĩa vụ trả lại đất như thế nào?
+    fact_ledger:
+    - fact_id: F001
+      category: ACTOR
+      value: Chủ đất
+      source_quote: Chủ đất
+    - fact_id: F002
+      category: CONDUCT
+      value: muốn cho một người thuê quyền sử dụng đất ở
+      source_quote: muốn cho một người thuê quyền sử dụng đất ở
+    - fact_id: F003
+      category: LAND_TYPE
+      value: đất ở
+      source_quote: đất ở
+    - fact_id: F004
+      category: OTHER
+      value: để làm sân chứa hàng
+      source_quote: để làm sân chứa hàng
+    - fact_id: F005
+      category: TIME
+      value: trong hai năm
+      source_quote: trong hai năm
+    - fact_id: F006
+      category: REQUEST
+      value: Hỏi hợp đồng thuê cần ghi rõ thời hạn, mục đích và nghĩa vụ trả lại đất như thế nào?
+      source_quote: Hỏi hợp đồng thuê cần ghi rõ thời hạn, mục đích và nghĩa vụ trả lại đất như thế nào?
+    temporal_context:
+      giao_dich: null
+      vi_pham: null
+      van_ban_dich_danh: null
+  chosen_seed:
+    issues:
+    - issue_key: ISSUE_01
+      issue: Nội dung hợp đồng thuê đất ở làm sân chứa hàng
+      issue_type: TRANSACTION
+      required_evidence:
+      - requirement_key: REQ_01_01
+        target_kind: FORM_DOCUMENT
+        objective: Thời hạn mục đích sử dụng giá thuê và nghĩa vụ hoàn trả cần được thỏa thuận
+        fact_ids:
+        - F001
+        - F002
+        - F003
+        - F004
+        - F005
+        query: hợp đồng thuê đất ở làm sân chứa hàng hai năm cần ghi thời hạn mục đích và nghĩa vụ trả lại đất thế nào
+      depends_on_keys: []
+      time_basis: giao_dich
+  mutation_family: LEGAL_RELATION_FRAMING
+  mutation_hints:
+    focus: Chủ thể, hành vi, đối tượng, chiều tác động và trạng thái hoàn thành.
+    eligible_fields:
+    - issue
+    - objective
+    - query
+    boundaries:
+    - Không đảo chủ thể hoặc chiều tác động.
+    - Không biến ý định, yêu cầu hoặc hành vi đang diễn ra thành kết quả đã hoàn tất.
+    - Không đóng khung sẵn kết luận pháp lý trong issue.
+  reviewer_attention:
+  - TIME_BASIS_GIAO_DICH_WITHOUT_EXPLICIT_EVENT_DATE
+- pair_id: PDPO_000191
+  source_record_id: scale2_medium_032
+  source_case_id: scale2_medium_032
+  source_sha256: e4740e10ac6bf433ed77af6fb480505bd49050cdc7fb8e596d5aea9312636947
+  split: train
+  difficulty: MEDIUM
+  primary_topic: TRANSACTION
+  secondary_domains:
+  - BUSINESS
+  input:
+    question: Công ty nhận quyền khai thác bãi đỗ xe theo hợp đồng hợp tác rồi dùng quyền thu phí để góp vốn vào liên danh
+      khác. Chủ đất chỉ đồng ý hợp tác ban đầu. Hỏi quyền khai thác có được chuyển tiếp và doanh thu đã nhận phải xử lý thế
+      nào?
+    fact_ledger:
+    - fact_id: F001
+      category: ACTOR
+      value: Công ty
+      source_quote: Công ty
+    - fact_id: F002
+      category: CONDUCT
+      value: nhận quyền khai thác bãi đỗ xe theo hợp đồng hợp tác
+      source_quote: nhận quyền khai thác bãi đỗ xe theo hợp đồng hợp tác
+    - fact_id: F003
+      category: CONDUCT
+      value: dùng quyền thu phí để góp vốn vào liên danh khác
+      source_quote: dùng quyền thu phí để góp vốn vào liên danh khác
+    - fact_id: F004
+      category: ACTOR
+      value: Chủ đất
+      source_quote: Chủ đất
+    - fact_id: F005
+      category: CONDUCT
+      value: chỉ đồng ý hợp tác ban đầu
+      source_quote: chỉ đồng ý hợp tác ban đầu
+    - fact_id: F006
+      category: REQUEST
+      value: Hỏi quyền khai thác có được chuyển tiếp và doanh thu đã nhận phải xử lý thế nào?
+      source_quote: Hỏi quyền khai thác có được chuyển tiếp và doanh thu đã nhận phải xử lý thế nào?
+    temporal_context:
+      giao_dich: null
+      vi_pham: null
+      van_ban_dich_danh: null
+  chosen_seed:
+    issues:
+    - issue_key: ISSUE_01
+      issue: Chuyển tiếp quyền khai thác bãi đỗ xe vào liên danh khác
+      issue_type: TRANSACTION
+      required_evidence:
+      - requirement_key: REQ_01_01
+        target_kind: SUBJECT_OBJECT_CONDITIONS
+        objective: Quyền thu phí theo hợp tác có được góp vốn khi chủ đất chưa đồng ý
+        fact_ids:
+        - F001
+        - F002
+        - F003
+        - F004
+        - F005
+        query: quyền thu phí bãi đỗ xe theo hợp đồng hợp tác có được góp vốn khi chủ đất không đồng ý chuyển tiếp không
+      depends_on_keys: []
+      time_basis: giao_dich
+    - issue_key: ISSUE_02
+      issue: Hoàn trả doanh thu từ việc chuyển quyền khai thác không được phép
+      issue_type: RIGHTS_REMEDY
+      required_evidence:
+      - requirement_key: REQ_02_01
+        target_kind: LEGAL_CONSEQUENCE
+        objective: Xử lý khoản thu phát sinh từ giao dịch vượt phạm vi quyền hợp tác
+        fact_ids:
+        - F002
+        - F003
+        - F004
+        - F005
+        query: doanh thu từ việc góp quyền khai thác bãi xe trái phạm vi hợp đồng phải hoàn trả và phân chia giữa các bên
+          thế nào
+      depends_on_keys:
+      - ISSUE_01
+      time_basis: hien_hanh
+  mutation_family: TERM_TARGET_BOUNDARY
+  mutation_hints:
+    focus: Ranh giới thuật ngữ pháp lý và target_kind gần nghĩa.
+    eligible_fields:
+    - target_kind
+    - objective
+    - query
+    boundaries:
+    - Giữ target_kind, objective và query cùng một mục tiêu quy phạm.
+    - Rejected sau này phải vẫn hợp schema và chỉ sai ranh giới thuật ngữ chính.
+    - Không dùng lỗi chính tả, JSON hỏng hoặc câu vô nghĩa làm tín hiệu ưu tiên.
+  reviewer_attention:
+  - TIME_BASIS_GIAO_DICH_WITHOUT_EXPLICIT_EVENT_DATE
+- pair_id: PDPO_000192
+  source_record_id: scale2_medium_500
+  source_case_id: scale2_medium_500
+  source_sha256: 858415b5a40fcdc0bd3e112a6d611dca39bafa3c2ed26aa94038c4132432ea88
+  split: train
+  difficulty: MEDIUM
+  primary_topic: AUTHORITY_PROCEDURE
+  secondary_domains:
+  - CIVIL
+  input:
+    question: Người được ủy quyền nộp hồ sơ sang tên nhưng giấy ủy quyền chỉ ghi làm thủ tục hành chính, không cho phép sửa
+      nội dung đơn. Cơ quan yêu cầu ký bổ sung cam kết. Hỏi phạm vi đại diện và cách bổ sung hợp lệ được xử lý thế nào?
+    fact_ledger:
+    - fact_id: F001
+      category: ACTOR
+      value: Người được ủy quyền
+      source_quote: Người được ủy quyền
+    - fact_id: F002
+      category: CONDUCT
+      value: nộp hồ sơ sang tên
+      source_quote: nộp hồ sơ sang tên
+    - fact_id: F003
+      category: LEGAL_STATUS
+      value: giấy ủy quyền chỉ ghi làm thủ tục hành chính
+      source_quote: giấy ủy quyền chỉ ghi làm thủ tục hành chính
+    - fact_id: F004
+      category: LEGAL_STATUS
+      value: không cho phép sửa nội dung đơn
+      source_quote: không cho phép sửa nội dung đơn
+    - fact_id: F005
+      category: ACTOR
+      value: Cơ quan
+      source_quote: Cơ quan
+    - fact_id: F006
+      category: CONDUCT
+      value: Cơ quan yêu cầu ký bổ sung cam kết
+      source_quote: Cơ quan yêu cầu ký bổ sung cam kết
+    - fact_id: F007
+      category: REQUEST
+      value: Hỏi phạm vi đại diện và cách bổ sung hợp lệ được xử lý thế nào?
+      source_quote: Hỏi phạm vi đại diện và cách bổ sung hợp lệ được xử lý thế nào?
+    temporal_context:
+      giao_dich: null
+      vi_pham: null
+      van_ban_dich_danh: null
+  chosen_seed:
+    issues:
+    - issue_key: ISSUE_01
+      issue: Phạm vi người được ủy quyền làm thủ tục sang tên được sửa nội dung hồ sơ
+      issue_type: AUTHORITY_PROCEDURE
+      required_evidence:
+      - requirement_key: REQ_01_01
+        target_kind: LEGAL_BASIS
+        objective: Giới hạn quyền ký sửa và cam kết khi giấy ủy quyền chỉ cho làm thủ tục hành chính
+        fact_ids:
+        - F001
+        - F002
+        - F003
+        - F004
+        - F005
+        - F006
+        query: người chỉ được ủy quyền làm thủ tục sang tên có được sửa nội dung đơn và ký cam kết bổ sung theo yêu cầu cơ
+          quan không
+      - requirement_key: REQ_01_02
+        target_kind: FORM_DOCUMENT
+        objective: Cách bổ sung chữ ký của người ủy quyền hoặc mở rộng phạm vi đại diện hợp lệ
+        fact_ids:
+        - F001
+        - F002
+        - F003
+        - F004
+        - F005
+        - F006
+        query: hồ sơ sang tên phải bổ sung thế nào khi cam kết mới vượt quá phạm vi giấy ủy quyền làm thủ tục hành chính
+      depends_on_keys: []
+      time_basis: hien_hanh
+  mutation_family: QUERY_SEMANTIC_ALIGNMENT
+  mutation_hints:
+    focus: Độ khớp ngữ nghĩa giữa query, objective, target_kind và facts.
+    eligible_fields:
+    - query
+    boundaries:
+    - Query phải giữ quan hệ pháp lý quyết định kết quả.
+    - Không đổi sang mục tiêu dễ tìm nhưng khác requirement.
+    - Không thêm tên riêng, số tiền, Điều hoặc Khoản.
+  reviewer_attention: []
+- pair_id: PDPO_000193
+  source_record_id: scale2_easy_121
+  source_case_id: scale2_easy_121
+  source_sha256: a42ac3f35b3608f0c92ceb1840c08c52d09557a1b49bf7f522466bcd115fb1e2
+  split: train
+  difficulty: EASY
+  primary_topic: REGISTRATION
+  secondary_domains:
+  - MARRIAGE_FAMILY
+  input:
+    question: Tháng 5/2025, người chồng đổi họ tên theo quyết định hộ tịch, còn giấy đất chung ghi tên cũ. Hỏi hồ sơ cập nhật
+      có cần chữ ký người vợ không?
+    fact_ledger:
+    - fact_id: F001
+      category: TIME
+      value: Tháng 5/2025
+      source_quote: Tháng 5/2025
+    - fact_id: F002
+      category: ACTOR
+      value: người chồng
+      source_quote: người chồng
+    - fact_id: F003
+      category: CONDUCT
+      value: đổi họ tên theo quyết định hộ tịch
+      source_quote: đổi họ tên theo quyết định hộ tịch
+    - fact_id: F004
+      category: LEGAL_STATUS
+      value: giấy đất chung ghi tên cũ
+      source_quote: giấy đất chung ghi tên cũ
+    - fact_id: F005
+      category: REQUEST
+      value: Hỏi hồ sơ cập nhật có cần chữ ký người vợ không?
+      source_quote: Hỏi hồ sơ cập nhật có cần chữ ký người vợ không?
+    temporal_context:
+      giao_dich: null
+      vi_pham: null
+      van_ban_dich_danh: null
+  chosen_seed:
+    issues:
+    - issue_key: ISSUE_01
+      issue: Cập nhật tên mới của chồng trên giấy đất chung
+      issue_type: REGISTRATION
+      required_evidence:
+      - requirement_key: REQ_01_01
+        target_kind: FORM_DOCUMENT
+        objective: Xác định hồ sơ thay đổi hộ tịch có cần người vợ ký
+        fact_ids:
+        - F001
+        - F002
+        - F003
+        - F004
+        query: cập nhật họ tên mới của chồng trên giấy chứng nhận đất chung theo quyết định hộ tịch có cần chữ ký của người
+          vợ không
+      depends_on_keys: []
+      time_basis: hien_hanh
+  mutation_family: QUERY_SEMANTIC_ALIGNMENT
+  mutation_hints:
+    focus: Độ khớp ngữ nghĩa giữa query, objective, target_kind và facts.
+    eligible_fields:
+    - query
+    boundaries:
+    - Query phải giữ quan hệ pháp lý quyết định kết quả.
+    - Không đổi sang mục tiêu dễ tìm nhưng khác requirement.
+    - Không thêm tên riêng, số tiền, Điều hoặc Khoản.
+  reviewer_attention:
+  - EXPLICIT_DATE_WITHOUT_UNAMBIGUOUS_EVENT_ROLE
+- pair_id: PDPO_000194
+  source_record_id: scale_hard_176
+  source_case_id: scale_hard_176
+  source_sha256: 8cfde3cb429de925dd7e35c776a1a96bcebefa8bd4c1d72a692b798c386afd27
+  split: train
+  difficulty: HARD
+  primary_topic: DISPUTE
+  secondary_domains:
+  - BUSINESS
+  - CIVIL
+  input:
+    question: Chủ đất góp quyền sử dụng vào hợp tác kinh doanh nhưng không chuyển quyền, đối tác xây nhà xưởng rồi ký hợp
+      đồng cho thuê. Khi hợp tác chấm dứt, chủ đất đòi lại cả xưởng, người thuê yêu cầu tiếp tục hợp đồng. Hỏi quyền đối với
+      đất, sở hữu nhà xưởng và hiệu lực thuê sau chấm dứt hợp tác được xác định ra sao?
+    fact_ledger:
+    - fact_id: F001
+      category: ACTOR
+      value: Chủ đất
+      source_quote: Chủ đất
+    - fact_id: F002
+      category: ACTOR
+      value: đối tác
+      source_quote: đối tác
+    - fact_id: F003
+      category: CONDUCT
+      value: góp quyền sử dụng vào hợp tác kinh doanh
+      source_quote: góp quyền sử dụng vào hợp tác kinh doanh
+    - fact_id: F004
+      category: CONDUCT
+      value: không chuyển quyền
+      source_quote: không chuyển quyền
+    - fact_id: F005
+      category: CONDUCT
+      value: xây nhà xưởng
+      source_quote: xây nhà xưởng
+    - fact_id: F006
+      category: CONDUCT
+      value: ký hợp đồng cho thuê
+      source_quote: ký hợp đồng cho thuê
+    - fact_id: F007
+      category: LEGAL_STATUS
+      value: khi hợp tác chấm dứt
+      source_quote: khi hợp tác chấm dứt
+    - fact_id: F008
+      category: CONDUCT
+      value: đòi lại cả xưởng
+      source_quote: đòi lại cả xưởng
+    - fact_id: F009
+      category: CONDUCT
+      value: yêu cầu tiếp tục hợp đồng
+      source_quote: yêu cầu tiếp tục hợp đồng
+    - fact_id: F010
+      category: REQUEST
+      value: Hỏi quyền đối với đất, sở hữu nhà xưởng và hiệu lực thuê sau chấm dứt hợp tác được xác định ra sao?
+      source_quote: Hỏi quyền đối với đất, sở hữu nhà xưởng và hiệu lực thuê sau chấm dứt hợp tác được xác định ra sao?
+    temporal_context:
+      giao_dich: null
+      vi_pham: null
+      van_ban_dich_danh: null
+  chosen_seed:
+    issues:
+    - issue_key: ISSUE_01
+      issue: Quyền sử dụng đất trong hợp tác kinh doanh không chuyển quyền
+      issue_type: TRANSACTION
+      required_evidence:
+      - requirement_key: REQ_01_01
+        target_kind: LEGAL_CONSEQUENCE
+        objective: Góp quyền khai thác không đăng ký có làm thay đổi chủ sử dụng đất
+        fact_ids:
+        - F001
+        - F002
+        - F003
+        - F004
+        - F007
+        query: góp quyền sử dụng đất vào hợp tác kinh doanh nhưng không chuyển quyền có làm đối tác trở thành người sử dụng
+          đất không
+      depends_on_keys: []
+      time_basis: giao_dich
+    - issue_key: ISSUE_02
+      issue: Quyền sở hữu nhà xưởng do đối tác xây trong thời gian hợp tác
+      issue_type: LEGAL_BASIS
+      required_evidence:
+      - requirement_key: REQ_02_01
+        target_kind: SUBJECT_OBJECT_CONDITIONS
+        objective: Thỏa thuận đầu tư nguồn vốn và xử lý tài sản khi hợp tác kết thúc
+        fact_ids:
+        - F001
+        - F002
+        - F003
+        - F005
+        - F007
+        - F008
+        query: nhà xưởng do đối tác xây trên đất hợp tác thuộc ai và được xử lý thế nào khi chủ đất đòi lại đất
+      depends_on_keys:
+      - ISSUE_01
+      time_basis: giao_dich
+    - issue_key: ISSUE_03
+      issue: Hiệu lực hợp đồng cho thuê nhà xưởng sau khi hợp tác chấm dứt
+      issue_type: TRANSACTION
+      required_evidence:
+      - requirement_key: REQ_03_01
+        target_kind: LEGAL_CONSEQUENCE
+        objective: Bên cho thuê còn quyền với xưởng và người thuê được tiếp tục đến đâu
+        fact_ids:
+        - F002
+        - F005
+        - F006
+        - F007
+        - F008
+        - F009
+        query: người thuê nhà xưởng có được tiếp tục hợp đồng khi hợp tác kinh doanh chấm dứt và chủ đất đòi lại cả công trình
+          không
+      depends_on_keys:
+      - ISSUE_01
+      - ISSUE_02
+      time_basis: hien_hanh
+  mutation_family: FACT_STATUS_GROUNDING
+  mutation_hints:
+    focus: Liên kết fact_ids và trạng thái chỉ được khẳng định trong Fact Ledger.
+    eligible_fields:
+    - fact_ids
+    - issue
+    - objective
+    - query
+    boundaries:
+    - Chỉ dùng fact_id có trong ledger và thực sự làm đổi requirement.
+    - Không suy chưa làm hoặc đã làm chỉ từ sự im lặng của dữ kiện.
+    - Không dùng REQUEST, tên chủ thể hoặc số tiền chỉ để tăng khớp từ.
+  reviewer_attention:
+  - TIME_BASIS_GIAO_DICH_WITHOUT_EXPLICIT_EVENT_DATE
+- pair_id: PDPO_000195
+  source_record_id: scale_medium_179
+  source_case_id: scale_medium_179
+  source_sha256: efed4c26351c4f0b513d3f9ecf74de221cdd88c56945a13ad4000a0f9a4ae79c
+  split: train
+  difficulty: MEDIUM
+  primary_topic: DISPUTE
+  secondary_domains:
+  - CIVIL
+  input:
+    question: Chủ đất cho người họ hàng ở nhờ và trồng cây lâu năm mà không quy định thời hạn. Sau mười hai năm, chủ đất đòi
+      lại để bán, người ở nhờ yêu cầu thanh toán công sức cải tạo và giá trị cây. Hỏi nghĩa vụ trả đất và quyền đối với phần
+      đầu tư được xác định ra sao?
+    fact_ledger:
+    - fact_id: F001
+      category: ACTOR
+      value: Chủ đất
+      source_quote: Chủ đất
+    - fact_id: F002
+      category: CONDUCT
+      value: cho người họ hàng ở nhờ và trồng cây lâu năm
+      source_quote: cho người họ hàng ở nhờ và trồng cây lâu năm
+    - fact_id: F003
+      category: LEGAL_STATUS
+      value: không quy định thời hạn
+      source_quote: không quy định thời hạn
+    - fact_id: F004
+      category: TIME
+      value: Sau mười hai năm
+      source_quote: Sau mười hai năm
+    - fact_id: F005
+      category: CONDUCT
+      value: chủ đất đòi lại để bán
+      source_quote: chủ đất đòi lại để bán
+    - fact_id: F006
+      category: ACTOR
+      value: người ở nhờ
+      source_quote: người ở nhờ
+    - fact_id: F007
+      category: CONDUCT
+      value: yêu cầu thanh toán công sức cải tạo và giá trị cây
+      source_quote: yêu cầu thanh toán công sức cải tạo và giá trị cây
+    - fact_id: F008
+      category: REQUEST
+      value: Hỏi nghĩa vụ trả đất và quyền đối với phần đầu tư được xác định ra sao?
+      source_quote: Hỏi nghĩa vụ trả đất và quyền đối với phần đầu tư được xác định ra sao?
+    temporal_context:
+      giao_dich: null
+      vi_pham: null
+      van_ban_dich_danh: null
+  chosen_seed:
+    issues:
+    - issue_key: ISSUE_01
+      issue: Nghĩa vụ trả đất ở nhờ không xác định thời hạn
+      issue_type: DISPUTE
+      required_evidence:
+      - requirement_key: REQ_01_01
+        target_kind: LEGAL_CONSEQUENCE
+        objective: Xác định điều kiện chấm dứt việc ở nhờ và trả đất
+        fact_ids:
+        - F001
+        - F002
+        - F003
+        - F004
+        - F005
+        - F006
+        query: người ở nhờ và trồng cây lâu năm phải trả đất thế nào khi thỏa thuận không có thời hạn và chủ đất muốn bán
+      depends_on_keys: []
+      time_basis: hien_hanh
+    - issue_key: ISSUE_02
+      issue: Thanh toán công sức cải tạo và giá trị cây lâu năm
+      issue_type: RIGHTS_REMEDY
+      required_evidence:
+      - requirement_key: REQ_02_01
+        target_kind: DISPUTE_REMEDY
+        objective: Xác định quyền hoàn trả giá trị đầu tư hợp lý trên đất
+        fact_ids:
+        - F002
+        - F003
+        - F004
+        - F005
+        - F006
+        - F007
+        query: người ở nhờ được thanh toán công sức cải tạo và cây lâu năm thế nào khi chủ đất đòi lại đất sau nhiều năm
+      depends_on_keys:
+      - ISSUE_01
+      time_basis: hien_hanh
+  mutation_family: COVERAGE_DECOMPOSITION
+  mutation_hints:
+    focus: Bao phủ các kết quả được hỏi và nhóm issue/requirement đúng cấp.
+    eligible_fields:
+    - issues
+    - required_evidence
+    boundaries:
+    - Không bỏ một kết quả độc lập người dùng hỏi rõ.
+    - Không tạo issue riêng cho từng diễn biến nền.
+    - Không ưu tiên mục tiêu chung chung khi ngân sách hai query bị giới hạn.
+  reviewer_attention: []
+- pair_id: PDPO_000196
+  source_record_id: scale2_medium_198
+  source_case_id: scale2_medium_198
+  source_sha256: f26e893df5ef7290f49dbc005c06669493f811f33b02651658a9d565ee81d3ae
+  split: train
+  difficulty: MEDIUM
+  primary_topic: LAND_USE
+  secondary_domains:
+  - ADMINISTRATIVE
+  input:
+    question: Người sử dụng xin chuyển đất nông nghiệp sang đất ở, hồ sơ phù hợp quy hoạch nhưng địa phương đã hết chỉ tiêu
+      trong năm. Hỏi hồ sơ phải bị từ chối, chuyển sang năm sau hay được giữ thứ tự ưu tiên theo ngày nộp?
+    fact_ledger:
+    - fact_id: F001
+      category: ACTOR
+      value: Người sử dụng
+      source_quote: Người sử dụng
+    - fact_id: F002
+      category: CONDUCT
+      value: xin chuyển đất nông nghiệp sang đất ở
+      source_quote: xin chuyển đất nông nghiệp sang đất ở
+    - fact_id: F003
+      category: LEGAL_STATUS
+      value: hồ sơ phù hợp quy hoạch
+      source_quote: hồ sơ phù hợp quy hoạch
+    - fact_id: F004
+      category: LEGAL_STATUS
+      value: địa phương đã hết chỉ tiêu trong năm
+      source_quote: địa phương đã hết chỉ tiêu trong năm
+    - fact_id: F005
+      category: REQUEST
+      value: Hỏi hồ sơ phải bị từ chối, chuyển sang năm sau hay được giữ thứ tự ưu tiên theo ngày nộp?
+      source_quote: Hỏi hồ sơ phải bị từ chối, chuyển sang năm sau hay được giữ thứ tự ưu tiên theo ngày nộp?
+    temporal_context:
+      giao_dich: null
+      vi_pham: null
+      van_ban_dich_danh: null
+  chosen_seed:
+    issues:
+    - issue_key: ISSUE_01
+      issue: Xử lý hồ sơ chuyển mục đích khi hết chỉ tiêu sử dụng đất năm
+      issue_type: AUTHORITY_PROCEDURE
+      required_evidence:
+      - requirement_key: REQ_01_01
+        target_kind: AUTHORITY_PROCEDURE
+        objective: Phân biệt căn cứ từ chối với tạm chờ kế hoạch sử dụng đất mới
+        fact_ids:
+        - F001
+        - F002
+        - F003
+        - F004
+        query: hồ sơ chuyển đất nông nghiệp sang đất ở phù hợp quy hoạch được giải quyết thế nào khi địa phương hết chỉ tiêu
+          trong năm
+      - requirement_key: REQ_01_02
+        target_kind: DEADLINE_OBLIGATION
+        objective: Xác định việc giữ hồ sơ và thứ tự giải quyết sang năm kế tiếp
+        fact_ids:
+        - F001
+        - F002
+        - F003
+        - F004
+        query: hồ sơ chuyển mục đích chưa được giải quyết do hết chỉ tiêu có được giữ thứ tự theo ngày nộp cho năm sau không
+      depends_on_keys: []
+      time_basis: hien_hanh
+  mutation_family: LEGAL_RELATION_FRAMING
+  mutation_hints:
+    focus: Chủ thể, hành vi, đối tượng, chiều tác động và trạng thái hoàn thành.
+    eligible_fields:
+    - issue
+    - objective
+    - query
+    boundaries:
+    - Không đảo chủ thể hoặc chiều tác động.
+    - Không biến ý định, yêu cầu hoặc hành vi đang diễn ra thành kết quả đã hoàn tất.
+    - Không đóng khung sẵn kết luận pháp lý trong issue.
+  reviewer_attention: []
+- pair_id: PDPO_000197
+  source_record_id: scale_easy_182
+  source_case_id: scale_easy_182
+  source_sha256: 5e6de6e9dd78d26bae93db5bd88f21c8b5e7c936eac1ce7ed1b6cd9a7beee269
+  split: train
+  difficulty: EASY
+  primary_topic: DISPUTE
+  secondary_domains: []
+  input:
+    question: Một hộ phát hiện người bên cạnh trồng cây qua mốc giới nhưng hai bên chưa từng đo lại đất. Hỏi hộ này nên thực
+      hiện thủ tục gì để giải quyết tranh chấp ranh giới?
+    fact_ledger:
+    - fact_id: F001
+      category: ACTOR
+      value: một hộ
+      source_quote: một hộ
+    - fact_id: F002
+      category: ACTOR
+      value: người bên cạnh
+      source_quote: người bên cạnh
+    - fact_id: F003
+      category: CONDUCT
+      value: trồng cây qua mốc giới
+      source_quote: trồng cây qua mốc giới
+    - fact_id: F004
+      category: LEGAL_STATUS
+      value: hai bên chưa từng đo lại đất
+      source_quote: hai bên chưa từng đo lại đất
+    - fact_id: F005
+      category: REQUEST
+      value: Hỏi hộ này nên thực hiện thủ tục gì để giải quyết tranh chấp ranh giới?
+      source_quote: Hỏi hộ này nên thực hiện thủ tục gì để giải quyết tranh chấp ranh giới?
+    temporal_context:
+      giao_dich: null
+      vi_pham: null
+      van_ban_dich_danh: null
+  chosen_seed:
+    issues:
+    - issue_key: ISSUE_01
+      issue: Thủ tục giải quyết tranh chấp ranh giới khi cây được trồng qua mốc chưa đo lại
+      issue_type: DISPUTE
+      required_evidence:
+      - requirement_key: REQ_01_01
+        target_kind: AUTHORITY_PROCEDURE
+        objective: Trình tự đo đạc xác định ranh giới và hòa giải tranh chấp tại cơ sở
+        fact_ids:
+        - F003
+        - F004
+        query: trình tự đo đạc và hòa giải tranh chấp ranh giới khi cây trồng qua mốc nhưng đất chưa được đo lại
+      depends_on_keys: []
+      time_basis: hien_hanh
+  mutation_family: TERM_TARGET_BOUNDARY
+  mutation_hints:
+    focus: Ranh giới thuật ngữ pháp lý và target_kind gần nghĩa.
+    eligible_fields:
+    - target_kind
+    - objective
+    - query
+    boundaries:
+    - Giữ target_kind, objective và query cùng một mục tiêu quy phạm.
+    - Rejected sau này phải vẫn hợp schema và chỉ sai ranh giới thuật ngữ chính.
+    - Không dùng lỗi chính tả, JSON hỏng hoặc câu vô nghĩa làm tín hiệu ưu tiên.
+  reviewer_attention: []
+- pair_id: PDPO_000198
+  source_record_id: scale_easy_257
+  source_case_id: scale_easy_257
+  source_sha256: 501cda395fb5e35d78457382a5b87dec44a74bc212601ac9f2485c91b11a31b7
+  split: train
+  difficulty: EASY
+  primary_topic: AUTHORITY_PROCEDURE
+  secondary_domains: []
+  input:
+    question: Văn phòng đăng ký đất đai yêu cầu đo đạc lại vì sơ đồ thửa đất không khớp hiện trạng. Hỏi yêu cầu đo đạc phải
+      được thông báo cho người nộp hồ sơ thế nào?
+    fact_ledger:
+    - fact_id: F001
+      category: ACTOR
+      value: Văn phòng đăng ký đất đai
+      source_quote: Văn phòng đăng ký đất đai
+    - fact_id: F002
+      category: CONDUCT
+      value: yêu cầu đo đạc lại
+      source_quote: yêu cầu đo đạc lại
+    - fact_id: F003
+      category: LEGAL_STATUS
+      value: sơ đồ thửa đất không khớp hiện trạng
+      source_quote: sơ đồ thửa đất không khớp hiện trạng
+    - fact_id: F004
+      category: REQUEST
+      value: Hỏi yêu cầu đo đạc phải được thông báo cho người nộp hồ sơ thế nào?
+      source_quote: Hỏi yêu cầu đo đạc phải được thông báo cho người nộp hồ sơ thế nào?
+    temporal_context:
+      giao_dich: null
+      vi_pham: null
+      van_ban_dich_danh: null
+  chosen_seed:
+    issues:
+    - issue_key: ISSUE_01
+      issue: Thông báo yêu cầu đo đạc lại khi sơ đồ thửa đất không khớp hiện trạng
+      issue_type: AUTHORITY_PROCEDURE
+      required_evidence:
+      - requirement_key: REQ_01_01
+        target_kind: AUTHORITY_PROCEDURE
+        objective: Hình thức nội dung và thời hạn thông báo yêu cầu người nộp hồ sơ đo đạc lại
+        fact_ids:
+        - F001
+        - F002
+        - F003
+        query: văn phòng đăng ký phải thông báo yêu cầu đo đạc lại thế nào khi sơ đồ thửa đất không khớp hiện trạng
+      depends_on_keys: []
+      time_basis: hien_hanh
+  mutation_family: LEGAL_RELATION_FRAMING
+  mutation_hints:
+    focus: Chủ thể, hành vi, đối tượng, chiều tác động và trạng thái hoàn thành.
+    eligible_fields:
+    - issue
+    - objective
+    - query
+    boundaries:
+    - Không đảo chủ thể hoặc chiều tác động.
+    - Không biến ý định, yêu cầu hoặc hành vi đang diễn ra thành kết quả đã hoàn tất.
+    - Không đóng khung sẵn kết luận pháp lý trong issue.
+  reviewer_attention: []
+- pair_id: PDPO_000199
+  source_record_id: scale2_medium_396
+  source_case_id: scale2_medium_396
+  source_sha256: e90a7aa95217c7e79c3e092defc0dfe4e919e70a8217ce9b9694bb30f488597d
+  split: train
+  difficulty: MEDIUM
+  primary_topic: RECOVERY_COMPENSATION
+  secondary_domains:
+  - ADMINISTRATIVE
+  input:
+    question: Cơ quan kiểm đếm thiếu một giếng nước và tường rào, người dân ký biên bản nhưng ghi chú sẽ bổ sung sau. Phương
+      án được phê duyệt không có các tài sản này. Hỏi ghi chú có đủ căn cứ điều chỉnh và trình tự kiểm đếm lại ra sao?
+    fact_ledger:
+    - fact_id: F001
+      category: ACTOR
+      value: Cơ quan
+      source_quote: Cơ quan
+    - fact_id: F002
+      category: CONDUCT
+      value: kiểm đếm thiếu một giếng nước và tường rào
+      source_quote: kiểm đếm thiếu một giếng nước và tường rào
+    - fact_id: F003
+      category: ACTOR
+      value: người dân
+      source_quote: người dân
+    - fact_id: F004
+      category: CONDUCT
+      value: ký biên bản
+      source_quote: ký biên bản
+    - fact_id: F005
+      category: CONDUCT
+      value: ghi chú sẽ bổ sung sau
+      source_quote: ghi chú sẽ bổ sung sau
+    - fact_id: F006
+      category: LEGAL_STATUS
+      value: Phương án được phê duyệt không có các tài sản này
+      source_quote: Phương án được phê duyệt không có các tài sản này
+    - fact_id: F007
+      category: REQUEST
+      value: Hỏi ghi chú có đủ căn cứ điều chỉnh và trình tự kiểm đếm lại ra sao?
+      source_quote: Hỏi ghi chú có đủ căn cứ điều chỉnh và trình tự kiểm đếm lại ra sao?
+    temporal_context:
+      giao_dich: null
+      vi_pham: null
+      van_ban_dich_danh: null
+  chosen_seed:
+    issues:
+    - issue_key: ISSUE_01
+      issue: Điều chỉnh phương án do kiểm đếm thiếu giếng và tường rào
+      issue_type: AUTHORITY_PROCEDURE
+      required_evidence:
+      - requirement_key: REQ_01_01
+        target_kind: LEGAL_BASIS
+        objective: Ghi chú bảo lưu trong biên bản là căn cứ xác minh tài sản bỏ sót
+        fact_ids:
+        - F001
+        - F002
+        - F003
+        - F004
+        - F005
+        - F006
+        query: ghi chú sẽ bổ sung tài sản trong biên bản kiểm đếm có đủ căn cứ điều chỉnh phương án thiếu giếng nước và tường
+          rào không
+      - requirement_key: REQ_01_02
+        target_kind: AUTHORITY_PROCEDURE
+        objective: Kiểm tra lại lập biên bản bổ sung và phê duyệt điều chỉnh
+        fact_ids:
+        - F001
+        - F002
+        - F003
+        - F005
+        - F006
+        query: cơ quan phải kiểm đếm lại và phê duyệt bổ sung giếng nước tường rào bị bỏ sót theo trình tự nào
+      depends_on_keys: []
+      time_basis: hien_hanh
+  mutation_family: FACT_STATUS_GROUNDING
+  mutation_hints:
+    focus: Liên kết fact_ids và trạng thái chỉ được khẳng định trong Fact Ledger.
+    eligible_fields:
+    - fact_ids
+    - issue
+    - objective
+    - query
+    boundaries:
+    - Chỉ dùng fact_id có trong ledger và thực sự làm đổi requirement.
+    - Không suy chưa làm hoặc đã làm chỉ từ sự im lặng của dữ kiện.
+    - Không dùng REQUEST, tên chủ thể hoặc số tiền chỉ để tăng khớp từ.
+  reviewer_attention: []
+- pair_id: PDPO_000200
+  source_record_id: scale2_easy_368
+  source_case_id: scale2_easy_368
+  source_sha256: a75493a5beca1b76878340b53f7636cdbac4fe996ed9b87e954df3f367d7207b
+  split: train
+  difficulty: EASY
+  primary_topic: ELIGIBILITY
+  secondary_domains: []
+  input:
+    question: Tháng 3/2023, thửa đất đủ diện tích nhưng cạnh tiếp giáp đường quá hẹp theo quy định địa phương. Hỏi điều kiện
+      kích thước ảnh hưởng việc tách thửa thế nào?
+    fact_ledger:
+    - fact_id: F001
+      category: TIME
+      value: Tháng 3/2023
+      source_quote: Tháng 3/2023
+    - fact_id: F002
+      category: LEGAL_STATUS
+      value: cạnh tiếp giáp đường quá hẹp theo quy định địa phương
+      source_quote: cạnh tiếp giáp đường quá hẹp theo quy định địa phương
+    - fact_id: F003
+      category: AFFECTED_AREA
+      value: thửa đất đủ diện tích
+      source_quote: thửa đất đủ diện tích
+    - fact_id: F004
+      category: REQUEST
+      value: Hỏi điều kiện kích thước ảnh hưởng việc tách thửa thế nào?
+      source_quote: Hỏi điều kiện kích thước ảnh hưởng việc tách thửa thế nào?
+    temporal_context:
+      giao_dich: "2023"
+      vi_pham: null
+      van_ban_dich_danh: null
+  chosen_seed:
+    issues:
+    - issue_key: ISSUE_01
+      issue: Điều kiện chiều rộng cạnh tiếp giáp đường khi tách thửa
+      issue_type: ELIGIBILITY
+      required_evidence:
+      - requirement_key: REQ_01_01
+        target_kind: SUBJECT_OBJECT_CONDITIONS
+        objective: Diện tích đạt mức tối thiểu nhưng cạnh tiếp giáp đường không đạt quy định
+        fact_ids:
+        - F001
+        - F002
+        - F003
+        query: thửa đất đủ diện tích nhưng cạnh tiếp giáp đường quá hẹp có đáp ứng điều kiện tách thửa theo quy định địa phương
+          không
+      depends_on_keys: []
+      time_basis: giao_dich
+  mutation_family: TERM_TARGET_BOUNDARY
+  mutation_hints:
+    focus: Ranh giới thuật ngữ pháp lý và target_kind gần nghĩa.
+    eligible_fields:
+    - target_kind
+    - objective
+    - query
+    boundaries:
+    - Giữ target_kind, objective và query cùng một mục tiêu quy phạm.
+    - Rejected sau này phải vẫn hợp schema và chỉ sai ranh giới thuật ngữ chính.
+    - Không dùng lỗi chính tả, JSON hỏng hoặc câu vô nghĩa làm tín hiệu ưu tiên.
+  reviewer_attention: []

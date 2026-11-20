@@ -1,0 +1,92 @@
+{
+  "dataset_name": "vn_land_counsel_planner_revise_patch_v1",
+  "version": 1,
+  "generated_at": "2026-09-01T16:58:09.660251+00:00",
+  "status": "FROZEN_SPLIT_READY_FOR_SFT_WARMUP_THEN_DPO",
+  "task": "targeted_planner_issue_patch",
+  "source_dataset": "vn_land_counsel_planner_dpo_v1",
+  "source_records": 2000,
+  "converted_records": 1700,
+  "conversion_rate": 0.85,
+  "excluded_records": 300,
+  "exclusions": {
+    "COVERAGE_DECOMPOSITION_EXCLUDED": 300
+  },
+  "records": {
+    "train": 1360,
+    "validation": 170,
+    "test": 170
+  },
+  "family_counts": {
+    "TEMPORAL_VERSION_INTENT": 150,
+    "FACT_STATUS_GROUNDING": 250,
+    "TERM_TARGET_BOUNDARY": 400,
+    "QUERY_SEMANTIC_ALIGNMENT": 350,
+    "LEGAL_RELATION_FRAMING": 350,
+    "CROSS_DOMAIN_BOUNDARY": 100,
+    "DEPENDENCY_SEQUENCE": 100
+  },
+  "source_prompt_hashes": {
+    "dd971109ef32ac30e9e798220988aeb20c31b78472b56784a819cffc18995e4a": 1700
+  },
+  "patch_prompt": {
+    "source": "core/pipeline_v2/planner_patch.py::PLANNER_PATCH_PROMPT",
+    "sha256": "51fc2a758236a8d268a12abe8be6437a11841f215de6595e1fa8767474904eee",
+    "utf8_chars": 645
+  },
+  "split_policy": {
+    "group_key": "source_case_id",
+    "preserve_source_split": true,
+    "hidden_test_frozen": true,
+    "overlap": {
+      "train_validation": 0,
+      "train_test": 0,
+      "validation_test": 0
+    }
+  },
+  "training_order": [
+    "SFT_WARMUP_ON_CHOSEN_PATCH",
+    "HELD_OUT_CONTRACT_AND_SEMANTIC_TEST",
+    "OPTIONAL_DPO_FROM_BEST_SFT_CHECKPOINT"
+  ],
+  "unsupported_family": "COVERAGE_DECOMPOSITION",
+  "unsupported_reason": "Current patch contract does not add/drop/split/merge Issue or Requirement.",
+  "files": {
+    "dpo_train": {
+      "path": "planner_revise_dpo_train_1360.jsonl",
+      "records": 1360,
+      "bytes": 6921613,
+      "sha256": "ea18326d1e1a81f4faed96b7a3ee318d7b42f249efab3178bb5c3ded87bab130"
+    },
+    "sft_train": {
+      "path": "planner_revise_sft_train_1360.jsonl",
+      "records": 1360,
+      "bytes": 5898105,
+      "sha256": "890f44b873e8b4252cc6159cf066d764713257ef2330bbe29b71c977f6da3420"
+    },
+    "dpo_validation": {
+      "path": "planner_revise_dpo_validation_170.jsonl",
+      "records": 170,
+      "bytes": 847412,
+      "sha256": "15550205396139ef5be907324c9a3a4e8e9210cfa4345fec084f63b50063f882"
+    },
+    "sft_validation": {
+      "path": "planner_revise_sft_validation_170.jsonl",
+      "records": 170,
+      "bytes": 725202,
+      "sha256": "8b416546b4c01a6db5b56a9ca18fe9ab89f633658d02c5d1ddef59ddc3ef5606"
+    },
+    "dpo_test": {
+      "path": "planner_revise_dpo_hidden_test_170.jsonl",
+      "records": 170,
+      "bytes": 859559,
+      "sha256": "537b13c523c45342515c7682f44d4f052d78941bb9e407564ae9f20ec914ccdb"
+    },
+    "sft_test": {
+      "path": "planner_revise_sft_hidden_test_170.jsonl",
+      "records": 170,
+      "bytes": 732823,
+      "sha256": "7ce11599a837eef17649124e94822946bdbbbe5e02ffc047cb489141b74655af"
+    }
+  }
+}

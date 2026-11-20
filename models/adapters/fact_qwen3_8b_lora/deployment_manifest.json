@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "activated_at": "2026-07-27",
+  "role": "case_fact_extractor",
+  "api_model_id": "Fact-Qwen3-8B-LoRA",
+  "base_model_id": "Qwen/Qwen3-8B",
+  "runtime_base_gguf": "C:\\local-ai\\models\\Qwen3-8B-Q5_K_M.gguf",
+  "hf_adapter": "hf_adapter/adapter_model.safetensors",
+  "hf_adapter_sha256": "EB4444FA34CBEFFC7B5733E0BE6432EC837B93170EF0BF57B7356ABBEB874BA6",
+  "gguf_adapter": "gguf/fact-qwen3-8b-lora-f16.gguf",
+  "gguf_adapter_sha256": "C3F6084ECDFC6976A25808B9C8E51B06760A0931C60BEAAE567FEC0A8B21945E",
+  "source_archive": "artifacts/research/fine_tuning/fact/runs/fact_qwen3_8b_qlora_result.zip",
+  "source_archive_sha256": "0AA7F2C1479D279C1703286D68DBB78FD91F5205D618149D1A91AAC3CACA4E19",
+  "gguf_conversion": {
+    "tool": "llama.cpp convert_lora_to_gguf.py",
+    "llama_cpp_commit": "33a75f41c",
+    "outtype": "f16",
+    "base_config_source": "https://huggingface.co/Qwen/Qwen3-8B/raw/main/config.json"
+  },
+  "training": {
+    "records": 1600,
+    "validation_records": 200,
+    "epochs": 3,
+    "max_seq_length": 1536,
+    "lora_r": 16,
+    "lora_alpha": 32,
+    "thinking_mode": false
+  },
+  "validation": {
+    "split": "validation",
+    "records": 200,
+    "json_parse_rate": 1.0,
+    "schema_validity_rate": 0.995,
+    "record_exact_match": 0.235,
+    "fact_micro_f1": 0.6615310544053923,
+    "quote_grounding_rate": 1.0
+  },
+  "runtime_smoke_test": {
+    "status": "passed",
+    "llama_server_version": "10021 (33a75f41c)",
+    "base_gguf": "Qwen3-8B-Q5_K_M",
+    "adapter_loaded": true
+  },
+  "regression_case_smoke_test": {
+    "question": "Triệu Văn Phin - Hà Thị Nhì",
+    "validated_facts": 14,
+    "preserved_certification_fact": true,
+    "planner_semantic_coverage": "failed",
+    "note": "Fact 8B giữ dữ kiện chứng thực bị Fact 4B bỏ sót; Planner 4B vẫn cần xử lý riêng."
+  },
+  "deployment_status": "active_trial"
+}
